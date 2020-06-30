@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  PlastovaProba
+
+  Created by Pavlo Dumyak on 30.06.2020.
+  Copyright © 2020 Pavlo Dumyak. All rights reserved.
+*/
+
+"scout_list_title" = "ПластоваПроба";
+"for_scout_masters" = "Виховникам";
+"hello_i_m_your_scout_list" = "СКОБ! Я твоя\nпластова проба";
+"useful_scout_list_in_the_pocket" = "Зручна онлайн-проба у твоєму телефоні,\nяка завжди буде поруч";
+"how_its_working" = "Як це працює?";
+"do_you_have_own_profile_enter" = "Вже маєш профіль? Увійти";
+
+// MARK: - Onboarding
+"onboarding_title_0" = "Якісні матеріали\nдля здачі точок";
+"onboarding_subtitle_0" = "Ми підготували всю необхідну\nінформацію, щоб класно здати точку";
+
+"onboarding_title_1" = "Особистий прогрес\nздачі проби";
+"onboarding_subtitle_1" = "Детально контролюй процес здачі\nпроби прямо у своєму телефоні";
+
+"onboarding_title_2" = "Виховники теж\nу додатку";
+"onboarding_subtitle_2" = "Виховник сам позначає вже здані\nточки зі своєї сторони додатку";
+
+"onboarding_title_3" = "Ця не загубиться,не\nзгорить і не намокне";
+"onboarding_subtitle_3" = "Ми збергіємо все онлайн, тому в додатку твоя проба завжди буде ціла і з тобою";
+
+"onboarding_next" = "Далі";
+"onboarding_skip" = "Пропустити";
