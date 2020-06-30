@@ -8,9 +8,12 @@
 
 import UIKit
 
+import JXPageControl
+
 class ContainerPageVC: UIPageViewController {
     
-    var pageControl = UIPageControl()
+    var pageControl: JXPageControlExchange?
+    
     lazy var controllers: [UIViewController?] = {
         
         let first = UIStoryboard.getViewController(storyboardName: .main, controllerIdentifier: "OnboardingSlideViewController") as? OnboardingSlideViewController
@@ -38,6 +41,15 @@ class ContainerPageVC: UIPageViewController {
          //   scrollView.isScrollEnabled = false
         }
     }
+    
+    func next() {
+        if (pageControl!.currentPage + 1) < controllers.count {
+            if let nextController = controllers[pageControl!.currentPage + 1] {
+                self.setViewControllers([nextController], direction: .forward, animated: true, completion: nil)
+                pageControl!.currentPage += 1
+            }
+        }
+    }
 }
 
 extension ContainerPageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
@@ -59,6 +71,6 @@ extension ContainerPageVC: UIPageViewControllerDataSource, UIPageViewControllerD
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
-        self.pageControl.currentPage = controllers.firstIndex(of: pageContentViewController)!
+        self.pageControl?.currentPage = controllers.firstIndex(of: pageContentViewController)!
     }
 }

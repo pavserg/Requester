@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JXPageControl
 
 class OnboardingViewController: UIViewController {
 
@@ -18,6 +19,11 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var nextButtonArrowImageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
     
+    // MARK: - PageControl
+    @IBOutlet weak var pageControl: JXPageControlExchange!
+    
+    var pageController: ContainerPageVC!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +37,11 @@ class OnboardingViewController: UIViewController {
         nextButtonTitleLabel.textColor = AppColors.white
         leadingTopTitleLabel.textColor = AppColors.black
         nextButtonArrowImageView.image = UIImage(named: "arrow_forward")
+        
+        pageControl.activeColor = AppColors.green ?? UIColor.black
+        pageControl.inactiveColor = AppColors.inactive
+        pageControl.numberOfPages = 4
+        pageControl.activeSize = CGSize.init(width: 15, height: 10)
     }
     
     private func setupLocalization() {
@@ -41,7 +52,26 @@ class OnboardingViewController: UIViewController {
     }
     
     @IBAction func showNext(_ sender: Any) {
-        
+        pageController.next()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ContainerPageVC {
+            pageController = destination
+            if let scrollView = destination.view.subviews.filter({$0.isKind(of: UIScrollView.self)}).first as? UIScrollView {
+                scrollView.delegate = self
+                destination.pageControl = self.pageControl
+            }
+        }
     }
 }
 
+extension OnboardingViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isTracking {
+            let progress = scrollView.contentOffset.x / scrollView.bounds.width
+           // pageControl.progress = progress
+        }
+    }
+}

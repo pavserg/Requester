@@ -9,7 +9,8 @@
 import UIKit
 
 class AppColors {
-    static var green: UIColor? = UIColor.init(rgb:  0x007932) 
+    static var green: UIColor? = UIColor.init(rgb:  0x007932)
+    static var inactive: UIColor =  UIColor.init(rgb:  0xB5BBC9)
     static var white: UIColor = UIColor.white
     static var black: UIColor = UIColor.black
 }
