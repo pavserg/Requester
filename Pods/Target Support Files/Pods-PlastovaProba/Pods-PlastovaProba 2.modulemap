@@ -1,0 +1,6 @@
+module Pods_PlastovaProba {
+  umbrella header "Pods-PlastovaProba-umbrella.h"
+
+  export *
+  module * { export * }
+}

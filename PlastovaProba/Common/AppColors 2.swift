@@ -13,8 +13,6 @@ class AppColors {
     static var inactive: UIColor =  UIColor.init(rgb:  0xB5BBC9)
     static var white: UIColor = UIColor.white
     static var black: UIColor = UIColor.black
-    static var gray: UIColor = UIColor.init(rgb:  0xC4C4C4)
-    static var primaryLine: UIColor = UIColor.init(rgb:  0xCFD2D8)
 }
 
 extension UIColor {

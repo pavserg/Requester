@@ -6,6 +6,7 @@
   Copyright © 2020 Pavlo Dumyak. All rights reserved.
 */
 
+// MARK: - Start page
 "scout_list_title" = "ПластоваПроба";
 "for_scout_masters" = "Виховникам";
 "hello_i_m_your_scout_list" = "СКОБ! Я твоя\nпластова проба";
@@ -24,24 +25,6 @@
 "onboarding_subtitle_2" = "Виховник сам позначає вже здані\nточки зі своєї сторони додатку";
 
 "onboarding_title_3" = "Ця не загубиться,не\nзгорить і не намокне";
-"onboarding_subtitle_3" = "Ми збергіємо все онлайн, тому в додатку твоя проба завжди буде ціла і з тобою";
+"onboarding_subtitle_3" = "Ми збергіємо все онлайн, тому в додатку твоя\nпроба завжди буде ціла і з тобою";
 
 "onboarding_next" = "Далі";
-"onboarding_skip" = "Пропустити";
-
-// MARK: - Login
-"login_hello" = "СКОБ!";
-"login_scout_master_login_and_see_your_group" = "Увійди в додаток, щоб побачити свій гурток";
-"login_email" = "Електронна пошта";
-"login_password" = "Пароль";
-"login_login" = "Увійти";
-"login_cant_login" = "Не можеш увійти?";
-"login_change_password" = "Змінити пароль";
-
-// MARK: - Start page
-"start_page_hello_i_am_yours" = "СКОБ! Я твоя\n";
-"start_page_scout_list" = "пластова проба";
-"start_page_useful_scout_list" = "Зручна онлайн-проба у твоєму телефоні,\nяка завжди буде поруч";
-"start_page_how_does_it_work" = "Як це працює?";
-"start_page_already_have_an_account" = "Вже маєш профіль? Увійти";
-"start_page_already_have_an_account_range_check" = "Увійти";

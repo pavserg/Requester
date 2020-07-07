@@ -28,20 +28,3 @@
 
 "onboarding_next" = "Далі";
 "onboarding_skip" = "Пропустити";
-
-// MARK: - Login
-"login_hello" = "СКОБ!";
-"login_scout_master_login_and_see_your_group" = "Увійди в додаток, щоб побачити свій гурток";
-"login_email" = "Електронна пошта";
-"login_password" = "Пароль";
-"login_login" = "Увійти";
-"login_cant_login" = "Не можеш увійти?";
-"login_change_password" = "Змінити пароль";
-
-// MARK: - Start page
-"start_page_hello_i_am_yours" = "СКОБ! Я твоя\n";
-"start_page_scout_list" = "пластова проба";
-"start_page_useful_scout_list" = "Зручна онлайн-проба у твоєму телефоні,\nяка завжди буде поруч";
-"start_page_how_does_it_work" = "Як це працює?";
-"start_page_already_have_an_account" = "Вже маєш профіль? Увійти";
-"start_page_already_have_an_account_range_check" = "Увійти";

@@ -13,14 +13,15 @@ class OnboardingViewController: UIViewController {
 
     @IBOutlet weak var leadingTopTitleLabel: UILabel!
     @IBOutlet weak var trailingTopButton: UIButton!
+    
     @IBOutlet weak var nextButtonPlaceholderView: UIView!
     @IBOutlet weak var nextButtonTitleLabel: UILabel!
     @IBOutlet weak var nextButtonArrowImageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - PageControl
-    @IBOutlet weak var pageControlPlaceholder: UIView!
-    var pageControl: JXPageControlExchange!
+    @IBOutlet weak var pageControl: JXPageControlExchange!
+    
     var pageController: ContainerPageVC!
 
     override func viewDidLoad() {
@@ -29,11 +30,6 @@ class OnboardingViewController: UIViewController {
         setupUI()
         setupLocalization()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-         setupPageControl()
-    }
     
     private func setupUI() {
         nextButtonPlaceholderView.layer.cornerRadius = 5.0
@@ -41,23 +37,11 @@ class OnboardingViewController: UIViewController {
         nextButtonTitleLabel.textColor = AppColors.white
         leadingTopTitleLabel.textColor = AppColors.black
         nextButtonArrowImageView.image = UIImage(named: "arrow_forward")
-
-    }
-    
-    private func setupPageControl() {
-        pageControl = JXPageControlExchange(frame: pageControlPlaceholder.bounds)
+        
         pageControl.activeColor = AppColors.green ?? UIColor.black
         pageControl.inactiveColor = AppColors.inactive
         pageControl.numberOfPages = 4
         pageControl.activeSize = CGSize.init(width: 15, height: 10)
-        pageControlPlaceholder.alpha = 0.0
-        pageControlPlaceholder.addSubview(pageControl)
-        
-        UIView.animate(withDuration: 0.3) {
-            self.pageControlPlaceholder.alpha = 1.0
-        }
-        
-        pageController.pageControl = pageControl
     }
     
     private func setupLocalization() {
@@ -69,10 +53,6 @@ class OnboardingViewController: UIViewController {
     
     @IBAction func showNext(_ sender: Any) {
         pageController.next()
-    }
-    
-    @IBAction func skip(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

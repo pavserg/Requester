@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
 		B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */; };
 		B17A763724ABBEA3004FD21E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17A763524ABBEA3004FD21E /* Main.storyboard */; };
@@ -37,12 +38,19 @@
 		B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A769824ABDA73004FD21E /* ContainerPageVC.swift */; };
 		B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A769A24ABDB5F004FD21E /* OnboardingSlideViewController.swift */; };
 		B17A769E24ABDCAD004FD21E /* Storyboard+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A769D24ABDCAD004FD21E /* Storyboard+Common.swift */; };
+		B17A76AB24B49EDA004FD21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76AA24B49EDA004FD21E /* LoginViewController.swift */; };
+		B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76AE24B49F54004FD21E /* FloatingTextFieldPlaceholder.swift */; };
+		B17A76B324B49F54004FD21E /* FloatingTextFieldPlaceholder.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17A76AF24B49F54004FD21E /* FloatingTextFieldPlaceholder.xib */; };
+		B17A76B424B49F54004FD21E /* FloatingTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17A76B024B49F54004FD21E /* FloatingTextField.xib */; };
+		B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76B124B49F54004FD21E /* FloatingTextField.swift */; };
+		B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76B624B4A02E004FD21E /* AppFonts.swift */; };
 		EB38DF513ACED9F03CE9E03A /* libPods-PlastovaProba.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D22C5D40FEFAD5A137753D /* libPods-PlastovaProba.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A5D22C5D40FEFAD5A137753D /* libPods-PlastovaProba.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlastovaProba.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD7DE352DAD1B9AC659D5FA /* Pods-PlastovaProba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.release.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.release.xcconfig"; sourceTree = "<group>"; };
+		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17A762F24ABBEA3004FD21E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +86,12 @@
 		B17A769824ABDA73004FD21E /* ContainerPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPageVC.swift; sourceTree = "<group>"; };
 		B17A769A24ABDB5F004FD21E /* OnboardingSlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideViewController.swift; sourceTree = "<group>"; };
 		B17A769D24ABDCAD004FD21E /* Storyboard+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Common.swift"; sourceTree = "<group>"; };
+		B17A76AA24B49EDA004FD21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B17A76AE24B49F54004FD21E /* FloatingTextFieldPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingTextFieldPlaceholder.swift; sourceTree = "<group>"; };
+		B17A76AF24B49F54004FD21E /* FloatingTextFieldPlaceholder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingTextFieldPlaceholder.xib; sourceTree = "<group>"; };
+		B17A76B024B49F54004FD21E /* FloatingTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingTextField.xib; sourceTree = "<group>"; };
+		B17A76B124B49F54004FD21E /* FloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
+		B17A76B624B4A02E004FD21E /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		E6C46C56A69851C45D57D5B1 /* Pods-PlastovaProba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.debug.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +124,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B169367224B4AA4C00D0CE46 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B169367324B4AA6500D0CE46 /* StartViewController.swift */,
+			);
+			path = StartScreen;
+			sourceTree = "<group>";
+		};
 		B17A762324ABBEA3004FD21E = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +153,7 @@
 		B17A762E24ABBEA3004FD21E /* PlastovaProba */ = {
 			isa = PBXGroup;
 			children = (
+				B17A76AC24B49F2D004FD21E /* Views */,
 				B17A766524ABD2D0004FD21E /* Common */,
 				B17A766424ABD2AE004FD21E /* UserFlows */,
 				B17A766C24ABD666004FD21E /* Fonts */,
@@ -147,6 +170,8 @@
 		B17A766424ABD2AE004FD21E /* UserFlows */ = {
 			isa = PBXGroup;
 			children = (
+				B169367224B4AA4C00D0CE46 /* StartScreen */,
+				B17A76A924B49EC3004FD21E /* Login */,
 				B17A769524ABD9D0004FD21E /* PageViewController */,
 				B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */,
 			);
@@ -157,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				B17A766824ABD387004FD21E /* AppColors.swift */,
+				B17A76B624B4A02E004FD21E /* AppFonts.swift */,
 				B17A766A24ABD3B5004FD21E /* String+Helpers.swift */,
 				B17A769D24ABDCAD004FD21E /* Storyboard+Common.swift */,
 			);
@@ -196,6 +222,33 @@
 				B17A769A24ABDB5F004FD21E /* OnboardingSlideViewController.swift */,
 			);
 			path = PageViewController;
+			sourceTree = "<group>";
+		};
+		B17A76A924B49EC3004FD21E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B17A76AA24B49EDA004FD21E /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B17A76AC24B49F2D004FD21E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B17A76AD24B49F36004FD21E /* FloatingTextField */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B17A76AD24B49F36004FD21E /* FloatingTextField */ = {
+			isa = PBXGroup;
+			children = (
+				B17A76B124B49F54004FD21E /* FloatingTextField.swift */,
+				B17A76B024B49F54004FD21E /* FloatingTextField.xib */,
+				B17A76AE24B49F54004FD21E /* FloatingTextFieldPlaceholder.swift */,
+				B17A76AF24B49F54004FD21E /* FloatingTextFieldPlaceholder.xib */,
+			);
+			path = FloatingTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +312,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B17A768B24ABD949004FD21E /* Montserrat-Light.ttf in Resources */,
+				B17A76B424B49F54004FD21E /* FloatingTextField.xib in Resources */,
 				B17A768824ABD949004FD21E /* Montserrat-LightItalic.ttf in Resources */,
+				B17A76B324B49F54004FD21E /* FloatingTextFieldPlaceholder.xib in Resources */,
 				B17A768524ABD949004FD21E /* Montserrat-Regular.ttf in Resources */,
 				B17A768224ABD949004FD21E /* Montserrat-Italic.ttf in Resources */,
 				B17A763C24ABBEA5004FD21E /* LaunchScreen.storyboard in Resources */,
@@ -319,8 +374,13 @@
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
 				B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */,
 				B17A766B24ABD3B5004FD21E /* String+Helpers.swift in Sources */,
+				B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */,
 				B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */,
+				B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */,
+				B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */,
+				B17A76AB24B49EDA004FD21E /* LoginViewController.swift in Sources */,
 				B17A766924ABD387004FD21E /* AppColors.swift in Sources */,
+				B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */,
 				B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */,
 				B17A769E24ABDCAD004FD21E /* Storyboard+Common.swift in Sources */,
 			);
