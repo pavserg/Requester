@@ -30,6 +30,7 @@
 "onboarding_skip" = "Пропустити";
 
 // MARK: - Login
+"login_registartion" = "Реєстрація";
 "login_hello" = "СКОБ!";
 "login_scout_master_login_and_see_your_group" = "Увійди в додаток, щоб побачити свій гурток";
 "login_email" = "Електронна пошта";
@@ -45,3 +46,11 @@
 "start_page_how_does_it_work" = "Як це працює?";
 "start_page_already_have_an_account" = "Вже маєш профіль? Увійти";
 "start_page_already_have_an_account_range_check" = "Увійти";
+
+// MARK: - Registration step 1
+"registration_step_1_title" = "Реєстрація в додатку";
+"registration_step_1_subtitle" = "Зареєструй себе в додатку, щоб твоє юнацтво могло вести електронну пробу";
+"registration_step_1_email" = "Електронна пошта";
+"registration_step_1_password" = "Пароль";
+"registration_step_1_repeat_password" = "Пароль ще раз";
+

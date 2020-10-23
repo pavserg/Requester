@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A43179A72DB89C4F47AF22C3 /* Pods_PlastovaProba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744652B8314B2965B09753F3 /* Pods_PlastovaProba.framework */; };
 		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
 		B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */; };
 		B17A763724ABBEA3004FD21E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17A763524ABBEA3004FD21E /* Main.storyboard */; };
-		B17A763924ABBEA5004FD21E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B17A763824ABBEA5004FD21E /* Assets.xcassets */; };
 		B17A763C24ABBEA5004FD21E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17A763A24ABBEA5004FD21E /* LaunchScreen.storyboard */; };
 		B17A766224ABD287004FD21E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B17A766024ABD287004FD21E /* Localizable.strings */; };
 		B17A766924ABD387004FD21E /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A766824ABD387004FD21E /* AppColors.swift */; };
@@ -44,11 +44,17 @@
 		B17A76B424B49F54004FD21E /* FloatingTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17A76B024B49F54004FD21E /* FloatingTextField.xib */; };
 		B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76B124B49F54004FD21E /* FloatingTextField.swift */; };
 		B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76B624B4A02E004FD21E /* AppFonts.swift */; };
-		EB38DF513ACED9F03CE9E03A /* libPods-PlastovaProba.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D22C5D40FEFAD5A137753D /* libPods-PlastovaProba.a */; };
+		B1800EA52542F23600B9C6C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B17A763824ABBEA5004FD21E /* Assets.xcassets */; };
+		B1BCF64A2522081400C1FBF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */; };
+		B1BFC16525212F1E002E80DF /* RegistrationConfirmEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFC16425212F1E002E80DF /* RegistrationConfirmEmailViewController.swift */; };
+		B1C36401252107F000F21352 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1C363FF252107F000F21352 /* Registration.storyboard */; };
+		B1C36402252107F000F21352 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C36400252107F000F21352 /* RegistrationViewController.swift */; };
+		B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */; };
+		B1CCEB172542D873003ED327 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CCEB162542D873003ED327 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A5D22C5D40FEFAD5A137753D /* libPods-PlastovaProba.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlastovaProba.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		744652B8314B2965B09753F3 /* Pods_PlastovaProba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlastovaProba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD7DE352DAD1B9AC659D5FA /* Pods-PlastovaProba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.release.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.release.xcconfig"; sourceTree = "<group>"; };
 		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +98,12 @@
 		B17A76B024B49F54004FD21E /* FloatingTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingTextField.xib; sourceTree = "<group>"; };
 		B17A76B124B49F54004FD21E /* FloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		B17A76B624B4A02E004FD21E /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B1BFC16425212F1E002E80DF /* RegistrationConfirmEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmEmailViewController.swift; sourceTree = "<group>"; };
+		B1C363FF252107F000F21352 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		B1C36400252107F000F21352 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		B1CCEB162542D873003ED327 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E6C46C56A69851C45D57D5B1 /* Pods-PlastovaProba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.debug.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB38DF513ACED9F03CE9E03A /* libPods-PlastovaProba.a in Frameworks */,
+				A43179A72DB89C4F47AF22C3 /* Pods_PlastovaProba.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +122,7 @@
 		40233B7A1FD2F0B7A5CA59AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5D22C5D40FEFAD5A137753D /* libPods-PlastovaProba.a */,
+				744652B8314B2965B09753F3 /* Pods_PlastovaProba.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,8 +165,10 @@
 		B17A762E24ABBEA3004FD21E /* PlastovaProba */ = {
 			isa = PBXGroup;
 			children = (
+				B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */,
 				B17A76AC24B49F2D004FD21E /* Views */,
 				B17A766524ABD2D0004FD21E /* Common */,
+				B1CCEB132542CCE9003ED327 /* Helpers */,
 				B17A766424ABD2AE004FD21E /* UserFlows */,
 				B17A766C24ABD666004FD21E /* Fonts */,
 				B17A762F24ABBEA3004FD21E /* AppDelegate.swift */,
@@ -170,6 +184,7 @@
 		B17A766424ABD2AE004FD21E /* UserFlows */ = {
 			isa = PBXGroup;
 			children = (
+				B1C363FE252107BC00F21352 /* Registration */,
 				B169367224B4AA4C00D0CE46 /* StartScreen */,
 				B17A76A924B49EC3004FD21E /* Login */,
 				B17A769524ABD9D0004FD21E /* PageViewController */,
@@ -251,6 +266,25 @@
 			path = FloatingTextField;
 			sourceTree = "<group>";
 		};
+		B1C363FE252107BC00F21352 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B1C363FF252107F000F21352 /* Registration.storyboard */,
+				B1C36400252107F000F21352 /* RegistrationViewController.swift */,
+				B1BFC16425212F1E002E80DF /* RegistrationConfirmEmailViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		B1CCEB132542CCE9003ED327 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */,
+				B1CCEB162542D873003ED327 /* Validator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,6 +296,7 @@
 				B17A762824ABBEA3004FD21E /* Sources */,
 				B17A762924ABBEA3004FD21E /* Frameworks */,
 				B17A762A24ABBEA3004FD21E /* Resources */,
+				1BD2AA692F7BAFF20E402237 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1800EA52542F23600B9C6C4 /* Assets.xcassets in Resources */,
 				B17A768B24ABD949004FD21E /* Montserrat-Light.ttf in Resources */,
 				B17A76B424B49F54004FD21E /* FloatingTextField.xib in Resources */,
 				B17A768824ABD949004FD21E /* Montserrat-LightItalic.ttf in Resources */,
@@ -322,10 +358,10 @@
 				B17A766224ABD287004FD21E /* Localizable.strings in Resources */,
 				B17A769424ABD949004FD21E /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				B17A768424ABD949004FD21E /* Montserrat-SemiBold.ttf in Resources */,
+				B1BCF64A2522081400C1FBF5 /* GoogleService-Info.plist in Resources */,
 				B17A768D24ABD949004FD21E /* Montserrat-BoldItalic.ttf in Resources */,
 				B17A769024ABD949004FD21E /* OFL.txt in Resources */,
 				B17A769224ABD949004FD21E /* Montserrat-ExtraLight.ttf in Resources */,
-				B17A763924ABBEA5004FD21E /* Assets.xcassets in Resources */,
 				B17A768F24ABD949004FD21E /* Montserrat-Thin.ttf in Resources */,
 				B17A768724ABD949004FD21E /* Montserrat-Medium.ttf in Resources */,
 				B17A769124ABD949004FD21E /* Montserrat-BlackItalic.ttf in Resources */,
@@ -334,6 +370,7 @@
 				B17A768A24ABD949004FD21E /* Montserrat-ThinItalic.ttf in Resources */,
 				B17A768924ABD949004FD21E /* Montserrat-MediumItalic.ttf in Resources */,
 				B17A769324ABD949004FD21E /* Montserrat-ExtraBold.ttf in Resources */,
+				B1C36401252107F000F21352 /* Registration.storyboard in Resources */,
 				B17A768624ABD949004FD21E /* Montserrat-Black.ttf in Resources */,
 				B17A768E24ABD949004FD21E /* Montserrat-SemiBoldItalic.ttf in Resources */,
 			);
@@ -342,6 +379,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BD2AA692F7BAFF20E402237 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		21D5249E29D77B07E3701FF5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,10 +425,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1CCEB172542D873003ED327 /* Validator.swift in Sources */,
+				B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */,
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
+				B1BFC16525212F1E002E80DF /* RegistrationConfirmEmailViewController.swift in Sources */,
 				B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */,
 				B17A766B24ABD3B5004FD21E /* String+Helpers.swift in Sources */,
 				B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */,
+				B1C36402252107F000F21352 /* RegistrationViewController.swift in Sources */,
 				B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */,
 				B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */,
 				B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */,

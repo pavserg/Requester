@@ -1,4 +1,4 @@
-module Pods_PlastovaProba {
+framework module Pods_PlastovaProba {
   umbrella header "Pods-PlastovaProba-umbrella.h"
 
   export *

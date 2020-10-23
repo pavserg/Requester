@@ -16,7 +16,6 @@ class StartViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,5 +46,4 @@ class StartViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController")
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }

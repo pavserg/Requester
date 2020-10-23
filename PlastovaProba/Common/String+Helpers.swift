@@ -41,7 +41,7 @@ typealias Action = (image: String, closure: (() -> Void))
 
 extension UIViewController {
     
-    func setupNavigationBar(right action: Action?) {
+    func setupBackButton() {
         guard let navigationBar = navigationController?.navigationBar else { return }
         let backButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         backButton.setImage(UIImage(named: "back"), for: .normal)
@@ -49,15 +49,6 @@ extension UIViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         backButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: -33, bottom: 0, right: 0)
         let back = UIBarButtonItem(customView: backButton)
-        
-        if let leftActionUnwrapped = action {
-            let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-            rightButton.setImage(UIImage(named: leftActionUnwrapped.image), for: .normal)
-            rightButton.addTarget(self, action: #selector(right), for: .touchUpInside)
-            rightButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -33)
-            let right = UIBarButtonItem(customView: rightButton)
-            navigationItem.rightBarButtonItem = right
-        }
         
         navigationItem.leftBarButtonItem = back
         navigationItem.leftBarButtonItem?.title = ""

@@ -19,7 +19,6 @@ extension UIStoryboard {
     }
 }
 
-
 extension UIView {
     // MARK: - xib
     func loadNib() -> UIView? {

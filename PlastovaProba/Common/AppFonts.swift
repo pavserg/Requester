@@ -11,4 +11,5 @@ import UIKit
 class AppFonts {
     static let monteserat18 = UIFont.init(name: "Montserrat", size: 18.0)
     static let monteserat12 = UIFont.init(name: "Montserrat", size: 12.0)
+    static let monteseratBold24 = UIFont.init(name: "Montserrat-Bold", size: 18.0)
 }
