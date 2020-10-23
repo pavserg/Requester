@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     var keyboardHandler: KeyboardHandler?
+    private var forgotEmail: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +113,49 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - Forgot password
+    @IBAction func forgotPassword(_ sender: Any) {
+        let alert = UIAlertController(style: .actionSheet, title: "Введіть e-mail для якого бажаєте змінити пароль.")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "E-mail"
+            textField.leftViewPadding = 12
+            textField.backgroundColor = nil
+            textField.keyboardAppearance = .default
+            textField.keyboardType = .default
+            textField.isSecureTextEntry = false
+            textField.returnKeyType = .done
+            textField.action { textField in
+                self.forgotEmail = textField.text ?? ""
+            }
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "Добре", style: .cancel, handler: { _ in
+            if !VaildatorFactory.validatorFor(type: .email).validated(self.forgotEmail ?? "") || (self.forgotEmail ?? "").isEmpty {
+                self.showError(message: "Некоректний емейл")
+                self.forgotEmail = ""
+            } else {
+                self.recoverPasscode()
+            }
+        })
+        alert.show()
+    }
+    
+    private func recoverPasscode() {
+        Auth.auth().sendPasswordReset(withEmail: forgotEmail, completion: { (error) in
+            if error != nil{
+                let resetFailedAlert = UIAlertController(title: "Ви не можете змінити пароль", message: "Такий користувач не є зареєстрованим!", preferredStyle: .alert)
+                resetFailedAlert.addAction(UIAlertAction(title: "Добре", style: .default, handler: nil))
+                self.present(resetFailedAlert, animated: true, completion: nil)
+            }else {
+                let resetEmailSentAlert = UIAlertController(title: "Успішно", message: "На ваш емейл був відправлений лінк для зміни паролю. Перевірте, будь ласка ;)", preferredStyle: .alert)
+                resetEmailSentAlert.addAction(UIAlertAction(title: "Добре", style: .default, handler: nil))
+                self.present(resetEmailSentAlert, animated: true, completion: nil)
+            }
+            self.forgotEmail = ""
+        })
+    }
     
     @objc func showPassword(sender: UIButton) {
         passwordTextField.getInternalTextField().isSecureTextEntry = !(passwordTextField.getInternalTextField().isSecureTextEntry)

@@ -74,6 +74,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="forgotPassword:" destination="TBj-7q-eBN" eventType="touchUpInside" id="7C7-kV-YtD"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKq-Fh-PsN">
                                                 <rect key="frame" x="16" y="69.5" width="288" height="17.5"/>
