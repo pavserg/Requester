@@ -54,3 +54,10 @@
 "registration_step_1_password" = "Пароль";
 "registration_step_1_repeat_password" = "Пароль ще раз";
 
+// MARK: - UserDescription
+
+"user_description_tell_about_yourself" = "Розкажи про себе";
+"user_description_firstname" = "Ім'я";
+"user_description_lastname"  = "Прізвище";
+"user_description_sex" = "Стать";
+"user_description_area" = "Осередок Пласту";

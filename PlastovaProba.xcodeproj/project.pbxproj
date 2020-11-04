@@ -45,6 +45,8 @@
 		B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76B124B49F54004FD21E /* FloatingTextField.swift */; };
 		B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A76B624B4A02E004FD21E /* AppFonts.swift */; };
 		B1800EA52542F23600B9C6C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B17A763824ABBEA5004FD21E /* Assets.xcassets */; };
+		B18B06F72553025C0008745C /* UserDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B06F62553025C0008745C /* UserDescriptionController.swift */; };
+		B18B06FA255302EC0008745C /* UserDescription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B06F9255302EC0008745C /* UserDescription.storyboard */; };
 		B1BCF64A2522081400C1FBF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */; };
 		B1BFC16525212F1E002E80DF /* RegistrationConfirmEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFC16425212F1E002E80DF /* RegistrationConfirmEmailViewController.swift */; };
 		B1C36401252107F000F21352 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1C363FF252107F000F21352 /* Registration.storyboard */; };
@@ -98,6 +100,8 @@
 		B17A76B024B49F54004FD21E /* FloatingTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloatingTextField.xib; sourceTree = "<group>"; };
 		B17A76B124B49F54004FD21E /* FloatingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		B17A76B624B4A02E004FD21E /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		B18B06F62553025C0008745C /* UserDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDescriptionController.swift; sourceTree = "<group>"; };
+		B18B06F9255302EC0008745C /* UserDescription.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDescription.storyboard; sourceTree = "<group>"; };
 		B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B1BFC16425212F1E002E80DF /* RegistrationConfirmEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmEmailViewController.swift; sourceTree = "<group>"; };
 		B1C363FF252107F000F21352 /* Registration.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 		B17A766424ABD2AE004FD21E /* UserFlows */ = {
 			isa = PBXGroup;
 			children = (
+				B18B06F5255302330008745C /* UserDescription */,
 				B1C363FE252107BC00F21352 /* Registration */,
 				B169367224B4AA4C00D0CE46 /* StartScreen */,
 				B17A76A924B49EC3004FD21E /* Login */,
@@ -266,6 +271,15 @@
 			path = FloatingTextField;
 			sourceTree = "<group>";
 		};
+		B18B06F5255302330008745C /* UserDescription */ = {
+			isa = PBXGroup;
+			children = (
+				B18B06F62553025C0008745C /* UserDescriptionController.swift */,
+				B18B06F9255302EC0008745C /* UserDescription.storyboard */,
+			);
+			path = UserDescription;
+			sourceTree = "<group>";
+		};
 		B1C363FE252107BC00F21352 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,7 +310,7 @@
 				B17A762824ABBEA3004FD21E /* Sources */,
 				B17A762924ABBEA3004FD21E /* Frameworks */,
 				B17A762A24ABBEA3004FD21E /* Resources */,
-				1BD2AA692F7BAFF20E402237 /* [CP] Embed Pods Frameworks */,
+				2BABA9458CFF379577F49ED7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -350,6 +364,7 @@
 				B17A768B24ABD949004FD21E /* Montserrat-Light.ttf in Resources */,
 				B17A76B424B49F54004FD21E /* FloatingTextField.xib in Resources */,
 				B17A768824ABD949004FD21E /* Montserrat-LightItalic.ttf in Resources */,
+				B18B06FA255302EC0008745C /* UserDescription.storyboard in Resources */,
 				B17A76B324B49F54004FD21E /* FloatingTextFieldPlaceholder.xib in Resources */,
 				B17A768524ABD949004FD21E /* Montserrat-Regular.ttf in Resources */,
 				B17A768224ABD949004FD21E /* Montserrat-Italic.ttf in Resources */,
@@ -379,23 +394,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BD2AA692F7BAFF20E402237 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		21D5249E29D77B07E3701FF5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,6 +416,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2BABA9458CFF379577F49ED7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -438,6 +453,7 @@
 				B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */,
 				B17A76AB24B49EDA004FD21E /* LoginViewController.swift in Sources */,
 				B17A766924ABD387004FD21E /* AppColors.swift in Sources */,
+				B18B06F72553025C0008745C /* UserDescriptionController.swift in Sources */,
 				B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */,
 				B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */,
 				B17A769E24ABDCAD004FD21E /* Storyboard+Common.swift in Sources */,
@@ -601,6 +617,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QE5W5FBF3K;
 				INFOPLIST_FILE = PlastovaProba/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,6 +637,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QE5W5FBF3K;
 				INFOPLIST_FILE = PlastovaProba/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
