@@ -21,6 +21,8 @@ class UserDescriptionController: UIViewController {
     
     var keyboardHandler: KeyboardHandler?
     
+    private var registrationDataSourceModel = RegistrationDataSourceModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,8 +98,17 @@ class UserDescriptionController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "AddBandViewController")
-        navigationController?.pushViewController(controller, animated: true)
+        guard let firstName = firstNameLabel.getText(), let lastName = lastNameLabel.getText(), let birthDate = birthDateLabel.getText(), let sex = sexLabel.getText() else { return }
+        
+        registrationDataSourceModel.updateUserInfo(firstName: firstName, lastName: lastName, sex: "male", birthdate: 90902309) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "AddBandViewController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+        }
+     
     }
 }

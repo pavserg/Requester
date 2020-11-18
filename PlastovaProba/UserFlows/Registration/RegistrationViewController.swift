@@ -131,14 +131,16 @@ class RegistrationViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             DispatchQueue.main.async {
                 if let unwrappedResult = result {
-                    unwrappedResult.user.getIDToken { (token, error) in
-                        guard let unwrappedToken = token else { return }
-                        Token.accessToken = unwrappedToken
-                        self.dataSourceModel.register(email: email, type: self.registrationType) { success in
-                            if success {
-                                if !unwrappedResult.user.isEmailVerified {
-                                    DispatchQueue.main.async {
-                                        self.showActivationController()
+                    unwrappedResult.user.sendEmailVerification { (error) in
+                        unwrappedResult.user.getIDToken { (token, error) in
+                            guard let unwrappedToken = token else { return }
+                            Token.accessToken = unwrappedToken
+                            self.dataSourceModel.register(email: email, type: self.registrationType) { success in
+                                if success {
+                                    if !unwrappedResult.user.isEmailVerified {
+                                        DispatchQueue.main.async {
+                                            self.showActivationController()
+                                        }
                                     }
                                 }
                             }

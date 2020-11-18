@@ -52,13 +52,17 @@ class AccountActivationViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        if !(Auth.auth().currentUser?.isEmailVerified ?? false) {
-            showError(message: "activate_controller_error".localized)
-        } else {
-            let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "UserDescriptionController")
-            navigationController?.pushViewController(controller, animated: true)
-        }
+        Auth.auth().currentUser?.reload(completion: { (error) in
+            DispatchQueue.main.async {
+                if !(Auth.auth().currentUser?.isEmailVerified ?? false) {
+                    self.showError(message: "activate_controller_error".localized)
+                } else {
+                    let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "UserDescriptionController")
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+        })
     }
     
     @IBAction func cancel(_ sender: Any) {
