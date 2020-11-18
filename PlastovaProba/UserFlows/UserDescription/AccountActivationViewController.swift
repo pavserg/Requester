@@ -52,7 +52,7 @@ class AccountActivationViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        if (Auth.auth().currentUser?.isEmailVerified ?? false) {
+        if !(Auth.auth().currentUser?.isEmailVerified ?? false) {
             showError(message: "activate_controller_error".localized)
         } else {
             let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)

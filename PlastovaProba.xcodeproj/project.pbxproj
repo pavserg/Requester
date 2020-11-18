@@ -58,6 +58,10 @@
 		B1F1B0782553316400F5C2F8 /* ActionPlaceholderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F1B0772553316400F5C2F8 /* ActionPlaceholderController.swift */; };
 		B1FD851B2565386100E8F6D5 /* AddBandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD851A2565386100E8F6D5 /* AddBandViewController.swift */; };
 		B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD851F2565417900E8F6D5 /* AccountActivationViewController.swift */; };
+		B1FD857E25657F8300E8F6D5 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD857D25657F8300E8F6D5 /* RequestManager.swift */; };
+		B1FD858225657FBB00E8F6D5 /* DataModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD858125657FBB00E8F6D5 /* DataModelProtocol.swift */; };
+		B1FD8585256581CA00E8F6D5 /* RegistrationDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD8584256581CA00E8F6D5 /* RegistrationDataSourceModel.swift */; };
+		B1FD858A25659E2F00E8F6D5 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD858925659E2F00E8F6D5 /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +122,10 @@
 		B1F1B0772553316400F5C2F8 /* ActionPlaceholderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPlaceholderController.swift; sourceTree = "<group>"; };
 		B1FD851A2565386100E8F6D5 /* AddBandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandViewController.swift; sourceTree = "<group>"; };
 		B1FD851F2565417900E8F6D5 /* AccountActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationViewController.swift; sourceTree = "<group>"; };
+		B1FD857D25657F8300E8F6D5 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		B1FD858125657FBB00E8F6D5 /* DataModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProtocol.swift; sourceTree = "<group>"; };
+		B1FD8584256581CA00E8F6D5 /* RegistrationDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataSourceModel.swift; sourceTree = "<group>"; };
+		B1FD858925659E2F00E8F6D5 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		E6C46C56A69851C45D57D5B1 /* Pods-PlastovaProba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.debug.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +192,8 @@
 				B17A766524ABD2D0004FD21E /* Common */,
 				B1CCEB132542CCE9003ED327 /* Helpers */,
 				B17A766424ABD2AE004FD21E /* UserFlows */,
+				B1FD858825659E1A00E8F6D5 /* Models */,
+				B1FD857C25657A1000E8F6D5 /* Network */,
 				B17A766C24ABD666004FD21E /* Fonts */,
 				B17A762F24ABBEA3004FD21E /* AppDelegate.swift */,
 				B17A763524ABBEA3004FD21E /* Main.storyboard */,
@@ -320,6 +330,24 @@
 				B1F1B0772553316400F5C2F8 /* ActionPlaceholderController.swift */,
 			);
 			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		B1FD857C25657A1000E8F6D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B1FD8584256581CA00E8F6D5 /* RegistrationDataSourceModel.swift */,
+				B1FD857D25657F8300E8F6D5 /* RequestManager.swift */,
+				B1FD858125657FBB00E8F6D5 /* DataModelProtocol.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B1FD858825659E1A00E8F6D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1FD858925659E2F00E8F6D5 /* Token.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,13 +493,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1CCEB172542D873003ED327 /* Validator.swift in Sources */,
+				B1FD858A25659E2F00E8F6D5 /* Token.swift in Sources */,
+				B1FD8585256581CA00E8F6D5 /* RegistrationDataSourceModel.swift in Sources */,
 				B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */,
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
 				B1BFC16525212F1E002E80DF /* VerificationViewController.swift in Sources */,
 				B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */,
 				B1F1B06F25532E6700F5C2F8 /* MainFlowController.swift in Sources */,
 				B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */,
+				B1FD857E25657F8300E8F6D5 /* RequestManager.swift in Sources */,
 				B17A766B24ABD3B5004FD21E /* String+Helpers.swift in Sources */,
+				B1FD858225657FBB00E8F6D5 /* DataModelProtocol.swift in Sources */,
 				B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */,
 				B1C36402252107F000F21352 /* RegistrationViewController.swift in Sources */,
 				B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */,
