@@ -104,6 +104,10 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: Any) {
+        
+        self.showActivationController()
+        return
+        
         guard let email = emailTextField.getText(), !email.isEmpty else {
             return
         }
@@ -130,7 +134,7 @@ class RegistrationViewController: UIViewController {
             DispatchQueue.main.async {
                 if let unwrappedResult = result {
                     if !unwrappedResult.user.isEmailVerified {
-                        self.showSuccessMessage(message: "Вас зареєстровано. На ваш емейл було відправлене підтвердження. Перевірте пошту і перейдіть по лінку - тоді зможете увійти через форму логіну.")
+                        self.showActivationController()
                     }
                 } else {
                     self.showError(message: "Користувач з таким емейлом уже зареєстрований.")
@@ -139,6 +143,12 @@ class RegistrationViewController: UIViewController {
                 SVProgressHUD.dismiss()
             }
         }
+    }
+    
+    private func showActivationController() {
+        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AccountActivationViewController")
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     private func showError(message: String) {

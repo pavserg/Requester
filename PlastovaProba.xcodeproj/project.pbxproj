@@ -56,6 +56,8 @@
 		B1F1B06F25532E6700F5C2F8 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F1B06E25532E6700F5C2F8 /* MainFlowController.swift */; };
 		B1F1B07525532EC000F5C2F8 /* MainFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F1B07425532EC000F5C2F8 /* MainFlow.storyboard */; };
 		B1F1B0782553316400F5C2F8 /* ActionPlaceholderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F1B0772553316400F5C2F8 /* ActionPlaceholderController.swift */; };
+		B1FD851B2565386100E8F6D5 /* AddBandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD851A2565386100E8F6D5 /* AddBandViewController.swift */; };
+		B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD851F2565417900E8F6D5 /* AccountActivationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +116,8 @@
 		B1F1B06E25532E6700F5C2F8 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
 		B1F1B07425532EC000F5C2F8 /* MainFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainFlow.storyboard; sourceTree = "<group>"; };
 		B1F1B0772553316400F5C2F8 /* ActionPlaceholderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPlaceholderController.swift; sourceTree = "<group>"; };
+		B1FD851A2565386100E8F6D5 /* AddBandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBandViewController.swift; sourceTree = "<group>"; };
+		B1FD851F2565417900E8F6D5 /* AccountActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountActivationViewController.swift; sourceTree = "<group>"; };
 		E6C46C56A69851C45D57D5B1 /* Pods-PlastovaProba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.debug.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,7 +286,9 @@
 			isa = PBXGroup;
 			children = (
 				B18B06F62553025C0008745C /* UserDescriptionController.swift */,
+				B1FD851A2565386100E8F6D5 /* AddBandViewController.swift */,
 				B18B06F9255302EC0008745C /* UserDescription.storyboard */,
+				B1FD851F2565417900E8F6D5 /* AccountActivationViewController.swift */,
 			);
 			path = UserDescription;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */,
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
 				B1BFC16525212F1E002E80DF /* VerificationViewController.swift in Sources */,
+				B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */,
 				B1F1B06F25532E6700F5C2F8 /* MainFlowController.swift in Sources */,
 				B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */,
 				B17A766B24ABD3B5004FD21E /* String+Helpers.swift in Sources */,
@@ -477,6 +484,7 @@
 				B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */,
 				B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */,
 				B17A769E24ABDCAD004FD21E /* Storyboard+Common.swift in Sources */,
+				B1FD851B2565386100E8F6D5 /* AddBandViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ class UserDescriptionController: UIViewController {
     @IBOutlet weak var firstNameLabel: FloatingTextField!
     @IBOutlet weak var lastNameLabel: FloatingTextField!
     @IBOutlet weak var sexLabel: FloatingTextField!
-    @IBOutlet weak var areaLabel: FloatingTextField!
+    @IBOutlet weak var birthDateLabel: FloatingTextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -34,7 +34,7 @@ class UserDescriptionController: UIViewController {
         firstNameLabel.setPlaceholder(text: "user_description_firstname".localized)
         lastNameLabel.setPlaceholder(text: "user_description_lastname".localized)
         sexLabel.setPlaceholder(text: "user_description_sex".localized)
-        areaLabel.setPlaceholder(text: "user_description_area".localized)
+        birthDateLabel.setPlaceholder(text: "user_description_birthdate".localized)
     }
     
     private func setupUI() {
@@ -52,42 +52,52 @@ class UserDescriptionController: UIViewController {
     }
     
     @IBAction func showArea(_ sender: Any) {
-        showAreaPickerView()
+        showBirthdayPickerView()
     }
     
     private func showSexPickerView() {
-        let alert = UIAlertController(style: .actionSheet, title: "Вибери стать", message: "")
-        
+        view.endEditing(true)
+        let alert = UIAlertController(style: .actionSheet, title: "Вибери свою стать", message: "")
         let frameSizes: [CGFloat] = (150...400).map { CGFloat($0) }
-        let pickerViewValues: [[String]] = [frameSizes.map { Int($0).description }]
-        let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: frameSizes.index(of: 216) ?? 0)
+        let pickerViewValues: [[String]] = [["Жіноча",  "Чоловіча"]]
+        let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
         
         alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
             DispatchQueue.main.async {
-                UIView.animate(withDuration: 1) {
-                    vc.preferredContentSize.height = frameSizes[index.row]
-                }
+                self.sexLabel.getInternalTextField().text = values.first?[index.row]
+                self.sexLabel.forceEditing()
             }
         }
         alert.addAction(title: "Done", style: .cancel)
         alert.show()
     }
     
-    private func showAreaPickerView() {
-        let alert = UIAlertController(style: .actionSheet, title: "Вибери станицю", message: "")
-        
-        let frameSizes: [CGFloat] = (150...400).map { CGFloat($0) }
-        let pickerViewValues: [[String]] = [frameSizes.map { Int($0).description }]
-        let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: frameSizes.index(of: 216) ?? 0)
-        
-        alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 1) {
-                    vc.preferredContentSize.height = frameSizes[index.row]
-                }
-            }
+    private func showBirthdayPickerView() {
+        view.endEditing(true)
+        let alert = UIAlertController(style: .actionSheet, title: "Вкажи свою дату народження", message: "")
+ 
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        let calendar = Calendar.init(identifier: .gregorian)
+        dateComponents.year = -100
+        let minDate = calendar.date(byAdding: dateComponents, to: currentDate)
+    
+        alert.addDatePicker(mode: .date, date: Date(), minimumDate: minDate, maximumDate: currentDate) { (date) in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let stringDate = dateFormatter.string(from: date)
+            self.birthDateLabel.getInternalTextField().text = stringDate
+            self.birthDateLabel.forceEditing()
+
         }
+        
         alert.addAction(title: "Done", style: .cancel)
         alert.show()
+    }
+    
+    @IBAction func `continue`(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AddBandViewController")
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
