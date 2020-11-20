@@ -16,9 +16,18 @@ open class RequestHandler {
         }
     }
     
-    func processRequest<T: Decodable>(request: Request, error: Error?, type: T.Type) {
+    func processRequestAsynchronously<T: Decodable>(request: Request, error: Error?, type: T.Type) {
         if let handler = nextHandler, !request.completed && !request.canceled && error == nil {
-            handler.processRequest(request: request, error: error, type: type)
+            handler.processRequestAsynchronously(request: request, error: error, type: type)
+        } else {
+            request.completed = true
+            reportRequest(request: request, error: error)
+        }
+    }
+    
+    func processRequestSynchronously<T: Decodable>(request: Request, error: Error?, type: T.Type) {
+        if let handler = nextHandler, !request.completed && !request.canceled && error == nil {
+            handler.processRequestSynchronously(request: request, error: error, type: type)
         } else {
             request.completed = true
             reportRequest(request: request, error: error)

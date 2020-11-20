@@ -17,8 +17,12 @@ open class Requester {
         centralRequestHandler.nextHandler = ExecutiveRequestHandler()
     }
     
-    public func processRequest<T: Decodable>(request: Request, type: T.Type) {
-        centralRequestHandler.processRequest(request: request, error: nil, type: type)
+    func processRequestAsynchronously<T: Decodable>(request: Request, type: T.Type) {
+        centralRequestHandler.processRequestAsynchronously(request: request, error: nil, type: type)
+    }
+    
+    func processRequestSynchronously<T: Decodable>(request: Request, type: T.Type) {
+        centralRequestHandler.processRequestSynchronously(request: request, error: nil, type: type)
     }
     
     public func cancelAllRequests(owner: ObjectIdentifier) {

@@ -9,7 +9,17 @@ import Foundation
 
 open class ExecutiveRequestHandler: RequestHandler {
     
-    override func processRequest<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
+    override func processRequestSynchronously<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
+        processRequest(request: request, error: error, type: type)
+        super.processRequestSynchronously(request: request, error: error, type: type)
+    }
+    
+    override func processRequestAsynchronously<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
+        processRequest(request: request, error: error, type: type)
+        super.processRequestAsynchronously(request: request, error: error, type: type)
+    }
+    
+    func processRequest<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
         var error = error
         
         let serviceRequest = request.buildURLRequest()
@@ -47,9 +57,7 @@ open class ExecutiveRequestHandler: RequestHandler {
         task.resume()
         
         if semaphore.wait(timeout: DispatchTime.distantFuture) == .timedOut {
-            // TODO: handle timeout (throw error)
+            // TODO: throw error
         }
-        
-        super.processRequest(request: request, error: error, type: type)
     }
 }

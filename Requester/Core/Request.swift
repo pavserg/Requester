@@ -69,7 +69,6 @@ open class Request {
         self.headers = headers
         self.onSuccess = onSuccess
         self.onFail = onFail
-        
     }
     
     func buildURLRequest() -> URLRequest {
@@ -96,7 +95,6 @@ open class Request {
         }
         
         // MARK: - Request Info
-        
         #if DEBUG
         print("""
             \n============================= REQUEST INFO ====================================
@@ -104,6 +102,7 @@ open class Request {
             ==================================================================================\n
             """)
         #endif
+        
         return request
     }
     
@@ -134,9 +133,14 @@ open class Request {
         return canceled
     }
     
-    public func execute<T: Decodable>(parseAs: T.Type) {
+    public func executeAsync<T: Decodable>(parseAs: T.Type) {
         parsingType = parseAs as? NSObject.Type
-        Requester.shared.processRequest(request: self, type: parseAs)
+        Requester.shared.processRequestAsynchronously(request: self, type: parseAs)
+    }
+    
+    public func executeSync<T: Decodable>(parseAs: T.Type) {
+        parsingType = parseAs as? NSObject.Type
+        Requester.shared.processRequestSynchronously(request: self, type: parseAs)
     }
     
     func printServer(error: NSError, for url: String) {

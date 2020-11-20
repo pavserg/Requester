@@ -8,16 +8,17 @@
 import Foundation
 
 open class CentralRequestHandler: RequestHandler {
-    
-    let serialQueues = [
-        DispatchQueue(label: "com.requester.serial_Queue_00"),
-        DispatchQueue(label: "com.requester.serial_Queue_01"),
-        DispatchQueue(label: "com.requester.serial_Queue_02"),
-        DispatchQueue(label: "com.requester.serial_Queue_03")
-    ]
-    
+ 
+    private lazy var syncRequestQueue = OperationQueue()
+    private lazy var asyncRequestQueue = OperationQueue()
     private var currentRequests = Set<(Request)>()
     private var failedRequests = Set<Request>()
+    
+    override init() {
+        super.init()
+        asyncRequestQueue.maxConcurrentOperationCount = 10
+        syncRequestQueue.maxConcurrentOperationCount = 1
+    }
     
     public func delayFailedRequests() {
         failedRequests = currentRequests
@@ -40,12 +41,22 @@ open class CentralRequestHandler: RequestHandler {
         failedRequests.removeAll()
     }
     
-    override func processRequest<T: Decodable>(request: Request, error: Error?, type: T.Type) {
+    override func processRequestAsynchronously<T: Decodable>(request: Request, error: Error?, type: T.Type) {
         currentRequests.insert(request)
-        let queue = serialQueues[Int(arc4random_uniform(UInt32(serialQueues.count)))]
-        queue.async {
-            super.processRequest(request: request, error: error, type: type)
+        let operation = RequestOperation {
+            super.processRequestAsynchronously(request: request, error: error, type: type)
         }
+
+        asyncRequestQueue.addOperation(operation)
+    }
+    
+    override func processRequestSynchronously<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
+        currentRequests.insert(request)
+        let operation = RequestOperation {
+            super.processRequestSynchronously(request: request, error: error, type: type)
+        }
+        operation.isAsync = false
+        syncRequestQueue.addOperation(operation)
     }
     
     override func reportRequest(request: Request, error: Error?) {
