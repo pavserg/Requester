@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Requester
 
 class Empty: Decodable {
     
@@ -15,18 +16,14 @@ class Empty: Decodable {
 class RegistrationDataSourceModel  {
     
     func register(email: String, type: RegistrationViewController.RegistrationType, onCompletion: @escaping ((Bool) -> Void)) {
+       // request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("Bearer \(Token.accessToken)", forHTTPHeaderField: "Authorization")
         let parameters = ["role": type.rawValue] as? [String: AnyObject]
-        let requestManger = RequestManager(url: "http://localhost:8080/user/register", params: parameters, requestType: .post)
-        
-        requestManger.onSuccess = { _, _ in
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/register", requestType: .post, parameters: parameters) { response in
             onCompletion(true)
-        }
-        
-        requestManger.onFail = { _ in
+        } onFail: { error in
             onCompletion(false)
-        }
-        
-        requestManger.doRequest(responseType: Empty.self)
+        }.executeAsync(parseAs: Empty.self)
     }
     
     func updateUserInfo(firstName: String,
@@ -36,16 +33,10 @@ class RegistrationDataSourceModel  {
                         onCompletion: @escaping ((Bool) -> Void)) {
         
         let parameters = ["firstName": firstName,  "lastName": lastName, "sex": sex, "age": birthdate] as? [String: AnyObject]
-        
-        let requestManger = RequestManager(url: "http://localhost:8080/user/update", params: parameters, requestType: .post)
-        
-        requestManger.onSuccess = { _, _ in
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/update", requestType: .post, parameters: parameters) { response in
             onCompletion(true)
-        }
-        
-        requestManger.onFail = { _ in
+        } onFail: { error in
             onCompletion(false)
-        }
-        requestManger.doRequest(responseType: Empty.self)
+        }.executeAsync(parseAs: Empty.self)
     }
 }

@@ -8,6 +8,7 @@ target 'PlastovaProba' do
   pod 'Firebase/Analytics'
   pod 'RLBAlertsPickers'
   pod 'SVProgressHUD'
+  pod 'Requester', :path => '/Users/pavserg/Desktop/Requester'
 end
 
 post_install do |installer|
