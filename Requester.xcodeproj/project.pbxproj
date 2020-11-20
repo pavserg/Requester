@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		B1A7CE872568050E0037192C /* Requester.h in Headers */ = {isa = PBXBuildFile; fileRef = B1A7CE852568050E0037192C /* Requester.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1A7CE902568056B0037192C /* Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE8F2568056B0037192C /* Requester.swift */; };
+		B1A7CE93256806BB0037192C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE92256806BB0037192C /* Request.swift */; };
+		B1A7CE9625680AD50037192C /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE9525680AD50037192C /* RequestHandler.swift */; };
+		B1A7CE9925680D4C0037192C /* ExecutiveRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE9825680D4C0037192C /* ExecutiveRequestHandler.swift */; };
+		B1A7CE9C25680F170037192C /* CentralRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE9B25680F170037192C /* CentralRequestHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B1A7CE822568050E0037192C /* Requester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Requester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A7CE852568050E0037192C /* Requester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Requester.h; sourceTree = "<group>"; };
 		B1A7CE862568050E0037192C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1A7CE8F2568056B0037192C /* Requester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requester.swift; sourceTree = "<group>"; };
+		B1A7CE92256806BB0037192C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		B1A7CE9525680AD50037192C /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		B1A7CE9825680D4C0037192C /* ExecutiveRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutiveRequestHandler.swift; sourceTree = "<group>"; };
+		B1A7CE9B25680F170037192C /* CentralRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralRequestHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +56,23 @@
 		B1A7CE842568050E0037192C /* Requester */ = {
 			isa = PBXGroup;
 			children = (
+				B1A7CE8E2568055B0037192C /* Core */,
 				B1A7CE852568050E0037192C /* Requester.h */,
 				B1A7CE862568050E0037192C /* Info.plist */,
 			);
 			path = Requester;
+			sourceTree = "<group>";
+		};
+		B1A7CE8E2568055B0037192C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B1A7CE8F2568056B0037192C /* Requester.swift */,
+				B1A7CE92256806BB0037192C /* Request.swift */,
+				B1A7CE9525680AD50037192C /* RequestHandler.swift */,
+				B1A7CE9825680D4C0037192C /* ExecutiveRequestHandler.swift */,
+				B1A7CE9B25680F170037192C /* CentralRequestHandler.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +117,7 @@
 				TargetAttributes = {
 					B1A7CE812568050E0037192C = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -130,6 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A7CE902568056B0037192C /* Requester.swift in Sources */,
+				B1A7CE9925680D4C0037192C /* ExecutiveRequestHandler.swift in Sources */,
+				B1A7CE93256806BB0037192C /* Request.swift in Sources */,
+				B1A7CE9625680AD50037192C /* RequestHandler.swift in Sources */,
+				B1A7CE9C25680F170037192C /* CentralRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +290,7 @@
 		B1A7CE8B2568050E0037192C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7PZ685J597;
@@ -277,6 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.requester.Requester;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,6 +316,7 @@
 		B1A7CE8C2568050E0037192C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 7PZ685J597;
