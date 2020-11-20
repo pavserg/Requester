@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Requester {
+open class Requester {
     
-    static let shared = Requester()
+    static public let shared = Requester()
     
     private var centralRequestHandler = CentralRequestHandler()
     

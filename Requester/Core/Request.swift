@@ -7,20 +7,31 @@
 
 import Foundation
 
-final class Request {
-    
-    struct SuccessResponse {
-        let response: URLResponse
-        let object: AnyObject
-        let parsedObject: AnyObject
+open class Request {
+
+    public class SuccessResponse {
+        public let response: URLResponse?
+        public let object: Data?
+        public let parsedObject: AnyObject?
+        
+        init(response: URLResponse?, object: Data?, parsedObject: AnyObject?) {
+            self.response = response
+            self.object = object
+            self.parsedObject = parsedObject
+        }
     }
 
-    struct FailResponse {
-        let response: URLResponse?
-        let error: Error
+    public class FailResponse {
+        public let response: URLResponse?
+        public let error: Error?
+        
+        init(response: URLResponse?, error: Error?) {
+            self.response = response
+            self.error = error
+        }
     }
     
-    enum RequestType: String {
+    public enum RequestType: String {
         case get = "GET"
         case post = "POST"
         case put = "PUT"
@@ -40,16 +51,25 @@ final class Request {
     private let owner: ObjectIdentifier
     private let url: String?
     private let parameters: [String: Any]?
-    private let headers: [String: String]?
+    private let headers: Header?
     private let requestType: RequestType?
-    private var parseModel: NSObject.Type?
+    private var parsingType: NSObject.Type?
     
-    init(owner: ObjectIdentifier, url: String, requestType: RequestType, parameters: [String: Any]? = nil, headers: [String: String]? = nil) {
+    public init(owner: ObjectIdentifier,
+                url: String,
+                requestType: RequestType,
+                parameters: [String: Any]? = nil,
+                headers: Header? = HTTPHeader(),
+                onSuccess: @escaping ((SuccessResponse?) -> Void),
+                onFail: @escaping ((FailResponse) -> Void)) {
         self.owner = owner
         self.requestType = requestType
         self.parameters = parameters
         self.url = url
         self.headers = headers
+        self.onSuccess = onSuccess
+        self.onFail = onFail
+        
     }
     
     func buildURLRequest() -> URLRequest {
@@ -60,29 +80,50 @@ final class Request {
         }
         
         if let parameters = parameters, parameters.isEmpty == false {
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
-            } catch {
-                assertionFailure("Can't serialize dict to Data")
+            if headers?.isUrlEncoded() ?? false {
+                request.httpBody = componentsQuery()
+            } else {
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+                } catch {
+                    assertionFailure("Can't serialize dict to Data")
+                }
             }
         }
         
+        if let headers = headers {
+            request.allHTTPHeaderFields = headers.commonHeaders()
+        }
+        
         // MARK: - Request Info
-        print("\n============================= REQUEST INFO ====================================")
         
-        //print(request.curlString)
-        
-        print("==================================================================================\n")
-        
+        #if DEBUG
+        print("""
+            \n============================= REQUEST INFO ====================================
+            \(request.curlString)
+            ==================================================================================\n
+            """)
+        #endif
         return request
+    }
+    
+    private func componentsQuery() -> Data? {
+        let allKeys = parameters?.keys
+        var components = URLComponents()
+        var queryItems: [URLQueryItem] = []
+        
+        allKeys?.forEach({ (key) in
+             if let value = parameters?[key] as? String {
+                queryItems.append(URLQueryItem(name: key, value: value))
+            }
+        })
+    
+        components.queryItems = queryItems
+        return components.query?.data(using: .utf8)
     }
     
     func requestOwner() -> ObjectIdentifier {
         owner
-    }
-    
-    func setParseModel<T: Decodable>(type: T.Type) {
-        parseModel = type as? NSObject.Type
     }
     
     func cancel() -> Bool {
@@ -91,6 +132,11 @@ final class Request {
         }
         canceled = true
         return canceled
+    }
+    
+    public func execute<T: Decodable>(parseAs: T.Type) {
+        parsingType = parseAs as? NSObject.Type
+        Requester.shared.processRequest(request: self, type: parseAs)
     }
     
     func printServer(error: NSError, for url: String) {
@@ -103,11 +149,11 @@ final class Request {
 
 extension Request: Hashable {
     
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }
     
-    static func == (lhs: Request, rhs: Request) -> Bool {
+    public static func == (lhs: Request, rhs: Request) -> Bool {
         return ObjectIdentifier(lhs).hashValue == ObjectIdentifier(rhs).hashValue
     }
 }

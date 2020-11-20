@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RequestHandler {
+open class RequestHandler {
     
     var previousHandler: RequestHandler?
     var nextHandler: RequestHandler? {

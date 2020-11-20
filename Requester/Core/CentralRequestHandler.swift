@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CentralRequestHandler: RequestHandler {
+open class CentralRequestHandler: RequestHandler {
     
     let serialQueues = [
         DispatchQueue(label: "com.requester.serial_Queue_00"),
@@ -27,7 +27,6 @@ class CentralRequestHandler: RequestHandler {
         failedRequests.forEach { (request) in
             request.canceled = false
             request.completed = false
-            
             processFor(request: request)
         }
         failedRequests.removeAll()
@@ -42,7 +41,6 @@ class CentralRequestHandler: RequestHandler {
     }
     
     override func processRequest<T: Decodable>(request: Request, error: Error?, type: T.Type) {
-        request.setParseModel(type: type)
         currentRequests.insert(request)
         let queue = serialQueues[Int(arc4random_uniform(UInt32(serialQueues.count)))]
         queue.async {

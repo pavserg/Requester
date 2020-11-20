@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExecutiveRequestHandler: RequestHandler {
+open class ExecutiveRequestHandler: RequestHandler {
     
     override func processRequest<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
         var error = error
@@ -17,11 +17,25 @@ class ExecutiveRequestHandler: RequestHandler {
         let methodStart = Date()
         let semaphore = DispatchSemaphore.init(value: 0)
         let task = URLSession.shared.dataTask(with: serviceRequest) { data, response, networkError in
-          
             if request.canceled {
                 print("request cancelled: \(request)")
             } else if let networkError = networkError {
                 error = networkError
+            }
+            
+            let result = RequestParser().parse(object: data, objectType: type, response: response)
+            switch result {
+            case .success:
+                request.onSuccess?(Request.SuccessResponse(response: response,
+                                                           object: data,
+                                                           parsedObject: nil))
+            case .successWith(object: let object):
+                request.onSuccess?(Request.SuccessResponse(response: response,
+                                                           object: data,
+                                                           parsedObject: object))
+            case .failed(error: let error):
+                request.onFail?(Request.FailResponse(response: response,
+                                                     error: error))
             }
             
             let methodFinish = Date()
