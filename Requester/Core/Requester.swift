@@ -25,6 +25,10 @@ open class Requester {
         centralRequestHandler.processRequestSynchronously(request: request, error: nil, type: type)
     }
     
+    func processDownloadRequest(request: DownloadRequest) {
+        centralRequestHandler.processDownloadRequest(request: request, error: nil)
+    }
+    
     public func cancelAllRequests(owner: ObjectIdentifier) {
 
     }

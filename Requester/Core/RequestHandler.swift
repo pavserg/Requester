@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class RequestHandler {
+open class RequestHandler: NSObject {
     
     var previousHandler: RequestHandler?
     var nextHandler: RequestHandler? {
@@ -34,6 +34,15 @@ open class RequestHandler {
         }
     }
     
+    func processDownloadRequest(request: DownloadRequest, error: Error?) {
+        if let handler = nextHandler, !request.completed && !request.canceled && error == nil {
+            handler.processDownloadRequest(request: request, error: error)
+        } else {
+            request.completed = true
+            reportRequest(request: request, error: error)
+        }
+    }
+    
     func reportRequest(request: Request, error: Error?) {
         if request.canceled {
             return
@@ -42,7 +51,7 @@ open class RequestHandler {
             handler.reportRequest(request: request, error: error)
         } else if let closure = request.onFail, let unwrappedError = error {
             closure(Request.FailResponse(response: nil, error: unwrappedError))
-        }
+        } 
     }
     
     func cancelAllRequests(owner: ObjectIdentifier) {}

@@ -11,34 +11,15 @@ open class CentralRequestHandler: RequestHandler {
  
     private lazy var syncRequestQueue = OperationQueue()
     private lazy var asyncRequestQueue = OperationQueue()
+    private lazy var downloadRequestQueue = OperationQueue()
     private var currentRequests = Set<(Request)>()
-    private var failedRequests = Set<Request>()
     
     override init() {
         super.init()
+        
         asyncRequestQueue.maxConcurrentOperationCount = 10
         syncRequestQueue.maxConcurrentOperationCount = 1
-    }
-    
-    public func delayFailedRequests() {
-        failedRequests = currentRequests
-    }
-    
-    public func processFailedRequests() {
-        failedRequests.forEach { (request) in
-            request.canceled = false
-            request.completed = false
-            processFor(request: request)
-        }
-        failedRequests.removeAll()
-    }
-    
-    private func processFor(request: Request) {
-       
-    }
-    
-    public func removeDelayedRequests() {
-        failedRequests.removeAll()
+        downloadRequestQueue.maxConcurrentOperationCount = 1
     }
     
     override func processRequestAsynchronously<T: Decodable>(request: Request, error: Error?, type: T.Type) {
@@ -46,17 +27,26 @@ open class CentralRequestHandler: RequestHandler {
         let operation = RequestOperation {
             super.processRequestAsynchronously(request: request, error: error, type: type)
         }
-
         asyncRequestQueue.addOperation(operation)
     }
     
     override func processRequestSynchronously<T>(request: Request, error: Error?, type: T.Type) where T : Decodable {
-        currentRequests.insert(request)
         let operation = RequestOperation {
+            self.currentRequests.insert(request)
             super.processRequestSynchronously(request: request, error: error, type: type)
         }
         operation.isAsync = false
         syncRequestQueue.addOperation(operation)
+    }
+    
+    override func processDownloadRequest(request: DownloadRequest, error: Error?) {
+        currentRequests.insert(request)
+        let operation = RequestOperation {
+            super.processDownloadRequest(request: request, error: error)
+        }
+    
+        operation.isAsync = false
+        downloadRequestQueue.addOperation(operation)
     }
     
     override func reportRequest(request: Request, error: Error?) {
@@ -73,7 +63,6 @@ open class CentralRequestHandler: RequestHandler {
     }
     
     override func cancel() {
-      
         currentRequests.forEach { (request) in
             _ = request.cancel()
         }
@@ -86,14 +75,5 @@ open class CentralRequestHandler: RequestHandler {
             _ = request.cancel()
         }
         currentRequests.subtract(requestsToCancel)
-    }
-}
-
-extension NSError {
-    func isNetworkConnectionError() -> Bool {
-        if let err = self as? URLError, err.code  == URLError.Code.notConnectedToInternet {
-            return true
-        }
-        return false
     }
 }

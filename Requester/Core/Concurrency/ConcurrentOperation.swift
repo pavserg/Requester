@@ -74,9 +74,9 @@ extension ConcurrentOperation {
             state = .finished
             return
         }
-        
-        main()
         state = .executing
+        main()
+        state = .finished
     }
     
     override public func cancel() {

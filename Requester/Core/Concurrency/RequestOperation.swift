@@ -16,6 +16,7 @@ class RequestOperation: ConcurrentOperation {
     
     override public func main() {
         requestBlock?()
+        
         state = .finished
     }
 }

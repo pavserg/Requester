@@ -8,6 +8,14 @@
 import Foundation
 
 open class Request {
+    
+    public class DownloadSuccessResponse {
+        public let location: URL?
+       
+        init(location: URL?) {
+            self.location = location
+        }
+    }
 
     public class SuccessResponse {
         public let response: URLResponse?
@@ -48,19 +56,19 @@ open class Request {
     var onFail: ((_ response: FailResponse) -> Void)?
     var onSuccess: ((_ response: SuccessResponse?) -> Void)?
     
-    private let owner: ObjectIdentifier
-    private let url: String?
-    private let parameters: [String: Any]?
-    private let headers: Header?
-    private let requestType: RequestType?
-    private var parsingType: NSObject.Type?
+    let owner: ObjectIdentifier
+    let url: String?
+    let parameters: [String: Any]?
+    let headers: Header?
+    let requestType: RequestType?
+    var parsingType: NSObject.Type?
     
     public init(owner: ObjectIdentifier,
                 url: String,
                 requestType: RequestType,
                 parameters: [String: Any]? = nil,
                 headers: Header? = HTTPHeader(),
-                onSuccess: @escaping ((SuccessResponse?) -> Void),
+                onSuccess: ((SuccessResponse?) -> Void)?,
                 onFail: @escaping ((FailResponse) -> Void)) {
         self.owner = owner
         self.requestType = requestType
