@@ -1,6 +1,6 @@
 
 # SwiftRequesto
-Requester it's a lightweight network layer for iOS application that can execute async and sync URLRequests.
+Requesto it's a lightweight network layer for iOS application that can execute async and sync URLRequests.
 
 Install via CocoaPods:
 ```swift
