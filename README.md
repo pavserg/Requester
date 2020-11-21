@@ -2,10 +2,15 @@
 # SwiftRequesto
 Requester it's a lightweight network layer for iOS application that can execute async and sync URLRequests.
 
+Install via CocoaPods:
+```swift
+ pod 'Requesto'
+```
+https://cocoapods.org/pods/Requesto
 
 First of all you need to make import:
 ```swift
-import Requester
+import Requesto
 ```
 
 For common REST requests please use Request().
