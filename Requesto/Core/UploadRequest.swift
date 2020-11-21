@@ -1,6 +1,6 @@
 //
 //  UploadRequest.swift
-//  Requester
+//  Requesto
 //
 //  Created by Pavlo Dumyak on 21.11.2020.
 //

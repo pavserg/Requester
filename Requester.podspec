@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'Requester'
-  spec.version      = '0.0.2'
+  spec.name         = 'Requesto'
+  spec.version      = '0.0.3'
   spec.authors      = { 
     'Pavlo Dumiak' => 'pavlo.dumiak@gmail.com'
   }
@@ -8,13 +8,13 @@ Pod::Spec.new do |spec|
     :type => 'MIT',
     :file => 'LICENSE' 
   }
-  spec.homepage     = 'https://github.com/pavserg/Requester'
+  spec.homepage     = 'https://github.com/pavserg/SwiftRequesto'
   spec.source       = { 
-    :git => 'https://github.com/pavserg/Requester.git', 
+    :git => 'https://github.com/pavserg/SwiftRequesto.git', 
     :branch => 'master',
     :tag => spec.version.to_s 
   }
-  spec.summary      = 'Elegant request manager'
+  spec.summary      = 'Elegant network layer'
   spec.source_files = '**/*.swift', '*.swift'
   spec.swift_versions = '5.1'
   spec.ios.deployment_target = '11.0'
