@@ -37,7 +37,7 @@ public class DownloadRequest: Request {
     override public func executeSync<T>(parseAs: T.Type) where T : Decodable {}
     
     @available(*, unavailable, message:"DownloadRequest can't executeSync with parameters")
-    override public func executeAsync<T>(parseAs: T.Type) where T : Decodable { }
+    override public func executeAsync<T>(parseAs: T.Type) where T : Decodable {}
     
     public func executeSync() {
         Requester.shared.processDownloadRequest(request: self)
