@@ -11,6 +11,12 @@ import RLBAlertsPickers
 
 class UserDescriptionController: UIViewController {
     
+    enum Sex: Int {
+        case female = 0
+        case male = 1
+        case none
+    }
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var firstNameLabel: FloatingTextField!
     @IBOutlet weak var lastNameLabel: FloatingTextField!
@@ -21,11 +27,15 @@ class UserDescriptionController: UIViewController {
     
     var keyboardHandler: KeyboardHandler?
     
+    var sex: Sex = .none
+    var birthDate: Date?
+    
     private var registrationDataSourceModel = RegistrationDataSourceModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        disableButton()
         setupLocalization()
         setupBackButton()
         setupUI()
@@ -47,6 +57,14 @@ class UserDescriptionController: UIViewController {
         nextButton.layer.cornerRadius = 8.0
         nextButton.setTitleColor(AppColors.white, for: .normal)
         nextButton.setTitle("onboarding_next".localized, for: .normal)
+        
+        firstNameLabel.getInternalTextField().addTarget(self, action: #selector(UserDescriptionController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        lastNameLabel.getInternalTextField().addTarget(self, action: #selector(UserDescriptionController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        sexLabel.getInternalTextField().addTarget(self, action: #selector(UserDescriptionController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        birthDateLabel.getInternalTextField().addTarget(self, action: #selector(UserDescriptionController.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @IBAction func showSex(_ sender: Any) {
@@ -65,9 +83,11 @@ class UserDescriptionController: UIViewController {
         let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
         
         alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
+            self.sex = Sex(rawValue: index.row) ?? .none
             DispatchQueue.main.async {
                 self.sexLabel.getInternalTextField().text = values.first?[index.row]
                 self.sexLabel.forceEditing()
+                self.textFieldDidChange(self.sexLabel.getInternalTextField())
             }
         }
         alert.addAction(title: "Done", style: .cancel)
@@ -76,8 +96,7 @@ class UserDescriptionController: UIViewController {
     
     private func showBirthdayPickerView() {
         view.endEditing(true)
-        let alert = UIAlertController(style: .actionSheet, title: "Вкажи свою дату народження", message: "")
- 
+        let alert = UIAlertController(style: .alert, title: "Вкажи свою дату народження", message: "")
         let currentDate = Date()
         var dateComponents = DateComponents()
         let calendar = Calendar.init(identifier: .gregorian)
@@ -85,12 +104,13 @@ class UserDescriptionController: UIViewController {
         let minDate = calendar.date(byAdding: dateComponents, to: currentDate)
     
         alert.addDatePicker(mode: .date, date: Date(), minimumDate: minDate, maximumDate: currentDate) { (date) in
+            self.birthDate = date
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             let stringDate = dateFormatter.string(from: date)
             self.birthDateLabel.getInternalTextField().text = stringDate
             self.birthDateLabel.forceEditing()
-
+            self.textFieldDidChange(self.birthDateLabel.getInternalTextField())
         }
         
         alert.addAction(title: "Done", style: .cancel)
@@ -98,9 +118,28 @@ class UserDescriptionController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        guard let firstName = firstNameLabel.getText(), let lastName = lastNameLabel.getText(), let birthDate = birthDateLabel.getText(), let sex = sexLabel.getText() else { return }
+        guard let firstName = firstNameLabel.getText(), !firstName.isEmpty else {
+            firstNameLabel.showErrorState(with: "Додайте ім'я", style: .withBottomNotification)
+            return
+        }
+              
+        guard let lastName = lastNameLabel.getText(), !lastName.isEmpty else {
+            lastNameLabel.showErrorState(with: "Додайте прізвище", style: .withBottomNotification)
+            return
+        }
         
-        registrationDataSourceModel.updateUserInfo(firstName: firstName, lastName: lastName, sex: "male", birthdate: 90902309) { (success) in
+        guard sex != .none else {
+            sexLabel.showErrorState(with: "Додайте стать", style: .withBottomNotification)
+            return
+        }
+        
+        guard let birthDate = birthDate else {
+            birthDateLabel.showErrorState(with: "Вкажіть дату народження", style: .withBottomNotification)
+            return
+        }
+        
+        let timestamp = birthDate.timeIntervalSince1970
+        registrationDataSourceModel.updateUserInfo(firstName: firstName, lastName: lastName, sex: sex == .male ? "male" : "female", birthdate: Int64(timestamp)) { (success) in
             if success {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
@@ -109,6 +148,47 @@ class UserDescriptionController: UIViewController {
                 }
             }
         }
-     
+    }
+}
+
+extension UserDescriptionController: UITextFieldDelegate {
+    
+    func disableButton() {
+        nextButton.alpha = 0.3
+        nextButton.isUserInteractionEnabled = false
+    }
+    
+    func enableButton() {
+        nextButton.alpha = 1.0
+        nextButton.isUserInteractionEnabled = true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        guard let firstName = firstNameLabel.getText(), !firstName.isEmpty else {
+            disableButton()
+            return
+        }
+              
+        guard let lastName = lastNameLabel.getText(), !lastName.isEmpty else {
+            disableButton()
+            return
+        }
+        
+        guard sex != .none else {
+            disableButton()
+            return
+        }
+        
+        guard birthDate != nil else {
+            disableButton()
+            return
+        }
+        
+        enableButton()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
     }
 }

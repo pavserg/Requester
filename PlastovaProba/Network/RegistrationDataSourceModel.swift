@@ -7,19 +7,15 @@
 //
 
 import Foundation
-import Requester
+import Requesto
 
-class Empty: Decodable {
-    
-}
+class Empty: Decodable {}
 
 class RegistrationDataSourceModel  {
     
     func register(email: String, type: RegistrationViewController.RegistrationType, onCompletion: @escaping ((Bool) -> Void)) {
-       // request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("Bearer \(Token.accessToken)", forHTTPHeaderField: "Authorization")
-        let parameters = ["role": type.rawValue] as? [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/register", requestType: .post, parameters: parameters) { response in
+        let parameters = ["role": type.rawValue] as [String: AnyObject]
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/register", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in
             onCompletion(false)
@@ -31,9 +27,17 @@ class RegistrationDataSourceModel  {
                         sex: String,
                         birthdate: Int64,
                         onCompletion: @escaping ((Bool) -> Void)) {
-        
-        let parameters = ["firstName": firstName,  "lastName": lastName, "sex": sex, "age": birthdate] as? [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/update", requestType: .post, parameters: parameters) { response in
+        let parameters = ["firstName": firstName, "lastName": lastName, "sex": sex, "age": birthdate] as [String: AnyObject]
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/update", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+            onCompletion(true)
+        } onFail: { error in
+            onCompletion(false)
+        }.executeAsync(parseAs: Empty.self)
+    }
+    
+    func createBand(bandName: String, onCompletion: @escaping ((Bool) -> Void)) {
+        let parameters = ["bandName": bandName] as [String: AnyObject]
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/createBand", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in
             onCompletion(false)

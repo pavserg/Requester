@@ -339,6 +339,7 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
+  - Requesto (0.0.3)
   - RLBAlertsPickers (1.1.2)
   - SVProgressHUD (2.2.5)
 
@@ -347,6 +348,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - JXPageControl
+  - Requesto
   - RLBAlertsPickers
   - SVProgressHUD
 
@@ -371,6 +373,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - Requesto
     - RLBAlertsPickers
     - SVProgressHUD
 
@@ -394,9 +397,10 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  Requesto: a4499486e6fb2e9822502b734b83bb77536bf2ec
   RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: d34c28ab7602b0e4a95e817db1fd25d81689d9d8
+PODFILE CHECKSUM: 4075239a28d1a15321831a4367f904d7256c029f
 
 COCOAPODS: 1.10.0

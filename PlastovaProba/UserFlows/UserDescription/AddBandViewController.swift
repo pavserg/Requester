@@ -16,6 +16,8 @@ class AddBandViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    private var registrationDataSourceModel = RegistrationDataSourceModel()
+    
     var keyboardHandler: KeyboardHandler?
     
     override func viewDidLoad() {
@@ -43,6 +45,8 @@ class AddBandViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        
+        registrationDataSourceModel.createBand(bandName: bandTitleTextField.getText() ?? "Pinterest") { (success) in
+            
+        }
     }
 }
