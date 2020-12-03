@@ -225,7 +225,7 @@ class FloatingTextField: UIView {
         _ = textField.becomeFirstResponder()
     }
     
-    private func forceEditing() {
+    func forceEditing() {
         if let text = textField.text, text.isEmpty {
             changeToIdle(animated: false)
         } else {

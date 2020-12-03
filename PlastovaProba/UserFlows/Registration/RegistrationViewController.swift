@@ -30,6 +30,8 @@ class RegistrationViewController: UIViewController {
     var keyboardHandler: KeyboardHandler?
     var registrationType: RegistrationType = .scoutMaster
     
+    var dataSourceModel = RegistrationDataSourceModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,8 +131,20 @@ class RegistrationViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             DispatchQueue.main.async {
                 if let unwrappedResult = result {
-                    if !unwrappedResult.user.isEmailVerified {
-                        self.showSuccessMessage(message: "Вас зареєстровано. На ваш емейл було відправлене підтвердження. Перевірте пошту і перейдіть по лінку - тоді зможете увійти через форму логіну.")
+                    unwrappedResult.user.sendEmailVerification { (error) in
+                        unwrappedResult.user.getIDToken { (token, error) in
+                            guard let unwrappedToken = token else { return }
+                            Token.accessToken = unwrappedToken
+                            self.dataSourceModel.register(email: email, type: self.registrationType) { success in
+                                if success {
+                                    if !unwrappedResult.user.isEmailVerified {
+                                        DispatchQueue.main.async {
+                                            self.showActivationController()
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 } else {
                     self.showError(message: "Користувач з таким емейлом уже зареєстрований.")
@@ -139,6 +153,12 @@ class RegistrationViewController: UIViewController {
                 SVProgressHUD.dismiss()
             }
         }
+    }
+    
+    private func showActivationController() {
+        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AccountActivationViewController")
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     private func showError(message: String) {

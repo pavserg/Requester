@@ -498,7 +498,7 @@ final public class TelegramPickerViewController: UIViewController {
                 self.runAssetsCollection()
             }
             
-        case .denied, .restricted:
+        case .denied, .restricted, .limited:
             /// User has denied the current app to access the contacts.
             
             if let alert = localizer.localizedAlert(failure: .noAccessToPhoto) {

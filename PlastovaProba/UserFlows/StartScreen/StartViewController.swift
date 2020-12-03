@@ -38,7 +38,7 @@ class StartViewController: UIViewController {
         continueButton.backgroundColor = AppColors.green
         continueButton.layer.cornerRadius = 8.0
      
-        loginButton.halfTextColorChange(fullText:  "start_page_already_have_an_account".localized, changeText:  "start_page_already_have_an_account_range_check".localized)
+        loginButton.halfTextColorChange(fullText:  "start_page_already_have_an_account".localized, changeText: "start_page_already_have_an_account_range_check".localized)
     }
     
     @IBAction func showOnboarding(_ sender: Any) {
