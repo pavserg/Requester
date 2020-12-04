@@ -18,6 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        
+        
+        Auth.auth().signIn(withEmail: "p.dumyak@gmail.com", password: "123456") { (result, error) in
+            DispatchQueue.main.async {
+                if let unwrappedResult = result {
+                   
+                    unwrappedResult.user.getIDToken { (token, error) in
+                        Token.accessToken = token!
+                        print(token)
+                    }
+                }
+            }
+        }
+        
         return true
     }
 }

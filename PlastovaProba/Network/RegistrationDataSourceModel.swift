@@ -43,4 +43,32 @@ class RegistrationDataSourceModel  {
             onCompletion(false)
         }.executeAsync(parseAs: Empty.self)
     }
+    
+    func addScout(email: String, rank: String, onCompletion: @escaping ((Bool) -> Void)) {
+        let parameters = ["email": email] as [String: AnyObject]
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/append", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+            onCompletion(true)
+        } onFail: { error in
+            onCompletion(false)
+        }.executeAsync(parseAs: Empty.self)
+    }
+    
+    func deleteScout(email: String, onCompletion: @escaping ((Bool) -> Void)) {
+        let parameters = ["email": email] as [String: AnyObject]
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/delete", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+            onCompletion(true)
+        } onFail: { error in
+            onCompletion(false)
+        }.executeAsync(parseAs: Empty.self)
+    }
+    
+    func getScouts(onCompletion: (([Scout]?, Error?) -> Void)?) {
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/scouts", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
+            if let scouts = response?.parsedObject as? [Scout] {
+                onCompletion?(scouts, nil)
+            }
+        } onFail: { error in
+            onCompletion?(nil, error.error)
+        }.executeAsync(parseAs: [Scout].self)
+    }
 }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ScoutTableViewCell: UITableViewCell {
+class ScoutTableViewCell: SwipeTableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rangLabel: UILabel!
@@ -18,5 +19,9 @@ class ScoutTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         avatarPlaceholderView.layer.cornerRadius = avatarPlaceholderView.frame.width/2
+    }
+    
+    func setupInfo(scout: Scout?) {
+        nameLabel.text = (scout?.firstName ?? "") + " " + ((scout?.lastName) ?? "")
     }
 }

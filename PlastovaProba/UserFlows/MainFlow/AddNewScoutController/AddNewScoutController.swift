@@ -16,6 +16,7 @@ class AddNewScoutController: UIViewController {
     @IBOutlet weak var rangTextField: FloatingTextField!
     @IBOutlet weak var addButton: UIButton!
     
+    private var registrationDataSourceModel = RegistrationDataSourceModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class AddNewScoutController: UIViewController {
         subtitleLabel.font = AppFonts.monteserat12
         subtitleLabel.text = "add_scout_description".localized
       
-        emailTextField.getInternalTextField().addTarget(self, action: #selector(LoginViewController.textFieldDidChange(_:)), for: .editingChanged)
+        //emailTextField.getInternalTextField().addTarget(self, action: #selector(LoginViewController.textFieldDidChange(_:)), for: .editingChanged)
         emailTextField.setPlaceholder(text: "login_email".localized)
         emailTextField.setRegular(font: AppFonts.monteserat18, color: AppColors.black)
         emailTextField.config = emailTextField.config
@@ -43,11 +44,13 @@ class AddNewScoutController: UIViewController {
         addButton.layer.cornerRadius = 8.0
         addButton.setTitleColor(AppColors.white, for: .normal)
         addButton.setTitle("Додати".localized, for: .normal)
-        addButton.isUserInteractionEnabled = false
-        addButton.alpha = 0.3
+       // addButton.isUserInteractionEnabled = false
+       // addButton.alpha = 0.3
     }
     
     @IBAction func addNewScout(_ sender: Any) {
-        
+        registrationDataSourceModel.addScout(email: emailTextField.getText()!, rank: "") { (success) in
+            
+        }
     }
 }

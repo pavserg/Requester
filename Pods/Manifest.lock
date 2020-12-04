@@ -342,6 +342,7 @@ PODS:
   - Requesto (0.0.3)
   - RLBAlertsPickers (1.1.2)
   - SVProgressHUD (2.2.5)
+  - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -351,6 +352,7 @@ DEPENDENCIES:
   - Requesto
   - RLBAlertsPickers
   - SVProgressHUD
+  - SwipeCellKit
 
 SPEC REPOS:
   trunk:
@@ -376,6 +378,7 @@ SPEC REPOS:
     - Requesto
     - RLBAlertsPickers
     - SVProgressHUD
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -400,7 +403,8 @@ SPEC CHECKSUMS:
   Requesto: a4499486e6fb2e9822502b734b83bb77536bf2ec
   RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 4075239a28d1a15321831a4367f904d7256c029f
+PODFILE CHECKSUM: d9e28a764f1101743988ab1efe052f466de9d5ff
 
 COCOAPODS: 1.10.0
