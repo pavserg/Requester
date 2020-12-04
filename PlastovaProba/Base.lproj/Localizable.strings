@@ -73,3 +73,8 @@
 "activate_controller_warning" = "Перевірте свою електронну пошту і активуйте акаунт перш ніж продовжити.";
 "activate_controller_error" = "Акаунт не є активований, щоб продовжити. Активуйте акаунт!";
 "activate_controller_return_to_launch_screen" = "Активувати пізніше";
+
+// MARK: - Add new Scout
+"add_scout" = "Додати юнака/чку";
+"add_scout_description" = "Введи електронну пошту і юнак/юначка автоматично приєднається до гуртка, якщо зареєстрований/на";
+
