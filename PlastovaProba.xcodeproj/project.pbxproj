@@ -60,6 +60,13 @@
 		B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */; };
 		B1CCEB172542D873003ED327 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CCEB162542D873003ED327 /* Validator.swift */; };
 		B1E9220A257A9DE300DD05B3 /* Scout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E92209257A9DE300DD05B3 /* Scout.swift */; };
+		B1EAE42B257E718B0011D5E6 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EAE42A257E718B0011D5E6 /* ApplicationController.swift */; };
+		B1EAE430257E72B30011D5E6 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EAE42E257E72B30011D5E6 /* QuestionTableViewCell.swift */; };
+		B1EAE431257E72B30011D5E6 /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EAE42F257E72B30011D5E6 /* QuestionTableViewCell.xib */; };
+		B1EAE435257E73A30011D5E6 /* GategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EAE433257E73A30011D5E6 /* GategoryCollectionViewCell.swift */; };
+		B1EAE436257E73A30011D5E6 /* GategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EAE434257E73A30011D5E6 /* GategoryCollectionViewCell.xib */; };
+		B1EAE43A257E74AB0011D5E6 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EAE438257E74AB0011D5E6 /* CollectionTableViewCell.swift */; };
+		B1EAE43B257E74AB0011D5E6 /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EAE439257E74AB0011D5E6 /* CollectionTableViewCell.xib */; };
 		B1F1B06F25532E6700F5C2F8 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F1B06E25532E6700F5C2F8 /* HomeController.swift */; };
 		B1F1B07525532EC000F5C2F8 /* MainFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F1B07425532EC000F5C2F8 /* MainFlow.storyboard */; };
 		B1F1B0782553316400F5C2F8 /* ScoutListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F1B0772553316400F5C2F8 /* ScoutListController.swift */; };
@@ -129,6 +136,13 @@
 		B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		B1CCEB162542D873003ED327 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		B1E92209257A9DE300DD05B3 /* Scout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scout.swift; sourceTree = "<group>"; };
+		B1EAE42A257E718B0011D5E6 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
+		B1EAE42E257E72B30011D5E6 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		B1EAE42F257E72B30011D5E6 /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
+		B1EAE433257E73A30011D5E6 /* GategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1EAE434257E73A30011D5E6 /* GategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		B1EAE438257E74AB0011D5E6 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		B1EAE439257E74AB0011D5E6 /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
 		B1F1B06E25532E6700F5C2F8 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		B1F1B07425532EC000F5C2F8 /* MainFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainFlow.storyboard; sourceTree = "<group>"; };
 		B1F1B0772553316400F5C2F8 /* ScoutListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutListController.swift; sourceTree = "<group>"; };
@@ -353,9 +367,24 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		B1EAE429257E71440011D5E6 /* ApplicationController */ = {
+			isa = PBXGroup;
+			children = (
+				B1EAE42A257E718B0011D5E6 /* ApplicationController.swift */,
+				B1EAE42E257E72B30011D5E6 /* QuestionTableViewCell.swift */,
+				B1EAE42F257E72B30011D5E6 /* QuestionTableViewCell.xib */,
+				B1EAE433257E73A30011D5E6 /* GategoryCollectionViewCell.swift */,
+				B1EAE434257E73A30011D5E6 /* GategoryCollectionViewCell.xib */,
+				B1EAE438257E74AB0011D5E6 /* CollectionTableViewCell.swift */,
+				B1EAE439257E74AB0011D5E6 /* CollectionTableViewCell.xib */,
+			);
+			path = ApplicationController;
+			sourceTree = "<group>";
+		};
 		B1F1B06D25532E4000F5C2F8 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				B1EAE429257E71440011D5E6 /* ApplicationController */,
 				B19B6C62257A89E700214742 /* AddNewScoutController */,
 				B1936AC1257A849B0042AE6E /* ScoutListController */,
 				B1F1B06E25532E6700F5C2F8 /* HomeController.swift */,
@@ -443,12 +472,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1800EA52542F23600B9C6C4 /* Assets.xcassets in Resources */,
+				B1EAE436257E73A30011D5E6 /* GategoryCollectionViewCell.xib in Resources */,
 				B17A768B24ABD949004FD21E /* Montserrat-Light.ttf in Resources */,
 				B17A76B424B49F54004FD21E /* FloatingTextField.xib in Resources */,
 				B17A768824ABD949004FD21E /* Montserrat-LightItalic.ttf in Resources */,
 				B1936ACC257A86EC0042AE6E /* ScoutTableViewCell.xib in Resources */,
+				B1EAE431257E72B30011D5E6 /* QuestionTableViewCell.xib in Resources */,
 				B18B06FA255302EC0008745C /* UserDescription.storyboard in Resources */,
 				B17A76B324B49F54004FD21E /* FloatingTextFieldPlaceholder.xib in Resources */,
+				B1EAE43B257E74AB0011D5E6 /* CollectionTableViewCell.xib in Resources */,
 				B17A768524ABD949004FD21E /* Montserrat-Regular.ttf in Resources */,
 				B17A768224ABD949004FD21E /* Montserrat-Italic.ttf in Resources */,
 				B17A763C24ABBEA5004FD21E /* LaunchScreen.storyboard in Resources */,
@@ -526,11 +558,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1936ACB257A86EC0042AE6E /* ScoutTableViewCell.swift in Sources */,
+				B1EAE435257E73A30011D5E6 /* GategoryCollectionViewCell.swift in Sources */,
 				B1CCEB172542D873003ED327 /* Validator.swift in Sources */,
 				B1FD858A25659E2F00E8F6D5 /* Token.swift in Sources */,
 				B1FD8585256581CA00E8F6D5 /* RegistrationDataSourceModel.swift in Sources */,
 				B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */,
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
+				B1EAE43A257E74AB0011D5E6 /* CollectionTableViewCell.swift in Sources */,
 				B1BFC16525212F1E002E80DF /* VerificationViewController.swift in Sources */,
 				B19B6C64257A8A0400214742 /* AddNewScoutController.swift in Sources */,
 				B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */,
@@ -546,11 +580,13 @@
 				B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */,
 				B17A76AB24B49EDA004FD21E /* LoginViewController.swift in Sources */,
 				B136105825796A4400A356A9 /* RequestHeader.swift in Sources */,
+				B1EAE430257E72B30011D5E6 /* QuestionTableViewCell.swift in Sources */,
 				B17A766924ABD387004FD21E /* AppColors.swift in Sources */,
 				B18B06F72553025C0008745C /* UserDescriptionController.swift in Sources */,
 				B1F1B0782553316400F5C2F8 /* ScoutListController.swift in Sources */,
 				B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */,
 				B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */,
+				B1EAE42B257E718B0011D5E6 /* ApplicationController.swift in Sources */,
 				B17A769E24ABDCAD004FD21E /* Storyboard+Common.swift in Sources */,
 				B1FD851B2565386100E8F6D5 /* AddBandViewController.swift in Sources */,
 			);
