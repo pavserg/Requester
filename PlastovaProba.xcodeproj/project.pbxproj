@@ -12,6 +12,8 @@
 		B100A483258C2EC900D38F3C /* ChallengesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A482258C2EC900D38F3C /* ChallengesDataSource.swift */; };
 		B100A486258C323E00D38F3C /* ChallengeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A485258C323E00D38F3C /* ChallengeHeaderView.swift */; };
 		B100A489258C326400D38F3C /* ChallengeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100A488258C326400D38F3C /* ChallengeHeaderView.xib */; };
+		B100A4B3258C439300D38F3C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A4B2258C439300D38F3C /* UserInfoView.swift */; };
+		B100A4B7258C439C00D38F3C /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100A4B6258C439C00D38F3C /* UserInfoView.xib */; };
 		B136105825796A4400A356A9 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B136105725796A4400A356A9 /* RequestHeader.swift */; };
 		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
@@ -87,6 +89,8 @@
 		B100A482258C2EC900D38F3C /* ChallengesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesDataSource.swift; sourceTree = "<group>"; };
 		B100A485258C323E00D38F3C /* ChallengeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeHeaderView.swift; sourceTree = "<group>"; };
 		B100A488258C326400D38F3C /* ChallengeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeHeaderView.xib; sourceTree = "<group>"; };
+		B100A4B2258C439300D38F3C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		B100A4B6258C439C00D38F3C /* UserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
 		B136105725796A4400A356A9 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +192,15 @@
 				ACD7DE352DAD1B9AC659D5FA /* Pods-PlastovaProba.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B100A4B1258C437A00D38F3C /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B100A4B2258C439300D38F3C /* UserInfoView.swift */,
+				B100A4B6258C439C00D38F3C /* UserInfoView.xib */,
+			);
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		B169367224B4AA4C00D0CE46 /* StartScreen */ = {
@@ -394,6 +407,7 @@
 		B1F1B06D25532E4000F5C2F8 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				B100A4B1258C437A00D38F3C /* UserInfo */,
 				B1EAE429257E71440011D5E6 /* ApplicationController */,
 				B19B6C62257A89E700214742 /* AddNewScoutController */,
 				B1936AC1257A849B0042AE6E /* ScoutListController */,
@@ -498,6 +512,7 @@
 				B17A763C24ABBEA5004FD21E /* LaunchScreen.storyboard in Resources */,
 				B17A768C24ABD949004FD21E /* Montserrat-Bold.ttf in Resources */,
 				B17A766224ABD287004FD21E /* Localizable.strings in Resources */,
+				B100A4B7258C439C00D38F3C /* UserInfoView.xib in Resources */,
 				B17A769424ABD949004FD21E /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				B17A768424ABD949004FD21E /* Montserrat-SemiBold.ttf in Resources */,
 				B1BCF64A2522081400C1FBF5 /* GoogleService-Info.plist in Resources */,
@@ -597,6 +612,7 @@
 				B136105825796A4400A356A9 /* RequestHeader.swift in Sources */,
 				B1EAE430257E72B30011D5E6 /* QuestionTableViewCell.swift in Sources */,
 				B17A766924ABD387004FD21E /* AppColors.swift in Sources */,
+				B100A4B3258C439300D38F3C /* UserInfoView.swift in Sources */,
 				B18B06F72553025C0008745C /* UserDescriptionController.swift in Sources */,
 				B1F1B0782553316400F5C2F8 /* ScoutListController.swift in Sources */,
 				B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */,

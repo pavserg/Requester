@@ -13,7 +13,6 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     private var challengeDataSource = ChallengesDataSource()
-    
     private var challengeModel: Challenge?
     private var collectionViewChallengeModel: Challenge?
     
@@ -21,6 +20,7 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         registerXibs()
+        setupInfoHeader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +43,11 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.estimatedSectionHeaderHeight = 25
+    }
+    
+    private func setupInfoHeader() {
+        let userInfo = UserInfoView(frame: CGRect.init(x: 0, y: 0, width: 360, height: 252))
+        tableView.tableHeaderView = userInfo
     }
     
     private func getFirstChallenge() {
