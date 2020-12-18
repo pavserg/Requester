@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A43179A72DB89C4F47AF22C3 /* Pods_PlastovaProba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744652B8314B2965B09753F3 /* Pods_PlastovaProba.framework */; };
+		B100A480258C2EAF00D38F3C /* FirstChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A47F258C2EAF00D38F3C /* FirstChallenge.swift */; };
+		B100A483258C2EC900D38F3C /* ChallengesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A482258C2EC900D38F3C /* ChallengesDataSource.swift */; };
+		B100A486258C323E00D38F3C /* ChallengeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A485258C323E00D38F3C /* ChallengeHeaderView.swift */; };
+		B100A489258C326400D38F3C /* ChallengeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100A488258C326400D38F3C /* ChallengeHeaderView.xib */; };
 		B136105825796A4400A356A9 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B136105725796A4400A356A9 /* RequestHeader.swift */; };
 		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
@@ -79,6 +83,10 @@
 /* Begin PBXFileReference section */
 		744652B8314B2965B09753F3 /* Pods_PlastovaProba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlastovaProba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD7DE352DAD1B9AC659D5FA /* Pods-PlastovaProba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlastovaProba.release.xcconfig"; path = "Target Support Files/Pods-PlastovaProba/Pods-PlastovaProba.release.xcconfig"; sourceTree = "<group>"; };
+		B100A47F258C2EAF00D38F3C /* FirstChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstChallenge.swift; sourceTree = "<group>"; };
+		B100A482258C2EC900D38F3C /* ChallengesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesDataSource.swift; sourceTree = "<group>"; };
+		B100A485258C323E00D38F3C /* ChallengeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeHeaderView.swift; sourceTree = "<group>"; };
+		B100A488258C326400D38F3C /* ChallengeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeHeaderView.xib; sourceTree = "<group>"; };
 		B136105725796A4400A356A9 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,6 +385,8 @@
 				B1EAE434257E73A30011D5E6 /* GategoryCollectionViewCell.xib */,
 				B1EAE438257E74AB0011D5E6 /* CollectionTableViewCell.swift */,
 				B1EAE439257E74AB0011D5E6 /* CollectionTableViewCell.xib */,
+				B100A485258C323E00D38F3C /* ChallengeHeaderView.swift */,
+				B100A488258C326400D38F3C /* ChallengeHeaderView.xib */,
 			);
 			path = ApplicationController;
 			sourceTree = "<group>";
@@ -397,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				B1FD8584256581CA00E8F6D5 /* RegistrationDataSourceModel.swift */,
+				B100A482258C2EC900D38F3C /* ChallengesDataSource.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -406,6 +417,7 @@
 			children = (
 				B1FD858925659E2F00E8F6D5 /* Token.swift */,
 				B1E92209257A9DE300DD05B3 /* Scout.swift */,
+				B100A47F258C2EAF00D38F3C /* FirstChallenge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -496,6 +508,7 @@
 				B17A768724ABD949004FD21E /* Montserrat-Medium.ttf in Resources */,
 				B17A769124ABD949004FD21E /* Montserrat-BlackItalic.ttf in Resources */,
 				B17A763724ABBEA3004FD21E /* Main.storyboard in Resources */,
+				B100A489258C326400D38F3C /* ChallengeHeaderView.xib in Resources */,
 				B19B6C60257A87EC00214742 /* AddNewScoutTableViewCell.xib in Resources */,
 				B17A768324ABD949004FD21E /* Montserrat-ExtraLightItalic.ttf in Resources */,
 				B17A768A24ABD949004FD21E /* Montserrat-ThinItalic.ttf in Resources */,
@@ -567,8 +580,10 @@
 				B1EAE43A257E74AB0011D5E6 /* CollectionTableViewCell.swift in Sources */,
 				B1BFC16525212F1E002E80DF /* VerificationViewController.swift in Sources */,
 				B19B6C64257A8A0400214742 /* AddNewScoutController.swift in Sources */,
+				B100A483258C2EC900D38F3C /* ChallengesDataSource.swift in Sources */,
 				B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */,
 				B1F1B06F25532E6700F5C2F8 /* HomeController.swift in Sources */,
+				B100A486258C323E00D38F3C /* ChallengeHeaderView.swift in Sources */,
 				B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */,
 				B17A766B24ABD3B5004FD21E /* String+Helpers.swift in Sources */,
 				B1E9220A257A9DE300DD05B3 /* Scout.swift in Sources */,
@@ -588,6 +603,7 @@
 				B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */,
 				B1EAE42B257E718B0011D5E6 /* ApplicationController.swift in Sources */,
 				B17A769E24ABDCAD004FD21E /* Storyboard+Common.swift in Sources */,
+				B100A480258C2EAF00D38F3C /* FirstChallenge.swift in Sources */,
 				B1FD851B2565386100E8F6D5 /* AddBandViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

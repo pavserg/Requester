@@ -22,9 +22,9 @@ class GategoryCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func fillWithInfo() {
+    func fillWithInfo(section: Section) {
         backgroundColor = AppColors.green
-        titleLabel.text = "Усі точки\nпроби"
+        titleLabel.text = section.name
         titleLabel.textColor = UIColor.white
         progressLabel.text = "Здано 21 з 53"
         progressLabel.textColor = UIColor.white

@@ -19,4 +19,8 @@ class QuestionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func fillWith(info: Topic) {
+        questionLabel.text = info.question
+    }
 }
