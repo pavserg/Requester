@@ -38,7 +38,6 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
     }
     
     func setupData() {
@@ -60,6 +59,22 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
                 default:
                     break
                 }
+            }
+        } else {
+            if let rang =  Scout.currentUser?.rang{
+                switch rang {
+                case "sympathizer":
+                    getGeneralChallenge()
+                case "first_challenge":
+                    getFirstChallenge()
+                case "second_challenge":
+                    getSecondChallenge()
+                default:
+                    break
+                }
+                
+                scout = Scout.currentUser
+                reloadActiveChallenge()
             }
         }
     }
@@ -157,7 +172,7 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath) as? QuestionTableViewCell
-        if let topic = challengeModel?.sections?[indexPath.section].topics?[indexPath.row], let unwrappeedId = topic.id {
+        if let topic = challengeModel?.sections?[indexPath.section].topics?[indexPath.row], let unwrappeedId = topic.id?.lowercased() {
             cell?.fillWith(info: topic, isSelected: activeChallenge?[unwrappeedId] ?? false)
         }
         return cell!
@@ -182,6 +197,10 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let role = scout?.role {
+            if role != "scout_masteer" { return }
+        }
         
         guard let unwrappedScout = scout, let scoutId = unwrappedScout.id, let rang = unwrappedScout.rang, let pointId = challengeModel?.sections?[indexPath.section].topics?[indexPath.row].id else { return }
         
