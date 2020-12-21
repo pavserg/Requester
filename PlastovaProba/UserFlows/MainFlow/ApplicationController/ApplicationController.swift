@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import RLBAlertsPickers
+ 
+enum ApplicationControllerType {
+    case scout
+    case scout_master
+}
 
 class ApplicationController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,19 +22,59 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     private var challengeModel: Challenge?
     private var collectionViewChallengeModel: Challenge?
     
+    private var activeChallenge: [String: Bool]?
+    
+    
+    var type: ApplicationControllerType = .scout
+    var scout: Scout?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupBackButton()
+        setupData()
         registerXibs()
-        setupInfoHeader()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //getFirstChallenge()
-        getSecondChallenge()
-        //getGeneralChallenge()
+      
+    }
+    
+    func setupData() {
+        collectionViewChallengeModel = nil
+        if type == .scout_master || navigationController?.viewControllers.count ?? 0 > 1 {
+            
+            reloadActiveChallenge()
+            
+            setupInfoHeader()
+            //"sympathizer", "first_challenge", "second_challenge"
+            if let rang = scout?.rang {
+                switch rang {
+                case "sympathizer":
+                    getGeneralChallenge()
+                case "first_challenge":
+                    getFirstChallenge()
+                case "second_challenge":
+                    getSecondChallenge()
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    private func reloadActiveChallenge() {
+        if let unwrappedScoutId =  scout?.id {
+            challengeDataSource.activeChallengeBy(id: unwrappedScoutId) { (result, error) in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        self.activeChallenge = result
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     private func registerXibs() {
@@ -47,6 +93,13 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func setupInfoHeader() {
         let userInfo = UserInfoView(frame: CGRect.init(x: 0, y: 0, width: 360, height: 252))
+        userInfo.delegate = self
+        if let unwrappedScout = scout {
+            userInfo.nameLabel.text = (unwrappedScout.firstName ?? "") + " " + (unwrappedScout.lastName ?? "")
+            userInfo.setInitials(name: (unwrappedScout.firstName ?? "") + " " + (unwrappedScout.lastName ?? ""))
+            
+            userInfo.setRang(string: unwrappedScout.rang)
+        }
         tableView.tableHeaderView = userInfo
     }
     
@@ -104,8 +157,8 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath) as? QuestionTableViewCell
-        if let topic = challengeModel?.sections?[indexPath.section].topics?[indexPath.row] {
-            cell?.fillWith(info: topic)
+        if let topic = challengeModel?.sections?[indexPath.section].topics?[indexPath.row], let unwrappeedId = topic.id {
+            cell?.fillWith(info: topic, isSelected: activeChallenge?[unwrappeedId] ?? false)
         }
         return cell!
     }
@@ -126,6 +179,17 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         }
         if section == 0 { return 0.001 }
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let unwrappedScout = scout, let scoutId = unwrappedScout.id, let rang = unwrappedScout.rang, let pointId = challengeModel?.sections?[indexPath.section].topics?[indexPath.row].id else { return }
+        
+        challengeDataSource.update(userIdentifier: scoutId, pointIdentifier: pointId.lowercased(), rang: rang) { (error) in
+            if error == nil {
+                self.reloadActiveChallenge()
+            }
+        }
     }
 }
 
@@ -151,5 +215,46 @@ extension ApplicationController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         tableView.scrollToRow(at: IndexPath.init(row: 0, section: indexPath.row + 1), at: .top, animated: true)
+    }
+}
+
+extension ApplicationController: UserInfoViewDelegate {
+    func showRangPicker() {
+        showRangPickerView()
+    }
+    
+    private func showRangPickerView() {
+        view.endEditing(true)
+        let alert = UIAlertController(style: .actionSheet, title: "Вибери ступінь", message: "")
+        let frameSizes: [CGFloat] = (150...400).map { CGFloat($0) }
+        let pickerViewValues: [[String]] = [["Прихильник/ця",  "Учасник/ця", "Розвідувач/ка"]]
+        let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
+        
+        alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
+            switch index.row {
+            case 0:
+                self.changeRang(string: "sympathizer")
+            case 1:
+                self.changeRang(string: "first_challenge")
+            case 2:
+                self.changeRang(string: "second_challenge")
+            default:
+                break
+            }
+        }
+        alert.addAction(title: "Done", style: .cancel)
+        alert.show()
+    }
+    
+    func changeRang(string: String) {
+        guard let identifier = scout?.id else { return }
+        UserDataSourceModel().updateRang(rangString: string, identifier: identifier) { (scout, error) in
+            if error == nil && scout != nil {
+                self.scout = scout
+                DispatchQueue.main.async {
+                    self.setupData()
+                }
+            }
+        }
     }
 }

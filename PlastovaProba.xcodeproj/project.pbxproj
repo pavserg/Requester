@@ -16,6 +16,8 @@
 		B100A4B7258C439C00D38F3C /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100A4B6258C439C00D38F3C /* UserInfoView.xib */; };
 		B136105825796A4400A356A9 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B136105725796A4400A356A9 /* RequestHeader.swift */; };
 		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
+		B16F9C452591267B00F42E43 /* UserDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */; };
+		B16F9C4825912C0200F42E43 /* CommonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C4725912C0200F42E43 /* CommonAlert.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
 		B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */; };
 		B17A763724ABBEA3004FD21E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17A763524ABBEA3004FD21E /* Main.storyboard */; };
@@ -93,6 +95,8 @@
 		B100A4B6258C439C00D38F3C /* UserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
 		B136105725796A4400A356A9 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
 		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSourceModel.swift; sourceTree = "<group>"; };
+		B16F9C4725912C0200F42E43 /* CommonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlert.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17A762F24ABBEA3004FD21E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			children = (
 				B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */,
 				B1CCEB162542D873003ED327 /* Validator.swift */,
+				B16F9C4725912C0200F42E43 /* CommonAlert.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 			children = (
 				B1FD8584256581CA00E8F6D5 /* RegistrationDataSourceModel.swift */,
 				B100A482258C2EC900D38F3C /* ChallengesDataSource.swift */,
+				B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -600,6 +606,8 @@
 				B1F1B06F25532E6700F5C2F8 /* HomeController.swift in Sources */,
 				B100A486258C323E00D38F3C /* ChallengeHeaderView.swift in Sources */,
 				B17A769924ABDA73004FD21E /* ContainerPageVC.swift in Sources */,
+				B16F9C4825912C0200F42E43 /* CommonAlert.swift in Sources */,
+				B16F9C452591267B00F42E43 /* UserDataSourceModel.swift in Sources */,
 				B17A766B24ABD3B5004FD21E /* String+Helpers.swift in Sources */,
 				B1E9220A257A9DE300DD05B3 /* Scout.swift in Sources */,
 				B17A76B524B49F54004FD21E /* FloatingTextField.swift in Sources */,

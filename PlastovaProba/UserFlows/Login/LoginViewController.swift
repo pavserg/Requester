@@ -90,9 +90,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func login(_ sender: Any) {
-        
         guard let email = emailTextField.getText(), let password = passwordTextField.getText() else { return }
-        
         SVProgressHUD.show()
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
@@ -102,7 +100,19 @@ class LoginViewController: UIViewController {
                         self.showError(message: "Емейл не підтверджено. Перевірте пошту.")
                     }
                     unwrappedResult.user.getIDToken { (token, error) in
-                        print(token)
+                        if error == nil {
+                            print(token)
+                            Token.accessToken = token ?? ""
+                            
+                            UserDataSourceModel().getProfile { (userProfile, error) in
+                                if error == nil {
+                                    Scout.currentUser = userProfile
+                                    DispatchQueue.main.async {
+                                        self.loadHomeController(user: nil)
+                                    }
+                                }
+                            }
+                        }
                     }
                 } else {
                     self.showError(message: "Такого користувача немає.")
@@ -111,6 +121,12 @@ class LoginViewController: UIViewController {
                 SVProgressHUD.dismiss()
             }
         }
+    }
+    
+    private func loadHomeController(user: Scout?) {
+        let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+        UIApplication.shared.delegate?.window??.rootViewController = controller
     }
     
     // MARK: - Forgot password

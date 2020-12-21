@@ -20,7 +20,13 @@ class QuestionTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func fillWith(info: Topic) {
+    func fillWith(info: Topic, isSelected: Bool = false) {
         questionLabel.text = info.question
+        
+        if isSelected {
+            checkmarkImageView.image = UIImage.init(named: "faq")
+        } else {
+            checkmarkImageView.image = UIImage.init(named: "radio-button-false")
+        }
     }
 }

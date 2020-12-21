@@ -26,13 +26,16 @@ class RegistrationDataSourceModel  {
                         lastName: String,
                         sex: String,
                         birthdate: Int64,
-                        onCompletion: @escaping ((Bool) -> Void)) {
+                        onCompletion: @escaping ((Scout?, Error?) -> Void)) {
         let parameters = ["firstName": firstName, "lastName": lastName, "sex": sex, "age": birthdate] as [String: AnyObject]
         Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/update", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
-            onCompletion(true)
+            if let scout = response?.parsedObject as? Scout {
+                onCompletion(scout, nil)
+            }
+           
         } onFail: { error in
-            onCompletion(false)
-        }.executeAsync(parseAs: Empty.self)
+            onCompletion(nil, error.error)
+        }.executeAsync(parseAs: Scout.self)
     }
     
     func createBand(bandName: String, onCompletion: @escaping ((Bool) -> Void)) {

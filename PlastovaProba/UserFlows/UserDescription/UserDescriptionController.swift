@@ -139,14 +139,35 @@ class UserDescriptionController: UIViewController {
         }
         
         let timestamp = birthDate.timeIntervalSince1970
-        registrationDataSourceModel.updateUserInfo(firstName: firstName, lastName: lastName, sex: sex == .male ? "male" : "female", birthdate: Int64(timestamp)) { (success) in
-            if success {
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: "AddBandViewController")
-                    self.navigationController?.pushViewController(controller, animated: true)
+        registrationDataSourceModel.updateUserInfo(firstName: firstName, lastName: lastName, sex: sex == .male ? "male" : "female", birthdate: Int64(timestamp)) { scout, error  in
+            if error == nil {
+                Scout.currentUser = scout
+                if scout?.role == "scout_master" {
+                    DispatchQueue.main.async {
+                        self.loadCreateBandController(user: scout)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.loadHomeController(user: scout)
+                    }
                 }
+            } else {
+                
             }
+        }
+    }
+    
+    private func loadHomeController(user: Scout?) {
+        let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+        UIApplication.shared.delegate?.window??.rootViewController = controller
+    }
+    
+    private func loadCreateBandController(user: Scout?) {
+        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        if let controller = storyboard.instantiateViewController(withIdentifier: "AddBandViewController") as? AddBandViewController {
+            controller.scout = user
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }

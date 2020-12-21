@@ -40,4 +40,33 @@ class ChallengesDataSource {
             onCompletion?(nil, error.error)
         }.executeAsync(parseAs: Challenge.self)
     }
+    
+    // MARK: - Get active challenge by id
+    
+    func activeChallengeBy(id: String, onCompletion: (([String: Bool]?, Error?) -> Void)?) {
+       let url = "http://localhost:8080/application/activeChallengeById/\(id)"
+     
+        Request(owner: ObjectIdentifier(self), url: url, requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
+            if let result = response?.parsedObject as? [String: Bool] {
+                onCompletion?(result, nil)
+            }
+          
+        } onFail: { error in
+            onCompletion?(nil, error.error)
+        }.executeAsync(parseAs: [String: Bool].self)
+    }
+    
+    // MARK: - Update challenge point
+    
+    func update(userIdentifier: String, pointIdentifier: String, rang: String, onCompletion: @escaping ((Error?) -> Void)) {
+        let url = "http://localhost:8080/application/updateSympathizer"
+        
+        let params = ["id": userIdentifier, "rang": rang, "pointId": pointIdentifier]
+        
+        Request(owner: ObjectIdentifier(self), url: url, requestType: .post, parameters: params, headers: RequestHeader.shared) { response in
+            onCompletion(nil)
+        } onFail: { error in
+            onCompletion(error.error)
+        }.executeAsync(parseAs: Empty.self)
+    }
 }

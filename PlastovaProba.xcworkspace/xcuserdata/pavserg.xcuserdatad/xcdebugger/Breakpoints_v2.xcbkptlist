@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "349C7424-EB0E-4E17-9013-22F7965EF7F5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlastovaProba/Network/ChallengesDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "update(userIdentifier:pointIdentifier:rang:onCompletion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "349C7424-EB0E-4E17-9013-22F7965EF7F5 - 1e5fc60098a0e323"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlastovaProba.ChallengesDataSource.update(userIdentifier: Swift.String, pointIdentifier: Swift.String, rang: Swift.String, onCompletion: (Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PlastovaProba"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavserg/PlastovaProba/PlastovaProba/Network/ChallengesDataSource.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "618">
+               </Location>
+               <Location
+                  uuid = "349C7424-EB0E-4E17-9013-22F7965EF7F5 - e2d67cdacb1e5980"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Requesto.Request.SuccessResponse&gt;) -&gt; () in PlastovaProba.ChallengesDataSource.update(userIdentifier: Swift.String, pointIdentifier: Swift.String, rang: Swift.String, onCompletion: (Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PlastovaProba"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavserg/PlastovaProba/PlastovaProba/Network/ChallengesDataSource.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

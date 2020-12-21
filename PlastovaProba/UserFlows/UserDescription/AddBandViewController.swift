@@ -20,6 +20,8 @@ class AddBandViewController: UIViewController {
     
     var keyboardHandler: KeyboardHandler?
     
+    var scout: Scout?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +48,19 @@ class AddBandViewController: UIViewController {
     
     @IBAction func `continue`(_ sender: Any) {
         registrationDataSourceModel.createBand(bandName: bandTitleTextField.getText() ?? "Pinterest") { (success) in
-            
+            DispatchQueue.main.async {
+                if success {
+                    self.loadHomeController(user: self.scout)
+                } else {
+                    
+                }
+            }
         }
+    }
+    
+    private func loadHomeController(user: Scout?) {
+        let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+        UIApplication.shared.delegate?.window??.rootViewController = controller
     }
 }

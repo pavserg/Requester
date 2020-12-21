@@ -19,7 +19,6 @@ class GategoryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
        
         layer.cornerRadius = 10
-        
     }
     
     func fillWithInfo(section: Section) {

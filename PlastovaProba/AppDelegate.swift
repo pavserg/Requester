@@ -20,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        Auth.auth().signIn(withEmail: "p.dumyak@gmail.com", password: "123456") { (result, error) in
+        proceedWorkflow()
+        
+        
+      /*  Auth.auth().signIn(withEmail: "p.dumyak@gmail.com", password: "123456") { (result, error) in
             DispatchQueue.main.async {
                 if let unwrappedResult = result {
                    
@@ -30,9 +33,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-        }
+        }*/
+    
         
         return true
+    }
+    
+    private func proceedWorkflow() {
+        if Auth.auth().currentUser != nil {
+            Auth.auth().currentUser?.getIDTokenForcingRefresh(true, completion: { (token, error) in
+                Token.accessToken = token ?? ""
+                UserDataSourceModel().getProfile { (userProfile, error) in
+                    if error == nil {
+                        Scout.currentUser = userProfile
+                        self.loadHomeController(user: userProfile)
+                    }
+                }
+            })
+
+        } else {
+            loadStartController()
+        }
+    }
+    
+    private func loadHomeController(user: Scout?) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
+            self.window = UIWindow.init(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = controller
+            self.window?.makeKeyAndVisible()
+        }
+    }
+    
+    private func loadStartController() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "StartViewNavigationController")
+            self.window = UIWindow.init(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = controller
+            self.window?.makeKeyAndVisible()
+        }
     }
 }
 

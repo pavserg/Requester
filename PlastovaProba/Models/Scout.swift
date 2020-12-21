@@ -8,21 +8,25 @@
 
 import Foundation
 
+
+
 // MARK: - Element
 class Scout: Codable {
     let unit, area: String?
     let firstName, id, role: String?
     let age: Int?
     let avatarURL: String?
-    let email, sex, lastName: String?
+    let email, sex, lastName, rang: String?
+    
+    static var currentUser: Scout?
 
     enum CodingKeys: String, CodingKey {
         case unit, area, firstName, id, role, age
         case avatarURL = "avatarUrl"
-        case email, sex, lastName
+        case email, sex, lastName, rang
     }
 
-    init(unit: String?, area: String?, firstName: String, id: String, role: String, age: Int, avatarURL: String?, email: String, sex: String, lastName: String) {
+    init(unit: String?, area: String?, rang: String?, firstName: String, id: String, role: String, age: Int, avatarURL: String?, email: String, sex: String, lastName: String) {
         self.unit = unit
         self.area = area
         self.firstName = firstName
@@ -33,5 +37,6 @@ class Scout: Codable {
         self.email = email
         self.sex = sex
         self.lastName = lastName
+        self.rang = rang
     }
 }

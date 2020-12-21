@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RLBAlertsPickers
 
 class AddNewScoutController: UIViewController {
     
@@ -17,6 +18,8 @@ class AddNewScoutController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     
     private var registrationDataSourceModel = RegistrationDataSourceModel()
+    
+    private var rangString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +51,55 @@ class AddNewScoutController: UIViewController {
        // addButton.alpha = 0.3
     }
     
+    @IBAction func showRangPicker(_ sender: Any) {
+        showRangPickerView()
+    }
+    
+    private func showRangPickerView() {
+        view.endEditing(true)
+        let alert = UIAlertController(style: .actionSheet, title: "Вибери ступінь", message: "")
+        let frameSizes: [CGFloat] = (150...400).map { CGFloat($0) }
+        let pickerViewValues: [[String]] = [["Прихильник/ця",  "Учасник/ця", "Розвідувач/ка"]]
+        let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
+        
+        alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
+           
+            switch index.row {
+            case 0:
+                self.rangString =  "sympathizer"
+            case 1:
+                self.rangString = "first_challenge"
+            case 2:
+                self.rangString = "second_challenge"
+            default:
+                self.rangString =  "sympathizer"
+                
+            }
+       
+            DispatchQueue.main.async {
+                self.rangTextField.getInternalTextField().text = values.first?[index.row]
+                self.rangTextField.forceEditing()
+            }
+        }
+        alert.addAction(title: "Done", style: .cancel)
+        alert.show()
+    }
+    
     @IBAction func addNewScout(_ sender: Any) {
-        registrationDataSourceModel.addScout(email: emailTextField.getText()!, rank: "") { (success) in
-            
+        
+        guard let unwrappedRang = rangString, let email = emailTextField.getText()  else {
+            CommonAlert.showError(title: "Дані не можуть бути порожніми!")
+            return
+        }
+        
+        registrationDataSourceModel.addScout(email: email, rank: unwrappedRang) { (success) in
+            if success {
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            } else {
+                CommonAlert.showError(title: "Щось пішло не так :(")
+            }
         }
     }
 }

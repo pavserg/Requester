@@ -39,9 +39,16 @@ class HomeController: UIViewController, HomeCoordinator {
     
     func setupContainerView() {
         let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
-        let scoutListController = storyboard.instantiateViewController(withIdentifier: "ApplicationController") as? ApplicationController
-        //scoutListController?.coordinator = self
-        add(asChildViewController: scoutListController!)
+        
+        if Scout.currentUser?.role == "scout_master" {
+            let scoutListController = storyboard.instantiateViewController(withIdentifier: "ScoutListController") as? ScoutListController
+            scoutListController?.coordinator = self
+            add(asChildViewController: scoutListController!)
+        } else if Scout.currentUser?.role == "scout" {
+            let applicationController = storyboard.instantiateViewController(withIdentifier: "ApplicationController") as? ApplicationController
+            applicationController?.type = .scout
+            add(asChildViewController: applicationController!)
+        }
     }
     
     private func add(asChildViewController viewController: UIViewController) {

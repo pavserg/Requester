@@ -75,7 +75,7 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddNewScoutTableViewCell", for: indexPath)
-           // return cell
+            return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoutTableViewCell", for: indexPath) as? ScoutTableViewCell
         cell?.delegate = self
@@ -85,8 +85,16 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
-        let scoutListController = storyboard.instantiateViewController(withIdentifier: "AddNewScoutController") as? AddNewScoutController
-        coordinator?.push(viewController: scoutListController, isNavigationBarHidden: false)
+        if indexPath.row == 0 {
+            let scoutListController = storyboard.instantiateViewController(withIdentifier: "AddNewScoutController") as? AddNewScoutController
+            coordinator?.push(viewController: scoutListController, isNavigationBarHidden: false)
+        } else {
+            if let applicationController = storyboard.instantiateViewController(withIdentifier: "ApplicationController") as? ApplicationController {
+                applicationController.type = .scout_master
+                applicationController.scout = dataSource[indexPath.row]
+                coordinator?.push(viewController: applicationController, isNavigationBarHidden: false)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
