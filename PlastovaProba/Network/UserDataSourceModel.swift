@@ -16,7 +16,7 @@ class UserDataSourceModel {
         
         guard let identifier = Auth.auth().currentUser?.uid else { onCompletion?(nil, nil); return }
         
-        let url = "http://localhost:8080/user/scout/\(identifier)"
+        let url = "\(serverUrl)/user/scout/\(identifier)"
         
         Request(owner: ObjectIdentifier(self), url: url, requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let scout = response?.parsedObject as? Scout {
@@ -28,7 +28,7 @@ class UserDataSourceModel {
     }
     
     func updateRang(rangString: String, identifier: String, onCompletion: ((Scout?, Error?) -> Void)?) {
-        let url = "http://localhost:8080/user/updateRang"
+        let url = "\(serverUrl)/user/updateRang"
         let params = ["id": identifier,
                       "rang": rangString]
         

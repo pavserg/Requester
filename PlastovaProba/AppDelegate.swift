@@ -46,11 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UserDataSourceModel().getProfile { (userProfile, error) in
                     if error == nil {
                         Scout.currentUser = userProfile
-                        self.loadHomeController(user: userProfile)
+                        UserImageHelper.shared.updateUrl(onCompletion: {
+                            self.loadHomeController(user: userProfile)
+                        })
                     }
                 }
             })
-
         } else {
             loadStartController()
         }

@@ -38,6 +38,14 @@ class ProfileController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let unwrappeedImageUrl = UserImageHelper.shared.profileImageUrl {
+            userInfoView.userImageView.downloadImage(url: unwrappeedImageUrl)
+        }
+    }
+    
+    
     private func setupUI() {
         logoutButton.backgroundColor = AppColors.green
         logoutButton.layer.cornerRadius = 10
@@ -77,6 +85,7 @@ class ProfileController: UIViewController {
             userInfoView.setInitials(name: name)
             userInfoView.setRang(string: unwrappedUser.rang ?? "")
             userInfoView.nameLabel.text = name
+            userInfoView.delegate = self
         }
     }
     
@@ -110,5 +119,13 @@ class ProfileController: UIViewController {
             let controller = storyboard.instantiateViewController(withIdentifier: "StartViewNavigationController")
             UIApplication.shared.delegate?.window??.rootViewController =  controller
         }
+    }
+}
+
+extension ProfileController: UserInfoViewDelegate {
+    func showAddImageController() {
+        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        let addPhotoController = storyboard.instantiateViewController(withIdentifier: "AddPhotoController")
+        navigationController?.pushViewController(addPhotoController, animated: true)
     }
 }

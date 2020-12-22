@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5c-EP-ogg">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5c-EP-ogg">
                         <rect key="frame" x="8" y="8" width="56" height="56"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffd-hk-Iue">
@@ -27,13 +27,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-9C-SRh">
+                                <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="YQf-9C-SRh" secondAttribute="bottom" id="E1Z-o3-nW1"/>
+                            <constraint firstItem="YQf-9C-SRh" firstAttribute="top" secondItem="G5c-EP-ogg" secondAttribute="top" id="HoK-hM-40J"/>
                             <constraint firstItem="Ffd-hk-Iue" firstAttribute="centerX" secondItem="G5c-EP-ogg" secondAttribute="centerX" id="Jj5-u0-YYU"/>
                             <constraint firstAttribute="width" constant="56" id="Lby-px-VeF"/>
                             <constraint firstItem="Ffd-hk-Iue" firstAttribute="centerY" secondItem="G5c-EP-ogg" secondAttribute="centerY" id="NUo-am-rax"/>
                             <constraint firstAttribute="height" constant="56" id="VBB-Uc-QQL"/>
+                            <constraint firstItem="YQf-9C-SRh" firstAttribute="leading" secondItem="G5c-EP-ogg" secondAttribute="leading" id="XFE-aZ-HsR"/>
+                            <constraint firstAttribute="trailing" secondItem="YQf-9C-SRh" secondAttribute="trailing" id="u4o-bW-CyJ"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Петро Баран" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXd-Xv-ChW">
@@ -65,6 +72,7 @@
                 <outlet property="initialNameLabel" destination="Ffd-hk-Iue" id="lcy-vm-2EW"/>
                 <outlet property="nameLabel" destination="uXd-Xv-ChW" id="ejY-fI-FGa"/>
                 <outlet property="rangLabel" destination="XW4-dp-Q5m" id="P3t-fn-xKs"/>
+                <outlet property="userImageView" destination="YQf-9C-SRh" id="eFW-Pm-132"/>
             </connections>
             <point key="canvasLocation" x="-165.21739130434784" y="61.272321428571423"/>
         </tableViewCell>

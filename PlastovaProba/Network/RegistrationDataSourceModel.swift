@@ -9,13 +9,16 @@
 import Foundation
 import Requesto
 
+
+let serverUrl = "http://91.218.106.227"//"http://localhost:8080"
+
 class Empty: Decodable {}
 
 class RegistrationDataSourceModel  {
     
     func register(email: String, type: RegistrationViewController.RegistrationType, onCompletion: @escaping ((Bool) -> Void)) {
         let parameters = ["role": type.rawValue] as [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/register", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/register", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in
             onCompletion(false)
@@ -28,7 +31,7 @@ class RegistrationDataSourceModel  {
                         birthdate: Int64,
                         onCompletion: @escaping ((Scout?, Error?) -> Void)) {
         let parameters = ["firstName": firstName, "lastName": lastName, "sex": sex, "age": birthdate] as [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/update", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/update", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             if let scout = response?.parsedObject as? Scout {
                 onCompletion(scout, nil)
             }
@@ -40,7 +43,7 @@ class RegistrationDataSourceModel  {
     
     func createBand(bandName: String, onCompletion: @escaping ((Bool) -> Void)) {
         let parameters = ["bandName": bandName] as [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/createBand", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/createBand", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in
             onCompletion(false)
@@ -49,7 +52,7 @@ class RegistrationDataSourceModel  {
     
     func addScout(email: String, rank: String, onCompletion: @escaping ((Bool) -> Void)) {
         let parameters = ["email": email] as [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/append", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/append", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in
             onCompletion(false)
@@ -58,7 +61,7 @@ class RegistrationDataSourceModel  {
     
     func deleteScout(email: String, onCompletion: @escaping ((Bool) -> Void)) {
         let parameters = ["email": email] as [String: AnyObject]
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/delete", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/delete", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in
             onCompletion(false)
@@ -66,7 +69,7 @@ class RegistrationDataSourceModel  {
     }
     
     func getScouts(onCompletion: ((BandModel?, Error?) -> Void)?) {
-        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/scouts", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/scouts", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let scouts = response?.parsedObject as? BandModel {
                 onCompletion?(scouts, nil)
             }

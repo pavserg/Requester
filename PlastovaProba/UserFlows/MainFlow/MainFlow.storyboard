@@ -52,7 +52,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rm5-Ee-N6k">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rm5-Ee-N6k">
                                 <rect key="frame" x="363" y="62" width="35" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEK-u1-8T9">
@@ -61,6 +61,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1bh-rV-Grf">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDP-4b-Z4J">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <connections>
@@ -72,11 +75,15 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="xDP-4b-Z4J" secondAttribute="bottom" id="5Xv-FP-TCR"/>
                                     <constraint firstItem="CEK-u1-8T9" firstAttribute="centerY" secondItem="rm5-Ee-N6k" secondAttribute="centerY" id="6nT-Gf-LW5"/>
+                                    <constraint firstItem="1bh-rV-Grf" firstAttribute="leading" secondItem="rm5-Ee-N6k" secondAttribute="leading" id="8xV-jf-XIB"/>
+                                    <constraint firstAttribute="trailing" secondItem="1bh-rV-Grf" secondAttribute="trailing" id="CwT-Kv-2KQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="1bh-rV-Grf" secondAttribute="bottom" id="IDv-eh-kMZ"/>
                                     <constraint firstItem="CEK-u1-8T9" firstAttribute="centerX" secondItem="rm5-Ee-N6k" secondAttribute="centerX" id="IGc-T5-B0e"/>
                                     <constraint firstItem="xDP-4b-Z4J" firstAttribute="top" secondItem="rm5-Ee-N6k" secondAttribute="top" id="WPg-0K-Iqq"/>
                                     <constraint firstAttribute="trailing" secondItem="xDP-4b-Z4J" secondAttribute="trailing" id="eQH-FP-RjP"/>
                                     <constraint firstAttribute="width" constant="35" id="gGK-sb-4Ij"/>
                                     <constraint firstAttribute="height" constant="35" id="j15-Sb-4fF"/>
+                                    <constraint firstItem="1bh-rV-Grf" firstAttribute="top" secondItem="rm5-Ee-N6k" secondAttribute="top" id="kIZ-Aw-kuu"/>
                                     <constraint firstItem="xDP-4b-Z4J" firstAttribute="leading" secondItem="rm5-Ee-N6k" secondAttribute="leading" id="yfz-xL-Vua"/>
                                 </constraints>
                             </view>
@@ -100,6 +107,7 @@
                         <outlet property="containerView" destination="MZY-bB-FV6" id="yl8-dg-0Zg"/>
                         <outlet property="headerLabel" destination="a3l-Oe-qdD" id="WRg-Co-ebA"/>
                         <outlet property="initialNameLabel" destination="CEK-u1-8T9" id="aBk-6e-rxS"/>
+                        <outlet property="profileImageView" destination="1bh-rV-Grf" id="xBn-ql-rBO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9NP-rE-hbp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 protocol HomeCoordinator: class {
     func push(viewController: UIViewController?, isNavigationBarHidden: Bool)
@@ -18,6 +20,7 @@ class HomeController: UIViewController, HomeCoordinator {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var initialNameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
 
     override func viewDidLoad() {
@@ -30,6 +33,10 @@ class HomeController: UIViewController, HomeCoordinator {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        if let unwrappedImageUrl = UserImageHelper.shared.profileImageUrl {
+            profileImageView.downloadImage(url: unwrappedImageUrl)
+        }
+        
     }
     
     private func setupUI() {
@@ -103,6 +110,16 @@ class HomeController: UIViewController, HomeCoordinator {
     }
     
     @IBAction func openProfile(_ sender: Any) {
+        
+       // UserDescription
+        
+       // AddPhotoController
+        
+        //let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        //let profileController = storyboard.instantiateViewController(withIdentifier: "AddPhotoController")
+        
+       // push(viewController: profileController)
+        
         let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
         let profileController = storyboard.instantiateViewController(withIdentifier: "ProfileController") as? ProfileController
         profileController?.bandModel = (children.first as? ScoutListController)?.dataSource
@@ -112,5 +129,13 @@ class HomeController: UIViewController, HomeCoordinator {
         }
         
         push(viewController: profileController!)
+    }
+}
+
+extension UIImageView{
+    func downloadImage(url: String) {
+        let stringWithoutWhitespace = url.replacingOccurrences(of: " ", with: "%20", options: .regularExpression)
+        self.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        self.sd_setImage(with: URL(string: stringWithoutWhitespace), placeholderImage: UIImage())
     }
 }

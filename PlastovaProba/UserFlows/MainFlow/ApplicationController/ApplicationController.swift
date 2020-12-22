@@ -24,10 +24,11 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     private var collectionViewChallengeModel: Challenge?
     
     var activeChallenge: [String: Bool]?
-    
-    
     var type: ApplicationControllerType = .scout
     var scout: Scout?
+    private var userImageUrl: String?
+    
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,16 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         setupBackButton()
         setupData()
         registerXibs()
+        refreshControl.attributedTitle = NSAttributedString(string: "Оновлення")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl) 
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        setupData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +99,9 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
                 DispatchQueue.main.async {
                     if error == nil {
                         self?.activeChallenge = result
-                        self?.setupInfoHeader()
+                        if self?.type == .scout_master {
+                            self?.setupInfoHeader()
+                        }
                         self?.tableView.reloadData()
                     }
                 }
@@ -111,21 +124,30 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     private func setupInfoHeader() {
-        let userInfo = UserInfoView(frame: CGRect.init(x: 0, y: 0, width: 360, height: 252))
-        userInfo.delegate = self
+        let userInfo = tableView.tableHeaderView == nil ? UserInfoView(frame: CGRect.init(x: 0, y: 0, width: 360, height: 252)) : tableView.tableHeaderView  as? UserInfoView
+        userInfo?.delegate = self
         if let unwrappedScout = scout {
-            userInfo.nameLabel.text = (unwrappedScout.firstName ?? "") + " " + (unwrappedScout.lastName ?? "")
-            userInfo.setInitials(name: (unwrappedScout.firstName ?? "") + " " + (unwrappedScout.lastName ?? ""))
+            userInfo?.nameLabel.text = (unwrappedScout.firstName ?? "") + " " + (unwrappedScout.lastName ?? "")
+            userInfo?.setInitials(name: (unwrappedScout.firstName ?? "") + " " + (unwrappedScout.lastName ?? ""))
             
-            userInfo.setRang(string: unwrappedScout.rang)
+            userInfo?.setRang(string: unwrappedScout.rang)
+            if userInfo?.userImageView.image == nil {
+                if let unwrappedScoutId = unwrappedScout.id {
+                    UserImageHelper.shared.photoUrlFor(scoutId: unwrappedScoutId) { url in
+                        if let unwrappedUrl = url {
+                            self.userImageUrl = url
+                            userInfo?.userImageView.downloadImage(url: unwrappedUrl)
+                        }
+                    }
+                }
+            }
         }
         
         if let unwrapped = self.activeChallenge {
             DispatchQueue.main.async {
-                userInfo.setupPoints(all: unwrapped)
+                userInfo?.setupPoints(all: unwrapped)
             }
         }
-        
         
         tableView.tableHeaderView = userInfo
     }

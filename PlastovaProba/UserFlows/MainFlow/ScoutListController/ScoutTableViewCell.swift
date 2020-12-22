@@ -8,6 +8,7 @@
 
 import UIKit
 import SwipeCellKit
+import SDWebImage
 
 class ScoutTableViewCell: SwipeTableViewCell {
     
@@ -15,7 +16,7 @@ class ScoutTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var rangLabel: UILabel!
     @IBOutlet weak var avatarPlaceholderView: UIView!
     @IBOutlet weak var initialNameLabel: UILabel!
-    
+    @IBOutlet weak var userImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,13 @@ class ScoutTableViewCell: SwipeTableViewCell {
         nameLabel.text = (scout?.firstName ?? "") + " " + ((scout?.lastName) ?? "")
         avatarPlaceholderView.backgroundColor = AppColors.green
         
+        if let scoutId = scout?.id {
+            UserImageHelper.shared.photoUrlFor(scoutId: scoutId, onCompletion: { url in
+                if let unwrapped = url {
+                    self.userImageView.downloadImage(url: unwrapped)
+                }
+            })
+        }
         initialNameLabel.text = initialsFromName(name: nameLabel.text!)
     }
     

@@ -7,10 +7,12 @@ target 'PlastovaProba' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Storage'
   pod 'RLBAlertsPickers'
   pod 'SVProgressHUD'
   pod 'Requesto' #, :path => '/Users/pavserg/Desktop/Requester'
   pod 'CircleProgressView', '~> 1.0'
+  pod 'SDWebImage', '~> 5.0'
 end
 
 post_install do |installer|

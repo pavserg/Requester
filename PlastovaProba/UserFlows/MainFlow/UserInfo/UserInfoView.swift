@@ -11,6 +11,12 @@ import CircleProgressView
 
 protocol UserInfoViewDelegate: class {
     func showRangPicker()
+    func showAddImageController()
+}
+
+extension UserInfoViewDelegate {
+    func showRangPicker() {}
+    func showAddImageController() {}
 }
 
 class UserInfoView: UIView {
@@ -115,6 +121,11 @@ class UserInfoView: UIView {
     @IBAction func showRangPicker(_ sender: Any) {
         delegate?.showRangPicker()
     }
+    
+    @IBAction func showAddImageController(_ sender: Any) {
+        delegate?.showAddImageController()
+    }
+    
     
     
     func setupXib() {

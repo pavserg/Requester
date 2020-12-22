@@ -45,7 +45,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mf-9z-b0D">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mf-9z-b0D">
                     <rect key="frame" x="162" y="16" width="120" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PR-RR-kW8">
@@ -54,17 +54,27 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Andorra.png" translatesAutoresizingMaskIntoConstraints="NO" id="gga-rG-xwP">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gga-rG-xwP">
                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJe-8y-JEg">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="111"/>
+                            <connections>
+                                <action selector="showAddImageController:" destination="-1" eventType="touchUpInside" id="t5m-tA-avf"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="tJe-8y-JEg" secondAttribute="trailing" id="0Lw-5H-SFC"/>
                         <constraint firstItem="6PR-RR-kW8" firstAttribute="centerY" secondItem="1Mf-9z-b0D" secondAttribute="centerY" id="FVy-jw-cdh"/>
                         <constraint firstItem="gga-rG-xwP" firstAttribute="top" secondItem="1Mf-9z-b0D" secondAttribute="top" id="FdL-DT-j4n"/>
                         <constraint firstAttribute="width" constant="120" id="WNf-F3-SGp"/>
                         <constraint firstItem="gga-rG-xwP" firstAttribute="leading" secondItem="1Mf-9z-b0D" secondAttribute="leading" id="YlX-cf-aRS"/>
                         <constraint firstAttribute="bottom" secondItem="gga-rG-xwP" secondAttribute="bottom" id="dch-av-YRE"/>
+                        <constraint firstItem="tJe-8y-JEg" firstAttribute="top" secondItem="1Mf-9z-b0D" secondAttribute="top" id="eAe-Gj-zbs"/>
+                        <constraint firstAttribute="bottom" secondItem="tJe-8y-JEg" secondAttribute="bottom" constant="9" id="la9-eT-OgE"/>
+                        <constraint firstItem="tJe-8y-JEg" firstAttribute="leading" secondItem="1Mf-9z-b0D" secondAttribute="leading" id="ofT-iF-0mB"/>
                         <constraint firstItem="6PR-RR-kW8" firstAttribute="centerX" secondItem="1Mf-9z-b0D" secondAttribute="centerX" id="ss0-HR-X1x"/>
                         <constraint firstAttribute="trailing" secondItem="gga-rG-xwP" secondAttribute="trailing" id="uc0-OC-rbl"/>
                         <constraint firstAttribute="height" constant="120" id="yoQ-wn-rQj"/>
@@ -147,7 +157,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Andorra.png" width="70" height="47"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

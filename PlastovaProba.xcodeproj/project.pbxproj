@@ -19,6 +19,9 @@
 		B16F9C452591267B00F42E43 /* UserDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */; };
 		B16F9C4825912C0200F42E43 /* CommonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C4725912C0200F42E43 /* CommonAlert.swift */; };
 		B16F9C4C2591601500F42E43 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C4B2591601500F42E43 /* ProfileController.swift */; };
+		B16F9CD52592697C00F42E43 /* AddPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9CD42592697C00F42E43 /* AddPhotoController.swift */; };
+		B16F9CDA25926FCA00F42E43 /* PhotoPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9CD925926FCA00F42E43 /* PhotoPickerPresenter.swift */; };
+		B16F9D1925927E7900F42E43 /* UserImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9D1825927E7900F42E43 /* UserImageHelper.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
 		B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */; };
 		B17A763724ABBEA3004FD21E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17A763524ABBEA3004FD21E /* Main.storyboard */; };
@@ -99,6 +102,9 @@
 		B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSourceModel.swift; sourceTree = "<group>"; };
 		B16F9C4725912C0200F42E43 /* CommonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlert.swift; sourceTree = "<group>"; };
 		B16F9C4B2591601500F42E43 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		B16F9CD42592697C00F42E43 /* AddPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoController.swift; sourceTree = "<group>"; };
+		B16F9CD925926FCA00F42E43 /* PhotoPickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerPresenter.swift; sourceTree = "<group>"; };
+		B16F9D1825927E7900F42E43 /* UserImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageHelper.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17A762F24ABBEA3004FD21E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +229,14 @@
 				B16F9C4B2591601500F42E43 /* ProfileController.swift */,
 			);
 			path = ProfileController;
+			sourceTree = "<group>";
+		};
+		B16F9CD32592694000F42E43 /* AddPhotoController */ = {
+			isa = PBXGroup;
+			children = (
+				B16F9CD42592697C00F42E43 /* AddPhotoController.swift */,
+			);
+			path = AddPhotoController;
 			sourceTree = "<group>";
 		};
 		B17A762324ABBEA3004FD21E = {
@@ -355,6 +369,7 @@
 		B18B06F5255302330008745C /* UserDescription */ = {
 			isa = PBXGroup;
 			children = (
+				B16F9CD32592694000F42E43 /* AddPhotoController */,
 				B18B06F62553025C0008745C /* UserDescriptionController.swift */,
 				B1FD851A2565386100E8F6D5 /* AddBandViewController.swift */,
 				B18B06F9255302EC0008745C /* UserDescription.storyboard */,
@@ -399,6 +414,8 @@
 				B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */,
 				B1CCEB162542D873003ED327 /* Validator.swift */,
 				B16F9C4725912C0200F42E43 /* CommonAlert.swift */,
+				B16F9CD925926FCA00F42E43 /* PhotoPickerPresenter.swift */,
+				B16F9D1825927E7900F42E43 /* UserImageHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -612,8 +629,10 @@
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
 				B1EAE43A257E74AB0011D5E6 /* CollectionTableViewCell.swift in Sources */,
 				B1BFC16525212F1E002E80DF /* VerificationViewController.swift in Sources */,
+				B16F9CD52592697C00F42E43 /* AddPhotoController.swift in Sources */,
 				B19B6C64257A8A0400214742 /* AddNewScoutController.swift in Sources */,
 				B100A483258C2EC900D38F3C /* ChallengesDataSource.swift in Sources */,
+				B16F9CDA25926FCA00F42E43 /* PhotoPickerPresenter.swift in Sources */,
 				B1FD85202565417900E8F6D5 /* AccountActivationViewController.swift in Sources */,
 				B1F1B06F25532E6700F5C2F8 /* HomeController.swift in Sources */,
 				B100A486258C323E00D38F3C /* ChallengeHeaderView.swift in Sources */,
@@ -630,6 +649,7 @@
 				B17A76B724B4A02E004FD21E /* AppFonts.swift in Sources */,
 				B17A76AB24B49EDA004FD21E /* LoginViewController.swift in Sources */,
 				B136105825796A4400A356A9 /* RequestHeader.swift in Sources */,
+				B16F9D1925927E7900F42E43 /* UserImageHelper.swift in Sources */,
 				B1EAE430257E72B30011D5E6 /* QuestionTableViewCell.swift in Sources */,
 				B17A766924ABD387004FD21E /* AppColors.swift in Sources */,
 				B100A4B3258C439300D38F3C /* UserInfoView.swift in Sources */,

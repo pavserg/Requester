@@ -12,7 +12,7 @@ import Requesto
 class ChallengesDataSource {
     
     func getGeneralChallenge(onCompletion: ((Challenge?, Error?) -> Void)?) {
-        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/application/generalApplication", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "http://127.0.0.1:8080/application/generalApplication", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let firstChallenge = response?.parsedObject as? Challenge {
                 onCompletion?(firstChallenge, nil)
             }
@@ -22,7 +22,7 @@ class ChallengesDataSource {
     }
     
     func getFirstChallenge(onCompletion: ((Challenge?, Error?) -> Void)?) {
-        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/application/firstApplication", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/application/firstApplication", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let firstChallenge = response?.parsedObject as? Challenge {
                 onCompletion?(firstChallenge, nil)
             }
@@ -32,7 +32,7 @@ class ChallengesDataSource {
     }
     
     func getSecondChallenge(onCompletion: ((Challenge?, Error?) -> Void)?) {
-        Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/application/secondApplication", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
+        Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/application/secondApplication", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let firstChallenge = response?.parsedObject as? Challenge {
                 onCompletion?(firstChallenge, nil)
             }
