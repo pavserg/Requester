@@ -65,13 +65,13 @@ class RegistrationDataSourceModel  {
         }.executeAsync(parseAs: Empty.self)
     }
     
-    func getScouts(onCompletion: (([Scout]?, Error?) -> Void)?) {
+    func getScouts(onCompletion: ((BandModel?, Error?) -> Void)?) {
         Request(owner: ObjectIdentifier(self), url: "http://localhost:8080/user/scouts", requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
-            if let scouts = response?.parsedObject as? [Scout] {
+            if let scouts = response?.parsedObject as? BandModel {
                 onCompletion?(scouts, nil)
             }
         } onFail: { error in
             onCompletion?(nil, error.error)
-        }.executeAsync(parseAs: [Scout].self)
+        }.executeSync(parseAs: BandModel.self)
     }
 }

@@ -18,6 +18,7 @@
 		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
 		B16F9C452591267B00F42E43 /* UserDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */; };
 		B16F9C4825912C0200F42E43 /* CommonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C4725912C0200F42E43 /* CommonAlert.swift */; };
+		B16F9C4C2591601500F42E43 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C4B2591601500F42E43 /* ProfileController.swift */; };
 		B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A762F24ABBEA3004FD21E /* AppDelegate.swift */; };
 		B17A763424ABBEA3004FD21E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */; };
 		B17A763724ABBEA3004FD21E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17A763524ABBEA3004FD21E /* Main.storyboard */; };
@@ -97,6 +98,7 @@
 		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSourceModel.swift; sourceTree = "<group>"; };
 		B16F9C4725912C0200F42E43 /* CommonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlert.swift; sourceTree = "<group>"; };
+		B16F9C4B2591601500F42E43 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		B17A762C24ABBEA3004FD21E /* PlastovaProba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlastovaProba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17A762F24ABBEA3004FD21E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 				B169367324B4AA6500D0CE46 /* StartViewController.swift */,
 			);
 			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		B16F9C4A2591600300F42E43 /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				B16F9C4B2591601500F42E43 /* ProfileController.swift */,
+			);
+			path = ProfileController;
 			sourceTree = "<group>";
 		};
 		B17A762324ABBEA3004FD21E = {
@@ -412,6 +422,7 @@
 		B1F1B06D25532E4000F5C2F8 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				B16F9C4A2591600300F42E43 /* ProfileController */,
 				B100A4B1258C437A00D38F3C /* UserInfo */,
 				B1EAE429257E71440011D5E6 /* ApplicationController */,
 				B19B6C62257A89E700214742 /* AddNewScoutController */,
@@ -596,6 +607,7 @@
 				B1CCEB172542D873003ED327 /* Validator.swift in Sources */,
 				B1FD858A25659E2F00E8F6D5 /* Token.swift in Sources */,
 				B1FD8585256581CA00E8F6D5 /* RegistrationDataSourceModel.swift in Sources */,
+				B16F9C4C2591601500F42E43 /* ProfileController.swift in Sources */,
 				B1CCEB152542CD12003ED327 /* KeyboardHandler.swift in Sources */,
 				B17A769B24ABDB5F004FD21E /* OnboardingSlideViewController.swift in Sources */,
 				B1EAE43A257E74AB0011D5E6 /* CollectionTableViewCell.swift in Sources */,

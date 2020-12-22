@@ -16,7 +16,7 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     private var registrationDataSourceModel = RegistrationDataSourceModel()
     
     var coordinator: HomeCoordinator?
-    var dataSource: [Scout] = []
+    var dataSource: BandModel?
     
     
     override func viewDidLoad() {
@@ -42,18 +42,18 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func prepareData() {
-        registrationDataSourceModel.getScouts { (scouts, error) in
+        registrationDataSourceModel.getScouts { [weak self] (scouts, error) in
             if let unwrappedScouts = scouts {
-                self.dataSource = unwrappedScouts
+                self?.dataSource = unwrappedScouts
             }
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
     
     func deleteScout(at index: Int) {
-        let email = dataSource[index].email ?? ""
+        let email = dataSource?.scouts?[index].email ?? ""
         registrationDataSourceModel.deleteScout(email: email) { (success) in
             if success {
                 self.prepareData()
@@ -69,7 +69,7 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource?.scouts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,7 +79,7 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScoutTableViewCell", for: indexPath) as? ScoutTableViewCell
         cell?.delegate = self
-        cell?.setupInfo(scout: dataSource[indexPath.row])
+        cell?.setupInfo(scout: dataSource?.scouts?[indexPath.row])
         return cell!
     }
     
@@ -91,7 +91,7 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             if let applicationController = storyboard.instantiateViewController(withIdentifier: "ApplicationController") as? ApplicationController {
                 applicationController.type = .scout_master
-                applicationController.scout = dataSource[indexPath.row]
+                applicationController.scout = dataSource?.scouts?[indexPath.row]
                 coordinator?.push(viewController: applicationController, isNavigationBarHidden: false)
             }
         }

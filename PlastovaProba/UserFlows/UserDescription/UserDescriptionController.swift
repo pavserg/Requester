@@ -9,6 +9,11 @@
 import UIKit
 import RLBAlertsPickers
 
+enum UserDescriptionControllerType {
+    case registration
+    case userDetails
+}
+
 class UserDescriptionController: UIViewController {
     
     enum Sex: Int {
@@ -29,6 +34,7 @@ class UserDescriptionController: UIViewController {
     
     var sex: Sex = .none
     var birthDate: Date?
+    var type: UserDescriptionControllerType = .registration
     
     private var registrationDataSourceModel = RegistrationDataSourceModel()
     
@@ -143,8 +149,14 @@ class UserDescriptionController: UIViewController {
             if error == nil {
                 Scout.currentUser = scout
                 if scout?.role == "scout_master" {
-                    DispatchQueue.main.async {
-                        self.loadCreateBandController(user: scout)
+                    if self.type == .registration {
+                        DispatchQueue.main.async {
+                            self.loadCreateBandController(user: scout)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
                 } else {
                     DispatchQueue.main.async {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CircleProgressView
 
 protocol UserInfoViewDelegate: class {
     func showRangPicker()
@@ -25,6 +26,7 @@ class UserInfoView: UIView {
     @IBOutlet weak var rangPlaceholderView: UIView!
     @IBOutlet weak var rangLabel: UILabel!
     @IBOutlet weak var rangButton: UIButton!
+    @IBOutlet weak var circleProgressView: CircleProgressView!
     
     weak var delegate: UserInfoViewDelegate?
     
@@ -42,7 +44,24 @@ class UserInfoView: UIView {
         userImagePlaceholderView.layer.cornerRadius = userImagePlaceholderView.frame.width/2
         rangPlaceholderView.backgroundColor = AppColors.green
         rangLabel.textColor = UIColor.white
-        userImagePlaceholderView.backgroundColor = AppColors.green
+        userImagePlaceholderView.backgroundColor = AppColors.primaryLine
+        
+        nameLabel.font = AppFonts.monteseratBold24
+    }
+    
+    func setupPoints(all: [String: Bool]) {
+       var completed = all.filter { (dict) -> Bool in
+            return dict.value
+       }.count
+        
+        let allPoints = all.count
+        
+        let needToComplete = allPoints - completed
+        completedLabel.text = "\(completed)\nточок здано загалом"
+        needToCompleteLabel.text = "\(needToComplete)\nзалишилось"
+        
+        circleProgressView.trackFillColor = AppColors.green ?? .black
+        circleProgressView.progress = Double(completed) / Double(allPoints)
     }
     
     func setInitials(name: String) {
@@ -61,11 +80,15 @@ class UserInfoView: UIView {
         case "second_challenge":
             rangLabel.text = "Друга Проба"
         default:
-            break
+            if Scout.currentUser?.role == "scout_master" {
+                rangLabel.text = "Виховник"
+                completedLabel.isHidden = true
+                needToCompleteLabel.isHidden = true
+            }
         }
     }
     
-    private func initialsFromName(name: String?) -> String {
+    func initialsFromName(name: String?) -> String {
         var initials = ""
         let nameComponents = name?.components(separatedBy: " ")
         switch nameComponents?.count {

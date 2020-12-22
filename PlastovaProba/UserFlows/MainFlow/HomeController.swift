@@ -17,6 +17,7 @@ class HomeController: UIViewController, HomeCoordinator {
     @IBOutlet weak var accountButtonPlaceholderView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var initialNameLabel: UILabel!
     
 
     override func viewDidLoad() {
@@ -35,6 +36,35 @@ class HomeController: UIViewController, HomeCoordinator {
         headerLabel.font = AppFonts.monteseratBold24
         headerLabel.text = "scout_list_title".localized
         accountButtonPlaceholderView.layer.cornerRadius = accountButtonPlaceholderView.frame.width/2
+        accountButtonPlaceholderView.backgroundColor = AppColors.primaryLine
+        if let scout = Scout.currentUser, let firstName = scout.firstName, let lastName = scout.lastName {
+            initialNameLabel.text = initialsFromName(name: firstName + " " + lastName )
+        }
+        
+    }
+    
+    func initialsFromName(name: String?) -> String {
+        var initials = ""
+        let nameComponents = name?.components(separatedBy: " ")
+        switch nameComponents?.count {
+        case 1:
+            guard let component = nameComponents?[0] else { return "" }
+            if component.count > 1 {
+                initials.append(contentsOf: String(component.prefix(2)).uppercased())
+            } else {
+                if let first = component.first {
+                    initials.append(first.uppercased())
+                }
+            }
+        default:
+            if let first = nameComponents?[0].first {
+                initials.append(first.uppercased())
+            }
+            if let second = nameComponents?[1].first {
+                initials.append(second.uppercased())
+            }
+        }
+        return initials
     }
     
     func setupContainerView() {
@@ -70,5 +100,17 @@ class HomeController: UIViewController, HomeCoordinator {
             navigationController?.pushViewController(unwrapped, animated: true)
             navigationController?.setNavigationBarHidden(isNavigationBarHidden, animated: true)
         }
+    }
+    
+    @IBAction func openProfile(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
+        let profileController = storyboard.instantiateViewController(withIdentifier: "ProfileController") as? ProfileController
+        profileController?.bandModel = (children.first as? ScoutListController)?.dataSource
+        
+        if let challenge = (children.first as? ApplicationController)?.activeChallenge {
+            profileController?.challengePoints = challenge
+        }
+        
+        push(viewController: profileController!)
     }
 }

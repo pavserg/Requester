@@ -40,3 +40,13 @@ class Scout: Codable {
         self.rang = rang
     }
 }
+
+class BandModel: Codable {
+    var title: String?
+    var scouts: [Scout]?
+    
+    init(title: String?, scouts: [Scout]?) {
+        self.title = title
+        self.scouts = scouts
+    }
+}

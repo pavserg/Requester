@@ -32,12 +32,13 @@ class UserDataSourceModel {
         let params = ["id": identifier,
                       "rang": rangString]
         
-        Request(owner: ObjectIdentifier(self), url: url, requestType: .post, parameters: params, headers: RequestHeader.shared) { response in
+        let request =  Request(owner: ObjectIdentifier(self), url: url, requestType: .post, parameters: params, headers: RequestHeader.shared) { response in
             if let scout = response?.parsedObject as? Scout {
                 onCompletion?(scout, nil)
             }
         } onFail: { error in
             onCompletion?(nil, error.error)
-        }.executeAsync(parseAs: Scout.self)
+        }
+        request.executeSync(parseAs: Scout.self)
     }
 }

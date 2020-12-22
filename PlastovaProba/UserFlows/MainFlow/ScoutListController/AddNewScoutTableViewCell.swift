@@ -18,7 +18,7 @@ class AddNewScoutTableViewCell: UITableViewCell {
         addButton.backgroundColor = AppColors.green
         addButton.layer.cornerRadius = 8.0
         addButton.setTitleColor(AppColors.white, for: .normal)
-        addButton.setTitle("Додати".localized, for: .normal)
+        addButton.setTitle("Додати в гурток".localized, for: .normal)
         addButton.isUserInteractionEnabled = false
     }
 }

@@ -18,7 +18,7 @@ class ChallengesDataSource {
             }
         } onFail: { error in
             onCompletion?(nil, error.error)
-        }.executeAsync(parseAs: Challenge.self)
+        }.executeSync(parseAs: Challenge.self)
     }
     
     func getFirstChallenge(onCompletion: ((Challenge?, Error?) -> Void)?) {
@@ -28,7 +28,7 @@ class ChallengesDataSource {
             }
         } onFail: { error in
             onCompletion?(nil, error.error)
-        }.executeAsync(parseAs: Challenge.self)
+        }.executeSync(parseAs: Challenge.self)
     }
     
     func getSecondChallenge(onCompletion: ((Challenge?, Error?) -> Void)?) {
@@ -38,22 +38,22 @@ class ChallengesDataSource {
             }
         } onFail: { error in
             onCompletion?(nil, error.error)
-        }.executeAsync(parseAs: Challenge.self)
+        }.executeSync(parseAs: Challenge.self)
     }
     
     // MARK: - Get active challenge by id
     
-    func activeChallengeBy(id: String, onCompletion: (([String: Bool]?, Error?) -> Void)?) {
+    func activeChallengeBy(id: String, onCompletion: @escaping (([String: Bool]?, Error?) -> Void)) {
        let url = "http://localhost:8080/application/activeChallengeById/\(id)"
      
         Request(owner: ObjectIdentifier(self), url: url, requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let result = response?.parsedObject as? [String: Bool] {
-                onCompletion?(result, nil)
+                onCompletion(result, nil)
             }
           
         } onFail: { error in
-            onCompletion?(nil, error.error)
-        }.executeAsync(parseAs: [String: Bool].self)
+            onCompletion(nil, error.error)
+        }.executeSync(parseAs: [String: Bool].self)
     }
     
     // MARK: - Update challenge point
@@ -67,6 +67,6 @@ class ChallengesDataSource {
             onCompletion(nil)
         } onFail: { error in
             onCompletion(error.error)
-        }.executeAsync(parseAs: Empty.self)
+        }.executeSync(parseAs: Empty.self)
     }
 }

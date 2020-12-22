@@ -10,6 +10,7 @@ target 'PlastovaProba' do
   pod 'RLBAlertsPickers'
   pod 'SVProgressHUD'
   pod 'Requesto' #, :path => '/Users/pavserg/Desktop/Requester'
+  pod 'CircleProgressView', '~> 1.0'
 end
 
 post_install do |installer|

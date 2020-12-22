@@ -19,10 +19,11 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     private var challengeDataSource = ChallengesDataSource()
+    private var userDataSourceModel = UserDataSourceModel()
     private var challengeModel: Challenge?
     private var collectionViewChallengeModel: Challenge?
     
-    private var activeChallenge: [String: Bool]?
+    var activeChallenge: [String: Bool]?
     
     
     var type: ApplicationControllerType = .scout
@@ -46,7 +47,9 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
             
             reloadActiveChallenge()
             
-            setupInfoHeader()
+            DispatchQueue.main.async {
+                self.setupInfoHeader()
+            }
             //"sympathizer", "first_challenge", "second_challenge"
             if let rang = scout?.rang {
                 switch rang {
@@ -81,11 +84,12 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func reloadActiveChallenge() {
         if let unwrappedScoutId =  scout?.id {
-            challengeDataSource.activeChallengeBy(id: unwrappedScoutId) { (result, error) in
+            challengeDataSource.activeChallengeBy(id: unwrappedScoutId) { [weak self] (result, error) in
                 DispatchQueue.main.async {
                     if error == nil {
-                        self.activeChallenge = result
-                        self.tableView.reloadData()
+                        self?.activeChallenge = result
+                        self?.setupInfoHeader()
+                        self?.tableView.reloadData()
                     }
                 }
             }
@@ -115,6 +119,14 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
             
             userInfo.setRang(string: unwrappedScout.rang)
         }
+        
+        if let unwrapped = self.activeChallenge {
+            DispatchQueue.main.async {
+                userInfo.setupPoints(all: unwrapped)
+            }
+        }
+        
+        
         tableView.tableHeaderView = userInfo
     }
     
@@ -198,15 +210,15 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let role = scout?.role {
-            if role != "scout_masteer" { return }
+        if type != .scout_master {
+           return
         }
         
         guard let unwrappedScout = scout, let scoutId = unwrappedScout.id, let rang = unwrappedScout.rang, let pointId = challengeModel?.sections?[indexPath.section].topics?[indexPath.row].id else { return }
         
-        challengeDataSource.update(userIdentifier: scoutId, pointIdentifier: pointId.lowercased(), rang: rang) { (error) in
+        challengeDataSource.update(userIdentifier: scoutId, pointIdentifier: pointId.lowercased(), rang: rang) { [weak self] (error) in
             if error == nil {
-                self.reloadActiveChallenge()
+                self?.reloadActiveChallenge()
             }
         }
     }
@@ -243,36 +255,36 @@ extension ApplicationController: UserInfoViewDelegate {
     }
     
     private func showRangPickerView() {
-        view.endEditing(true)
         let alert = UIAlertController(style: .actionSheet, title: "Вибери ступінь", message: "")
         let frameSizes: [CGFloat] = (150...400).map { CGFloat($0) }
         let pickerViewValues: [[String]] = [["Прихильник/ця",  "Учасник/ця", "Розвідувач/ка"]]
         let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
         
         alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
-            switch index.row {
-            case 0:
-                self.changeRang(string: "sympathizer")
-            case 1:
-                self.changeRang(string: "first_challenge")
-            case 2:
-                self.changeRang(string: "second_challenge")
-            default:
-                break
+            DispatchQueue.global().async {
+                switch index.row {
+                case 0:
+                    self.changeRang(string: "sympathizer")
+                case 1:
+                    self.changeRang(string: "first_challenge")
+                case 2:
+                    self.changeRang(string: "second_challenge")
+                default:
+                    break
+                }
             }
         }
         alert.addAction(title: "Done", style: .cancel)
         alert.show()
     }
-    
+  
     func changeRang(string: String) {
         guard let identifier = scout?.id else { return }
-        UserDataSourceModel().updateRang(rangString: string, identifier: identifier) { (scout, error) in
+        
+        self.userDataSourceModel.updateRang(rangString: string, identifier: identifier) { [weak self] (scout, error) in
             if error == nil && scout != nil {
-                self.scout = scout
-                DispatchQueue.main.async {
-                    self.setupData()
-                }
+                self?.scout = scout
+                self?.setupData()
             }
         }
     }
