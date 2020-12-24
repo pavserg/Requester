@@ -171,7 +171,7 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
             if let copied = firstChallenge?.copy() as? Challenge {
                 self?.collectionViewChallengeModel = copied
             }
-            let dummySection =  Section(name: "Dummy", id: "Dummy", topics: [Topic.init(id: "Dummy", question: "Dummy")])
+            let dummySection =  Section(name: "Dummy", id: "Dummy", color: nil, topics: [Topic.init(id: "Dummy", question: "Dummy")])
             self?.challengeModel?.sections?.insert(dummySection, at: 0)
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -185,7 +185,7 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
             if let copied = secondChallenge?.copy() as? Challenge {
                 self?.collectionViewChallengeModel = copied
             }
-            let dummySection = Section(name: "Dummy", id: "Dummy", topics: [Topic.init(id: "Dummy", question: "Dummy")])
+            let dummySection = Section(name: "Dummy", id: "Dummy", color: nil, topics: [Topic.init(id: "Dummy", question: "Dummy")])
             self?.challengeModel?.sections?.insert(dummySection, at: 0)
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -219,6 +219,19 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath) as? QuestionTableViewCell
+        
+        if indexPath.row == 0 {
+            cell?.lineAboveView.isHidden = true
+        } else {
+            cell?.lineAboveView.isHidden = false
+        }
+        
+        if ((challengeModel?.sections?[indexPath.section].topics?.count ?? 0) - 1) == indexPath.row {
+            cell?.lineBelowView.isHidden = true
+        } else {
+            cell?.lineBelowView.isHidden = false
+        }
+        
         if let topic = challengeModel?.sections?[indexPath.section].topics?[indexPath.row], let unwrappeedId = topic.id?.lowercased() {
             cell?.fillWith(info: topic, isSelected: activeChallenge?[unwrappeedId] ?? false)
         }

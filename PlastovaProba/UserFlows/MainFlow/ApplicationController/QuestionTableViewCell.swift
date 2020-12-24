@@ -24,7 +24,7 @@ class QuestionTableViewCell: UITableViewCell {
         questionLabel.text = info.question
         
         if isSelected {
-            checkmarkImageView.image = UIImage.init(named: "faq")
+            checkmarkImageView.image = UIImage.init(named: "select")
         } else {
             checkmarkImageView.image = UIImage.init(named: "radio-button-false")
         }

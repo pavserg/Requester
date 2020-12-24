@@ -27,12 +27,13 @@ class Challenge: Codable, NSCopying {
 
 // MARK: - Section
 class Section: Codable {
-    var name, id: String?
+    var name, id, color: String?
     var topics: [Topic]?
 
-    init(name: String?, id: String?, topics: [Topic]?) {
+    init(name: String?, id: String?, color: String?, topics: [Topic]?) {
         self.name = name
         self.id = id
+        self.color = color
         self.topics = topics
     }
 }

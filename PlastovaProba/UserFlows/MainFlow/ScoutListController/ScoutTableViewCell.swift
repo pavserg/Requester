@@ -27,6 +27,20 @@ class ScoutTableViewCell: SwipeTableViewCell {
     func setupInfo(scout: Scout?) {
         nameLabel.text = (scout?.firstName ?? "") + " " + ((scout?.lastName) ?? "")
         avatarPlaceholderView.backgroundColor = AppColors.green
+        rangLabel.textColor = AppColors.green
+        
+        if let rang = scout?.rang {
+            switch rang {
+            case "sympathizer":
+                rangLabel.text = "Відзнака прихильника"
+            case "first_challenge":
+                rangLabel.text = "Проба учасника"
+            case "second_challenge":
+                rangLabel.text = "Проба розвідуувача"
+            default:
+                break
+            }
+        }
         
         if let scoutId = scout?.id {
             UserImageHelper.shared.photoUrlFor(scoutId: scoutId, onCompletion: { url in
