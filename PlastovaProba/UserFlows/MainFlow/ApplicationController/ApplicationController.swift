@@ -17,6 +17,8 @@ enum ApplicationControllerType {
 class ApplicationController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var disclaimerLabel: UILabel!
+    
     
     private var challengeDataSource = ChallengesDataSource()
     private var userDataSourceModel = UserDataSourceModel()
@@ -33,12 +35,22 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showDisclaimerLabel()
         setupBackButton()
         setupData()
         registerXibs()
         refreshControl.attributedTitle = NSAttributedString(string: "Оновлення")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl) 
+    }
+    
+    func showDisclaimerLabel() {
+        if activeChallenge == nil {
+            disclaimerLabel.text = "Тебе ще не додали в гурток. Ти автоматчино приєднаєшся до нього в майбутньому і зможеш бачити прогрес своєї поточної пластової проби."
+            disclaimerLabel.isHidden = false
+        } else {
+            disclaimerLabel.isHidden = true
+        }
     }
     
     @objc func refresh(_ sender: AnyObject) {
@@ -103,6 +115,7 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
                             self?.setupInfoHeader()
                         }
                         self?.tableView.reloadData()
+                        self?.showDisclaimerLabel()
                     }
                 }
             }

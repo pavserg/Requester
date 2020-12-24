@@ -107,7 +107,7 @@ extension PhotoPickerPresenter {
         }
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            let representedData = pickedImage.fixOrientation()?.resizeWithPercent(percentage: 0.25)?.jpegData(compressionQuality: 0.75)
+            let representedData = pickedImage.fixOrientation()?.resizeWithPercent(percentage: 0.25)?.jpegData(compressionQuality: 0.25)
             self.resultClosure?(representedData)
         }
         

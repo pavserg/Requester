@@ -10,9 +10,20 @@ import Foundation
 import Requesto
 
 
-let serverUrl = "http://91.218.106.227"//"http://localhost:8080"
+let serverUrl = "http://localhost:8080" //"https://scoutappdemoua.herokuapp.com"// "http://91.218.106.227"//"http://localhost:8080"
 
 class Empty: Decodable {}
+
+
+class AddStatus: Decodable {
+    var scoutEmail: String
+    var addStatus: Bool
+    
+    init(scoutEmail: String, addStatus: Bool) {
+        self.scoutEmail = scoutEmail
+        self.addStatus = addStatus
+    }
+}
 
 class RegistrationDataSourceModel  {
     
@@ -50,17 +61,17 @@ class RegistrationDataSourceModel  {
         }.executeAsync(parseAs: Empty.self)
     }
     
-    func addScout(email: String, rank: String, onCompletion: @escaping ((Bool) -> Void)) {
-        let parameters = ["email": email] as [String: AnyObject]
+    func addScout(email: String, rang: String, onCompletion: @escaping ((Bool, Error?) -> Void)) {
+        let parameters = ["email": email.lowercased(), "rang": rang.lowercased()] as [String: AnyObject]
         Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/append", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
-            onCompletion(true)
+            onCompletion(true, nil)
         } onFail: { error in
-            onCompletion(false)
-        }.executeAsync(parseAs: Empty.self)
+            onCompletion(false, error.error)
+        }.executeAsync(parseAs: AddStatus.self)
     }
     
     func deleteScout(email: String, onCompletion: @escaping ((Bool) -> Void)) {
-        let parameters = ["email": email] as [String: AnyObject]
+        let parameters = ["email": email.lowercased()] as [String: AnyObject]
         Request(owner: ObjectIdentifier(self), url: "\(serverUrl)/user/delete", requestType: .post, parameters: parameters, headers: RequestHeader.shared) { response in
             onCompletion(true)
         } onFail: { error in

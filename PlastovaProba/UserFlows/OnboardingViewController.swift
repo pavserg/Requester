@@ -10,7 +10,7 @@ import UIKit
 import JXPageControl
 
 class OnboardingViewController: UIViewController {
-
+    
     @IBOutlet weak var leadingTopTitleLabel: UILabel!
     @IBOutlet weak var trailingTopButton: UIButton!
     @IBOutlet weak var nextButtonPlaceholderView: UIView!
@@ -20,19 +20,25 @@ class OnboardingViewController: UIViewController {
     
     // MARK: - PageControl
     @IBOutlet weak var pageControlPlaceholder: UIView!
-    var pageControl: JXPageControlExchange!
+    var pageControl: JXPageControlExchange?
     var pageController: ContainerPageVC!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         setupLocalization()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        nextButtonTitleLabel.text = "onboarding_next".localized
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-         setupPageControl()
+        setupPageControl()
     }
     
     private func setupUI() {
@@ -41,17 +47,19 @@ class OnboardingViewController: UIViewController {
         nextButtonTitleLabel.textColor = AppColors.white
         leadingTopTitleLabel.textColor = AppColors.black
         nextButtonArrowImageView.image = UIImage(named: "arrow_forward")
-
+        
     }
     
     private func setupPageControl() {
         pageControl = JXPageControlExchange(frame: pageControlPlaceholder.bounds)
-        pageControl.activeColor = AppColors.green ?? UIColor.black
-        pageControl.inactiveColor = AppColors.inactive
-        pageControl.numberOfPages = 4
-        pageControl.activeSize = CGSize.init(width: 15, height: 10)
+        pageControl?.activeColor = AppColors.green ?? UIColor.black
+        pageControl?.inactiveColor = AppColors.inactive
+        pageControl?.numberOfPages = 4
+        pageControl?.activeSize = CGSize.init(width: 15, height: 10)
         pageControlPlaceholder.alpha = 0.0
-        pageControlPlaceholder.addSubview(pageControl)
+        if let unwrapped = pageControl {
+            pageControlPlaceholder.addSubview(unwrapped)
+        }
         
         UIView.animate(withDuration: 0.3) {
             self.pageControlPlaceholder.alpha = 1.0
@@ -67,8 +75,23 @@ class OnboardingViewController: UIViewController {
         nextButtonTitleLabel.text = "onboarding_next".localized
     }
     
+    @objc func showRegistrationController() {
+        let storyboard = UIStoryboard.init(name: "Registration", bundle: nil)
+        let registrationController = storyboard.instantiateViewController(withIdentifier: "RegistrationViewController")
+        navigationController?.pushViewController(registrationController, animated: true)
+    }
+    
     @IBAction func showNext(_ sender: Any) {
-        pageController.next()
+        if pageControl?.currentPage == (pageController?.controllers.count ?? 90) - 1 {
+             showRegistrationController()
+             pageControl?.removeFromSuperview()
+        }
+        
+        if pageController.next() {
+            nextButtonTitleLabel.text = "Реєстрація".localized
+        } else {
+            nextButtonTitleLabel.text = "onboarding_next".localized
+        }
     }
     
     @IBAction func skip(_ sender: Any) {
@@ -78,20 +101,7 @@ class OnboardingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ContainerPageVC {
             pageController = destination
-            if let scrollView = destination.view.subviews.filter({$0.isKind(of: UIScrollView.self)}).first as? UIScrollView {
-                scrollView.delegate = self
-                destination.pageControl = self.pageControl
-            }
-        }
-    }
-}
-
-extension OnboardingViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.isTracking {
-            let progress = scrollView.contentOffset.x / scrollView.bounds.width
-           // pageControl.progress = progress
+            destination.pageControl = self.pageControl
         }
     }
 }

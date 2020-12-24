@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sGR-as-rRa">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -142,6 +142,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cj1-dd-3F5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="825" y="-638.02816901408448"/>
+        </scene>
+        <!--Launch Screen Controller-->
+        <scene sceneID="NyD-HG-sIj">
+            <objects>
+                <viewController storyboardIdentifier="LaunchScreenController" id="sGR-as-rRa" customClass="LaunchScreenController" customModule="PlastovaProba" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="es0-QD-6dG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scout-logo" translatesAutoresizingMaskIntoConstraints="NO" id="u72-HJ-MGU">
+                                <rect key="frame" x="35" y="139" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="8yB-Zj-uAX"/>
+                                    <constraint firstAttribute="height" constant="250" id="P0h-O4-UkQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пластова Проба" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oem-Qi-ls5">
+                                <rect key="frame" x="28.5" y="397" width="263.5" height="37"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T36-le-2Jl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oem-Qi-ls5" firstAttribute="top" secondItem="u72-HJ-MGU" secondAttribute="bottom" constant="8" id="6Co-Fm-znc"/>
+                            <constraint firstItem="u72-HJ-MGU" firstAttribute="centerX" secondItem="es0-QD-6dG" secondAttribute="centerX" id="tj4-Oc-7Rd"/>
+                            <constraint firstItem="u72-HJ-MGU" firstAttribute="centerY" secondItem="es0-QD-6dG" secondAttribute="centerY" constant="-20" id="wMh-pu-ahb"/>
+                            <constraint firstItem="oem-Qi-ls5" firstAttribute="centerX" secondItem="es0-QD-6dG" secondAttribute="centerX" id="zEH-e6-CLg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zmu-ja-X9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2878" y="-191"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xAf-z0-xew">
@@ -469,6 +505,7 @@
     <resources>
         <image name="arrow_forward" width="24" height="12"/>
         <image name="onboarding_0" width="198" height="200"/>
+        <image name="scout-logo" width="329" height="323.5"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

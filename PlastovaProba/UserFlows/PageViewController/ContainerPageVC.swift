@@ -17,13 +17,13 @@ class ContainerPageVC: UIPageViewController {
     lazy var controllers: [UIViewController?] = {
         
         let first = UIStoryboard.getViewController(storyboardName: .main, controllerIdentifier: "OnboardingSlideViewController") as? OnboardingSlideViewController
-        first?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_0".localized, subtitle: "onboarding_subtitle_0".localized, imageName: "onboarding_0")
+        first?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_0".localized, subtitle: "onboarding_subtitle_0".localized, imageName: "onboarding_0", isLast: true)
         let second = UIStoryboard.getViewController(storyboardName: .main, controllerIdentifier: "OnboardingSlideViewController") as? OnboardingSlideViewController
-        second?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_1".localized, subtitle: "onboarding_subtitle_1".localized, imageName: "onboarding_1")
+        second?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_1".localized, subtitle: "onboarding_subtitle_1".localized, imageName: "onboarding_1", isLast: true)
         let third = UIStoryboard.getViewController(storyboardName: .main, controllerIdentifier: "OnboardingSlideViewController") as? OnboardingSlideViewController
-        third?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_2".localized, subtitle: "onboarding_subtitle_2".localized, imageName: "onboarding_2")
+        third?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_2".localized, subtitle: "onboarding_subtitle_2".localized, imageName: "onboarding_2", isLast: true)
         let fourth = UIStoryboard.getViewController(storyboardName: .main, controllerIdentifier: "OnboardingSlideViewController") as? OnboardingSlideViewController
-        fourth?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_3".localized, subtitle: "onboarding_subtitle_3".localized, imageName: "onboarding_3")
+        fourth?.data = OnboardingSlideViewController.SlideData.init(title: "onboarding_title_3".localized, subtitle: "onboarding_subtitle_3".localized, imageName: "onboarding_3", isLast: true)
     
         return [first, second, third, fourth]
     }()
@@ -37,18 +37,20 @@ class ContainerPageVC: UIPageViewController {
         if let startController = controllers[0] {
             setViewControllers([startController], direction: .forward, animated: true, completion: nil)
         }
-        if let scrollView = self.view.subviews.filter({$0.isKind(of: UIScrollView.self)}).first as? UIScrollView {
-         //   scrollView.isScrollEnabled = false
-        }
     }
     
-    func next() {
+    func next() -> Bool {
         if (pageControl!.currentPage + 1) < controllers.count {
             if let nextController = controllers[pageControl!.currentPage + 1] {
                 self.setViewControllers([nextController], direction: .forward, animated: true, completion: nil)
                 pageControl!.currentPage += 1
             }
+            if pageControl?.currentPage == controllers.count - 1 {
+                return true
+            }
+            return false
         }
+        return true
     }
 }
 

@@ -15,9 +15,11 @@ class AddNewScoutTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        addButton.backgroundColor = AppColors.green
+        addButton.backgroundColor = .white
+        addButton.layer.borderWidth = 1
+        addButton.layer.borderColor = AppColors.green?.cgColor
         addButton.layer.cornerRadius = 8.0
-        addButton.setTitleColor(AppColors.white, for: .normal)
+        addButton.setTitleColor(AppColors.green, for: .normal)
         addButton.setTitle("Додати в гурток".localized, for: .normal)
         addButton.isUserInteractionEnabled = false
     }

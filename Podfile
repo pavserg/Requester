@@ -10,7 +10,7 @@ target 'PlastovaProba' do
   pod 'Firebase/Storage'
   pod 'RLBAlertsPickers'
   pod 'SVProgressHUD'
-  pod 'Requesto' #, :path => '/Users/pavserg/Desktop/Requester'
+  pod 'Requesto', :path => '/Users/pavserg/SwiftRequesto'
   pod 'CircleProgressView', '~> 1.0'
   pod 'SDWebImage', '~> 5.0'
 end

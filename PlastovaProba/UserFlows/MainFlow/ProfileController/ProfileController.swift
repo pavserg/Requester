@@ -28,7 +28,6 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         
         setupBackButton()
-        seetupUserInfo()
         setupSettingButton()
         setupBandView()
         if let unwrapped = challengePoints {
@@ -40,15 +39,18 @@ class ProfileController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        seetupUserInfo()
         if let unwrappeedImageUrl = UserImageHelper.shared.profileImageUrl {
             userInfoView.userImageView.downloadImage(url: unwrappeedImageUrl)
         }
     }
     
-    
     private func setupUI() {
-        logoutButton.backgroundColor = AppColors.green
+        logoutButton.backgroundColor = AppColors.white
+        logoutButton.layer.borderWidth = 1
+        logoutButton.layer.borderColor = UIColor.red.cgColor
         logoutButton.layer.cornerRadius = 10
+        logoutButton.setTitleColor(UIColor.red, for: .normal)
         logoutButton.setTitle("Вийти", for: .normal)
     }
     
@@ -105,6 +107,7 @@ class ProfileController: UIViewController {
         let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
         let userDescription = storyboard.instantiateViewController(withIdentifier: "UserDescriptionController") as? UserDescriptionController
         userDescription?.type = .userDetails
+        userDescription?.user = Scout.currentUser
         navigationController?.pushViewController(userDescription!, animated: true)
     }
     

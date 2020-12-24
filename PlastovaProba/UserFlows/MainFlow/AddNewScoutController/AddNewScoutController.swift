@@ -8,6 +8,7 @@
 
 import UIKit
 import RLBAlertsPickers
+import SVProgressHUD
 
 class AddNewScoutController: UIViewController {
     
@@ -81,24 +82,26 @@ class AddNewScoutController: UIViewController {
                 self.rangTextField.forceEditing()
             }
         }
-        alert.addAction(title: "Done", style: .cancel)
+        alert.addAction(title: "Добре", style: .cancel)
         alert.show()
     }
     
     @IBAction func addNewScout(_ sender: Any) {
         
-        guard let unwrappedRang = rangString, let email = emailTextField.getText()  else {
+        guard let unwrappedRang = rangString, let email = emailTextField.getText(), !email.isEmpty  else {
             CommonAlert.showError(title: "Дані не можуть бути порожніми!")
             return
         }
         
-        registrationDataSourceModel.addScout(email: email, rank: unwrappedRang) { (success) in
-            if success {
-                DispatchQueue.main.async {
+        SVProgressHUD.show()
+        registrationDataSourceModel.addScout(email: email, rang: unwrappedRang) { success, error  in
+            DispatchQueue.main.async {
+                if success {
                     self.navigationController?.popViewController(animated: true)
+                } else {
+                    CommonAlert.showError(title: (error as? ErrorModel)?.reason ?? "Щось пішло не так :(")
                 }
-            } else {
-                CommonAlert.showError(title: "Щось пішло не так :(")
+                SVProgressHUD.dismiss()
             }
         }
     }

@@ -53,6 +53,9 @@ class UserInfoView: UIView {
         userImagePlaceholderView.backgroundColor = AppColors.primaryLine
         
         nameLabel.font = AppFonts.monteseratBold24
+        completedLabel.isHidden = true
+        needToCompleteLabel.isHidden = true
+        
     }
     
     func setupPoints(all: [String: Bool]) {
@@ -68,6 +71,8 @@ class UserInfoView: UIView {
         
         circleProgressView.trackFillColor = AppColors.green ?? .black
         circleProgressView.progress = Double(completed) / Double(allPoints)
+        completedLabel.isHidden = false
+        needToCompleteLabel.isHidden = false
     }
     
     func setInitials(name: String) {

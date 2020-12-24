@@ -15,6 +15,8 @@
 		B100A4B3258C439300D38F3C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100A4B2258C439300D38F3C /* UserInfoView.swift */; };
 		B100A4B7258C439C00D38F3C /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100A4B6258C439C00D38F3C /* UserInfoView.xib */; };
 		B136105825796A4400A356A9 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B136105725796A4400A356A9 /* RequestHeader.swift */; };
+		B15223732594C2FB00EB7536 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15223722594C2FB00EB7536 /* LaunchScreenController.swift */; };
+		B15223942594CCAC00EB7536 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15223932594CCAC00EB7536 /* ErrorHandler.swift */; };
 		B169367424B4AA6500D0CE46 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B169367324B4AA6500D0CE46 /* StartViewController.swift */; };
 		B16F9C452591267B00F42E43 /* UserDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */; };
 		B16F9C4825912C0200F42E43 /* CommonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F9C4725912C0200F42E43 /* CommonAlert.swift */; };
@@ -98,6 +100,8 @@
 		B100A4B2258C439300D38F3C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		B100A4B6258C439C00D38F3C /* UserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
 		B136105725796A4400A356A9 /* RequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
+		B15223722594C2FB00EB7536 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
+		B15223932594CCAC00EB7536 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B169367324B4AA6500D0CE46 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B16F9C442591267B00F42E43 /* UserDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSourceModel.swift; sourceTree = "<group>"; };
 		B16F9C4725912C0200F42E43 /* CommonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlert.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		B17A762E24ABBEA3004FD21E /* PlastovaProba */ = {
 			isa = PBXGroup;
 			children = (
+				B17A762F24ABBEA3004FD21E /* AppDelegate.swift */,
 				B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */,
 				B17A76AC24B49F2D004FD21E /* Views */,
 				B17A766524ABD2D0004FD21E /* Common */,
@@ -268,7 +273,6 @@
 				B1FD858825659E1A00E8F6D5 /* Models */,
 				B1FD857C25657A1000E8F6D5 /* Network */,
 				B17A766C24ABD666004FD21E /* Fonts */,
-				B17A762F24ABBEA3004FD21E /* AppDelegate.swift */,
 				B17A763524ABBEA3004FD21E /* Main.storyboard */,
 				B17A763824ABBEA5004FD21E /* Assets.xcassets */,
 				B17A763A24ABBEA5004FD21E /* LaunchScreen.storyboard */,
@@ -288,6 +292,7 @@
 				B17A76A924B49EC3004FD21E /* Login */,
 				B17A769524ABD9D0004FD21E /* PageViewController */,
 				B17A763324ABBEA3004FD21E /* OnboardingViewController.swift */,
+				B15223722594C2FB00EB7536 /* LaunchScreenController.swift */,
 			);
 			path = UserFlows;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				B16F9C4725912C0200F42E43 /* CommonAlert.swift */,
 				B16F9CD925926FCA00F42E43 /* PhotoPickerPresenter.swift */,
 				B16F9D1825927E7900F42E43 /* UserImageHelper.swift */,
+				B15223932594CCAC00EB7536 /* ErrorHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 				B1EAE43A257E74AB0011D5E6 /* CollectionTableViewCell.swift in Sources */,
 				B1BFC16525212F1E002E80DF /* VerificationViewController.swift in Sources */,
 				B16F9CD52592697C00F42E43 /* AddPhotoController.swift in Sources */,
+				B15223732594C2FB00EB7536 /* LaunchScreenController.swift in Sources */,
 				B19B6C64257A8A0400214742 /* AddNewScoutController.swift in Sources */,
 				B100A483258C2EC900D38F3C /* ChallengesDataSource.swift in Sources */,
 				B16F9CDA25926FCA00F42E43 /* PhotoPickerPresenter.swift in Sources */,
@@ -655,6 +662,7 @@
 				B100A4B3258C439300D38F3C /* UserInfoView.swift in Sources */,
 				B18B06F72553025C0008745C /* UserDescriptionController.swift in Sources */,
 				B1F1B0782553316400F5C2F8 /* ScoutListController.swift in Sources */,
+				B15223942594CCAC00EB7536 /* ErrorHandler.swift in Sources */,
 				B17A76B224B49F54004FD21E /* FloatingTextFieldPlaceholder.swift in Sources */,
 				B17A763024ABBEA3004FD21E /* AppDelegate.swift in Sources */,
 				B1EAE42B257E718B0011D5E6 /* ApplicationController.swift in Sources */,

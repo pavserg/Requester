@@ -68,12 +68,20 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         return dataSource?.scouts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        
+        if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddNewScoutTableViewCell", for: indexPath)
             return cell
         }
@@ -85,7 +93,7 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && indexPath.section == 0 {
             let scoutListController = storyboard.instantiateViewController(withIdentifier: "AddNewScoutController") as? AddNewScoutController
             coordinator?.push(viewController: scoutListController, isNavigationBarHidden: false)
         } else {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aVj-eC-Z2K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfL-3Z-C5h">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="eDy-jg-0Rk">
@@ -119,6 +124,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="y17-ku-30F"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="continue:" destination="QfL-3Z-C5h" eventType="touchUpInside" id="Zan-tn-mob"/>
@@ -180,6 +186,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Zc4-2q-lcE"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="continue:" destination="aLZ-Ti-2m4" eventType="touchUpInside" id="RVm-fg-tMB"/>
@@ -276,6 +283,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="g3T-Cm-Drm"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="continue:" destination="EwB-rg-Cd6" eventType="touchUpInside" id="4b2-DH-bKK"/>
@@ -342,18 +350,27 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34Q-we-SzZ">
                                         <rect key="frame" x="21" y="0.0" width="128" height="128"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="aMT-1s-izM">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="jj6-rA-f4G">
+                                                <rect key="frame" x="39" y="39" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="smE-3E-yv8"/>
+                                                    <constraint firstAttribute="height" constant="50" id="zoi-wL-727"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aMT-1s-izM">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="6Fc-fw-c8v"/>
                                             <constraint firstAttribute="bottom" secondItem="aMT-1s-izM" secondAttribute="bottom" id="OV0-Sy-gOz"/>
                                             <constraint firstItem="aMT-1s-izM" firstAttribute="top" secondItem="34Q-we-SzZ" secondAttribute="top" id="dvA-g4-ZWe"/>
                                             <constraint firstItem="aMT-1s-izM" firstAttribute="leading" secondItem="34Q-we-SzZ" secondAttribute="leading" id="g5s-52-C4A"/>
+                                            <constraint firstItem="jj6-rA-f4G" firstAttribute="centerX" secondItem="34Q-we-SzZ" secondAttribute="centerX" id="rwJ-bP-wga"/>
                                             <constraint firstAttribute="trailing" secondItem="aMT-1s-izM" secondAttribute="trailing" id="ttW-NL-Rbk"/>
                                             <constraint firstAttribute="width" constant="128" id="tz1-FE-v32"/>
+                                            <constraint firstItem="jj6-rA-f4G" firstAttribute="centerY" secondItem="34Q-we-SzZ" secondAttribute="centerY" id="ymX-yI-mnB"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Обрати інше фото" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSS-vT-AYT">
@@ -388,9 +405,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="rJl-S2-fkh"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="continue:" destination="aLZ-Ti-2m4" eventType="touchUpInside" id="gYm-qK-0d5"/>
+                                    <action selector="save:" destination="2XX-aG-oLb" eventType="touchUpInside" id="nco-hS-eYg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -431,6 +450,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

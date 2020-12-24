@@ -12,6 +12,9 @@
         <array key="Montserrat-Bold.ttf">
             <string>Montserrat-Bold</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserInfoView">
@@ -99,16 +102,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GeK-ON-S4o">
-                    <rect key="frame" x="102" y="189" width="240" height="40"/>
+                    <rect key="frame" x="98" y="189" width="248" height="26"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проба Учасника" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe4-eM-E94">
-                            <rect key="frame" x="8" y="9.5" width="224" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Очікується Підтвердження" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe4-eM-E94">
+                            <rect key="frame" x="8" y="3" width="232" height="20"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIR-dh-e33">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="248" height="26"/>
                             <connections>
                                 <action selector="showRangPicker:" destination="-1" eventType="touchUpInside" id="i7B-9z-rYO"/>
                             </connections>
@@ -118,11 +121,10 @@
                     <constraints>
                         <constraint firstItem="MIR-dh-e33" firstAttribute="top" secondItem="GeK-ON-S4o" secondAttribute="top" id="52Y-Hd-vco"/>
                         <constraint firstItem="Pe4-eM-E94" firstAttribute="centerY" secondItem="GeK-ON-S4o" secondAttribute="centerY" id="6Fv-bX-gow"/>
-                        <constraint firstAttribute="height" constant="40" id="8gP-F6-T3h"/>
+                        <constraint firstAttribute="height" constant="26" id="8gP-F6-T3h"/>
                         <constraint firstAttribute="trailing" secondItem="Pe4-eM-E94" secondAttribute="trailing" constant="8" id="Nhe-Oc-Qx8"/>
                         <constraint firstAttribute="bottom" secondItem="MIR-dh-e33" secondAttribute="bottom" id="QKa-Iw-v1s"/>
                         <constraint firstItem="Pe4-eM-E94" firstAttribute="leading" secondItem="GeK-ON-S4o" secondAttribute="leading" constant="8" id="hHk-Ja-rR2"/>
-                        <constraint firstAttribute="width" constant="240" id="l3A-T4-0bG"/>
                         <constraint firstItem="MIR-dh-e33" firstAttribute="leading" secondItem="GeK-ON-S4o" secondAttribute="leading" id="mom-JC-6XE"/>
                         <constraint firstAttribute="trailing" secondItem="MIR-dh-e33" secondAttribute="trailing" id="zs0-Na-pup"/>
                     </constraints>

@@ -346,7 +346,7 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
-  - Requesto (0.0.3)
+  - Requesto (0.0.4)
   - RLBAlertsPickers (1.1.2)
   - SDWebImage (5.10.0):
     - SDWebImage/Core (= 5.10.0)
@@ -361,7 +361,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - JXPageControl
-  - Requesto
+  - Requesto (from `/Users/pavserg/SwiftRequesto`)
   - RLBAlertsPickers
   - SDWebImage (~> 5.0)
   - SVProgressHUD
@@ -390,11 +390,14 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
-    - Requesto
     - RLBAlertsPickers
     - SDWebImage
     - SVProgressHUD
     - SwipeCellKit
+
+EXTERNAL SOURCES:
+  Requesto:
+    :path: "/Users/pavserg/SwiftRequesto"
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -418,12 +421,12 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  Requesto: a4499486e6fb2e9822502b734b83bb77536bf2ec
+  Requesto: e37c28e05b3a5d4f20e8a5b79b09639629a920c1
   RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 0f046c9d8cbac2b7b5751de46edb79f5fccb4a72
+PODFILE CHECKSUM: 54d19307f0f23f0ef912dbab64706e395c144913
 
 COCOAPODS: 1.10.0

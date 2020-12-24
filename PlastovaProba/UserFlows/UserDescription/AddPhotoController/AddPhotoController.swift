@@ -38,12 +38,13 @@ class AddPhotoController: UIViewController {
         subtitleLabel.text = "Додай своє якісне фото, бажано в однострої. Ти завжди зможеш змінити його пізніше.".localized
         subtitleLabel.font = AppFonts.monteserat18
         choosePhotoLabel.text = "Обрати фото".localized
+        choosePhotoLabel.font = AppFonts.monteserat12
         choosePhotoLabel.textColor = AppColors.green
       
         continueButton.backgroundColor = AppColors.green
         continueButton.layer.cornerRadius = 8.0
         continueButton.setTitleColor(AppColors.white, for: .normal)
-        continueButton.setTitle("onboarding_next".localized, for: .normal)
+        continueButton.setTitle("Зберегти".localized, for: .normal)
         photoPlaceholderView.layer.cornerRadius = photoPlaceholderView.bounds.width/2
         photoPlaceholderView.clipsToBounds = true
     }
@@ -52,7 +53,6 @@ class AddPhotoController: UIViewController {
         photoPicker = PhotoPickerPresenter(self, completionClosure: { (data) in
             if let unwrappedData = data {
                 DispatchQueue.main.async {
-                    
                     self.uploadImage(data: unwrappedData)
                     self.photoImageView.image = UIImage.init(data: unwrappedData)
                 }
@@ -60,16 +60,12 @@ class AddPhotoController: UIViewController {
         })
     }
     
-    @IBAction func choosePhoto(_ sender: Any) {
-        photoPicker?.present()
-    }
-    
     func uploadImage(data: Data) {
         guard let id = Scout.currentUser?.id else { return }
         let storageRef = Storage.storage().reference().child("\(id).png")
         storageRef.putData(data, metadata: nil, completion: { (metadata, error) in
             if error != nil {
-                
+                CommonAlert.showError(title: "Щось пішло не так :(")
             } else {
                 storageRef.downloadURL(completion: { (url, error) in
                     if error == nil {
@@ -80,5 +76,13 @@ class AddPhotoController: UIViewController {
                 })
             }
         })
+    }
+    
+    @IBAction func choosePhoto(_ sender: Any) {
+        photoPicker?.present()
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import RLBAlertsPickers
+import SVProgressHUD
 
 enum UserDescriptionControllerType {
     case registration
@@ -36,6 +37,8 @@ class UserDescriptionController: UIViewController {
     var birthDate: Date?
     var type: UserDescriptionControllerType = .registration
     
+    var user: Scout?
+    
     private var registrationDataSourceModel = RegistrationDataSourceModel()
     
     override func viewDidLoad() {
@@ -45,6 +48,7 @@ class UserDescriptionController: UIViewController {
         setupLocalization()
         setupBackButton()
         setupUI()
+        setupDefaultData()
     }
     
     private func setupLocalization() {
@@ -71,6 +75,43 @@ class UserDescriptionController: UIViewController {
         sexLabel.getInternalTextField().addTarget(self, action: #selector(UserDescriptionController.textFieldDidChange(_:)), for: .editingChanged)
         
         birthDateLabel.getInternalTextField().addTarget(self, action: #selector(UserDescriptionController.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    func setupDefaultData() {
+        if let unwrappedUser = user {
+            if let firstName = unwrappedUser.firstName {
+                firstNameLabel.getInternalTextField().text = firstName
+                firstNameLabel.forceEditing()
+            }
+            
+            if let lastName = unwrappedUser.lastName {
+                lastNameLabel.getInternalTextField().text = lastName
+                lastNameLabel.forceEditing()
+            }
+            
+            if let sex = unwrappedUser.sex {
+                if sex == "female" {
+                    sexLabel.getInternalTextField().text = "Жіноча"
+                    self.sex = Sex.init(rawValue: 0)!
+                } else {
+                    sexLabel.getInternalTextField().text = "Чоловіча"
+                    self.sex = Sex.init(rawValue: 1)!
+                }
+            
+                sexLabel.forceEditing()
+            }
+            
+            if let birthDate = unwrappedUser.age {
+                let date = NSDate(timeIntervalSince1970: Double(birthDate))
+                self.birthDate = date as Date
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                let stringDate = dateFormatter.string(from: date as Date)
+                birthDateLabel.getInternalTextField().text = stringDate
+                birthDateLabel.forceEditing()
+            }
+        }
+        textFieldDidChange(lastNameLabel.getInternalTextField())
     }
     
     @IBAction func showSex(_ sender: Any) {
@@ -103,7 +144,15 @@ class UserDescriptionController: UIViewController {
     private func showBirthdayPickerView() {
         view.endEditing(true)
         let alert = UIAlertController(style: .alert, title: "Вкажи свою дату народження", message: "")
-        let currentDate = Date()
+        
+        var currentDate = Date()
+        if let unwrappedUser = user {
+            if let birthDate = unwrappedUser.age {
+                currentDate = NSDate(timeIntervalSince1970: Double(birthDate))
+                    as Date
+            }
+        }
+        
         var dateComponents = DateComponents()
         let calendar = Calendar.init(identifier: .gregorian)
         dateComponents.year = -100
@@ -145,7 +194,14 @@ class UserDescriptionController: UIViewController {
         }
         
         let timestamp = birthDate.timeIntervalSince1970
+        
+        SVProgressHUD.show()
+        
         registrationDataSourceModel.updateUserInfo(firstName: firstName, lastName: lastName, sex: sex == .male ? "male" : "female", birthdate: Int64(timestamp)) { scout, error  in
+            
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
             if error == nil {
                 Scout.currentUser = scout
                 if scout?.role == "scout_master" {
@@ -159,12 +215,22 @@ class UserDescriptionController: UIViewController {
                         }
                     }
                 } else {
-                    DispatchQueue.main.async {
-                        self.loadHomeController(user: scout)
+                    if self.type == .registration {
+                        DispatchQueue.main.async {
+                            self.loadHomeController(user: scout)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
                 }
             } else {
-                
+                if let unwrappedError = error as? ErrorModel {
+                    CommonAlert.showError(title: unwrappedError.reason ?? "Щось пішло не так :(")
+                } else {
+                    CommonAlert.showError(title: "Щось пішло не так :(")
+                }
             }
         }
     }
