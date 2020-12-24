@@ -32,6 +32,13 @@ class RequestParser {
   
     public func parse<T: Decodable>(object: Data?, objectType: T.Type, response: URLResponse?) -> ParseResult {
         guard let response = response, let httpResponse = response as? HTTPURLResponse else { return .failed(error: ParseError.noResponse) }
+        
+        if httpResponse.statusCode != 200 {
+            if let errorHandler = Requester.shared.getErrorHandler() {
+                return .failed(error: errorHandler.handleError(data: object, response:   response))
+            }
+        }
+        
         do {
             let object = try parseObject(object: object, objectType: objectType)
             return .successWith(object: object)

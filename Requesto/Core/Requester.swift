@@ -11,10 +11,23 @@ open class Requester {
     
     static public let shared = Requester()
     
+    private var errorHandler: ErrorHandlerProtocol?
+    
     private var centralRequestHandler = CentralRequestHandler()
     
     private init() {
         centralRequestHandler.nextHandler = ExecutiveRequestHandler()
+    }
+    
+    public func setError(handler: ErrorHandlerProtocol) {
+        errorHandler = handler
+    }
+    
+    func getErrorHandler() -> ErrorHandlerProtocol? {
+        if errorHandler == nil  {
+            return DefaultErrorHandler()
+        }
+        return errorHandler
     }
     
     func processRequestAsynchronously<T: Decodable>(request: Request, type: T.Type) {

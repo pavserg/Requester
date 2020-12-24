@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B15223982594CF1D00EB7536 /* ErrorHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15223972594CF1D00EB7536 /* ErrorHandlerProtocol.swift */; };
 		B1A7CE872568050E0037192C /* Requester.h in Headers */ = {isa = PBXBuildFile; fileRef = B1A7CE852568050E0037192C /* Requester.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B1A7CE902568056B0037192C /* Requester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE8F2568056B0037192C /* Requester.swift */; };
 		B1A7CE93256806BB0037192C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CE92256806BB0037192C /* Request.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B15223972594CF1D00EB7536 /* ErrorHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerProtocol.swift; sourceTree = "<group>"; };
 		B1A7CE822568050E0037192C /* Requesto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Requesto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A7CE852568050E0037192C /* Requester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Requester.h; sourceTree = "<group>"; };
 		B1A7CE862568050E0037192C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				B1A7CF10256839CB0037192C /* RequestParser.swift */,
+				B15223972594CF1D00EB7536 /* ErrorHandlerProtocol.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				B1A7CF30256853ED0037192C /* ConcurrentOperation.swift in Sources */,
 				B1A7CF5525695D8A0037192C /* UploadRequest.swift in Sources */,
 				B1A7CF12256839CB0037192C /* RequestParser.swift in Sources */,
+				B15223982594CF1D00EB7536 /* ErrorHandlerProtocol.swift in Sources */,
 				B1A7CE9625680AD50037192C /* RequestHandler.swift in Sources */,
 				B1A7CF11256839CB0037192C /* HTTPHeader.swift in Sources */,
 				B1A7CE9C25680F170037192C /* CentralRequestHandler.swift in Sources */,
