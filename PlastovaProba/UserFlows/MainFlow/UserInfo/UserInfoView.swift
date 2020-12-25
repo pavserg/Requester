@@ -66,8 +66,8 @@ class UserInfoView: UIView {
         let allPoints = all.count
         
         let needToComplete = allPoints - completed
-        completedLabel.text = "\(completed)\nточок здано загалом"
-        needToCompleteLabel.text = "\(needToComplete)\nзалишилось"
+        completedLabel.attributedText = "\(completed)\nточок здано загалом".changeFontForNumbers()
+        needToCompleteLabel.attributedText = "\(needToComplete)\nзалишилось".changeFontForNumbers()
         
         circleProgressView.trackFillColor = AppColors.green ?? .black
         circleProgressView.progress = Double(completed) / Double(allPoints)

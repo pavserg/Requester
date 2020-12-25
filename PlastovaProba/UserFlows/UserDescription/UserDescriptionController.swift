@@ -51,6 +51,22 @@ class UserDescriptionController: UIViewController {
         setupDefaultData()
     }
     
+    override func back() {
+        super.back()
+        
+        if navigationController?.viewControllers.count == 1 {
+            CommonAlert.showError(title: "Перш ніж продовжити ти маєш ввести свої дані.")
+        }
+    }
+    
+    private func loadStartController() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "StartViewNavigationController")
+            UIApplication.shared.delegate?.window??.rootViewController = controller
+        }
+    }
+    
     private func setupLocalization() {
         titleLabel.text = "user_description_tell_about_yourself".localized
         firstNameLabel.setPlaceholder(text: "user_description_firstname".localized)

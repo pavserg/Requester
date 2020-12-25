@@ -10,7 +10,7 @@ import Foundation
 import Requesto
 
 
-let serverUrl = "http://localhost:8080" //"https://scoutappdemoua.herokuapp.com"// "http://91.218.106.227"//"http://localhost:8080"
+let serverUrl = "https://scoutappdemoua.herokuapp.com"//"http://localhost:8080"// "https://scoutappdemoua.herokuapp.com" // "http://localhost:8080" //"https://scoutappdemoua.herokuapp.com"// "http://91.218.106.227"//"http://localhost:8080"
 
 class Empty: Decodable {}
 

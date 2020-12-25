@@ -33,7 +33,7 @@ class ProfileController: UIViewController {
         if let unwrapped = challengePoints {
             userInfoView.setupPoints(all: unwrapped)
         }
-        title = "Профіль"
+        title = "Мій профіль"
         setupUI()
     }
     

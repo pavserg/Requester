@@ -25,6 +25,12 @@ class LaunchScreenController: UIViewController {
                     UserDataSourceModel().getProfile { (userProfile, error) in
                         if error == nil {
                             Scout.currentUser = userProfile
+                            
+                            if Scout.currentUser?.firstName == nil && Scout.currentUser?.lastName == nil && Scout.currentUser?.age == nil && Scout.currentUser?.sex == nil {
+                                self.loadUserDescriptionController()
+                                return
+                            }
+                            
                             UserImageHelper.shared.updateUrl(onCompletion: {
                                 self.loadHomeController(user: userProfile)
                             })
@@ -55,6 +61,15 @@ class LaunchScreenController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "StartViewNavigationController")
             UIApplication.shared.delegate?.window??.rootViewController = controller
+        }
+    }
+    
+    private func loadUserDescriptionController() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "UserDescriptionController")
+            let navigationController = UINavigationController(rootViewController: controller)
+            UIApplication.shared.delegate?.window??.rootViewController = navigationController
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import RLBAlertsPickers
+import SVProgressHUD
  
 enum ApplicationControllerType {
     case scout
@@ -41,7 +42,9 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         registerXibs()
         refreshControl.attributedTitle = NSAttributedString(string: "Оновлення")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
-        tableView.addSubview(refreshControl) 
+        tableView.addSubview(refreshControl)
+        
+        title = (scout?.firstName ?? "") + " " + (scout?.lastName ?? "")
     }
     
     func showDisclaimerLabel() {
@@ -54,7 +57,18 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func refresh(_ sender: AnyObject) {
-        setupData()
+        userDataSourceModel.getProfile { (scout, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    self.setupData()
+                } else {
+                    
+                    CommonAlert.showError(title: "Щось пішло не так :(. Спробуй пізніше ще раз.")
+                }
+            }
+        }
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.refreshControl.endRefreshing()
         }
@@ -215,6 +229,7 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionTableViewCell", for: indexPath) as? CollectionTableViewCell
             cell?.collectionView.delegate = self
             cell?.collectionView.dataSource = self
+            cell?.collectionView.reloadData()
             return cell!
         }
         
@@ -264,9 +279,14 @@ class ApplicationController: UIViewController, UITableViewDelegate, UITableViewD
         
         guard let unwrappedScout = scout, let scoutId = unwrappedScout.id, let rang = unwrappedScout.rang, let pointId = challengeModel?.sections?[indexPath.section].topics?[indexPath.row].id else { return }
         
+        SVProgressHUD.show()
         challengeDataSource.update(userIdentifier: scoutId, pointIdentifier: pointId.lowercased(), rang: rang) { [weak self] (error) in
             if error == nil {
                 self?.reloadActiveChallenge()
+            }
+            
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -283,7 +303,7 @@ extension ApplicationController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GategoryCollectionViewCell", for: indexPath) as? GategoryCollectionViewCell
         if let section = collectionViewChallengeModel?.sections?[indexPath.row] {
-            cell?.fillWithInfo(section: section)
+            cell?.fillWithInfo(section: section, completedProgress: activeChallenge ?? [:])
         }
         return cell!
     }

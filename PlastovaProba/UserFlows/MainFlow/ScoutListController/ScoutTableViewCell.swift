@@ -36,7 +36,7 @@ class ScoutTableViewCell: SwipeTableViewCell {
             case "first_challenge":
                 rangLabel.text = "Проба учасника"
             case "second_challenge":
-                rangLabel.text = "Проба розвідуувача"
+                rangLabel.text = "Проба розвідувача"
             default:
                 break
             }

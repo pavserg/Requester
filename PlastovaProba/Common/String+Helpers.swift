@@ -139,3 +139,25 @@ class CustomTextField: UITextField {
         return success
     }
 }
+
+
+
+extension String {
+    func changeFontForNumbers() -> NSMutableAttributedString {
+        let bold = [NSAttributedString.Key.font: AppFonts.monteseratBold24]
+        
+        let myAttributedString = NSMutableAttributedString()
+        for letter in self.unicodeScalars {
+            let myLetter : NSAttributedString
+            if CharacterSet.decimalDigits.contains(letter) {
+                myLetter = NSAttributedString(string: "\(letter)", attributes: bold)
+            } else {
+                myLetter = NSAttributedString(string: "\(letter)")
+            }
+            myAttributedString.append(myLetter)
+        }
+        
+        return myAttributedString
+    }
+}
+

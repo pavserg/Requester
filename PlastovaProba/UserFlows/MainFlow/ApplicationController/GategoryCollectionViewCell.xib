@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,35 +32,42 @@
                             <constraint firstAttribute="width" constant="32" id="mTs-nk-hUF"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afR-k6-CJi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afR-k6-CJi">
                         <rect key="frame" x="16" y="56" width="137" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzY-n2-yvR">
-                        <rect key="frame" x="16" y="79" width="25" height="11"/>
+                        <rect key="frame" x="16" y="99" width="25" height="11"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="11" id="QWg-Ls-11h"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="9"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wvn-ev-ORP">
-                        <rect key="frame" x="16" y="98" width="129" height="4"/>
+                        <rect key="frame" x="16" y="118" width="129" height="4"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="4" id="mJR-Xk-3dX"/>
+                        </constraints>
                     </progressView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FzY-n2-yvR" secondAttribute="trailing" constant="16" id="8sD-SL-bqE"/>
                 <constraint firstItem="xQQ-Nw-vFC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="9U1-35-60D"/>
                 <constraint firstItem="wvn-ev-ORP" firstAttribute="leading" secondItem="FzY-n2-yvR" secondAttribute="leading" id="A1L-yD-8aD"/>
                 <constraint firstItem="xQQ-Nw-vFC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="CA6-9b-ml7"/>
                 <constraint firstItem="wvn-ev-ORP" firstAttribute="top" secondItem="FzY-n2-yvR" secondAttribute="bottom" constant="8" id="DeA-Yp-tZo"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wvn-ev-ORP" secondAttribute="bottom" constant="8" id="EQE-6F-elc"/>
+                <constraint firstAttribute="bottom" secondItem="wvn-ev-ORP" secondAttribute="bottom" constant="16" id="EQE-6F-elc"/>
                 <constraint firstAttribute="trailing" secondItem="afR-k6-CJi" secondAttribute="trailing" constant="8" id="Gpx-a6-TbM"/>
                 <constraint firstItem="afR-k6-CJi" firstAttribute="leading" secondItem="xQQ-Nw-vFC" secondAttribute="leading" id="MyO-Dh-efw"/>
                 <constraint firstItem="FzY-n2-yvR" firstAttribute="leading" secondItem="afR-k6-CJi" secondAttribute="leading" id="SHM-4q-R9i"/>
-                <constraint firstItem="FzY-n2-yvR" firstAttribute="top" secondItem="afR-k6-CJi" secondAttribute="bottom" constant="8" id="ezS-oe-Saf"/>
+                <constraint firstItem="FzY-n2-yvR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="afR-k6-CJi" secondAttribute="bottom" constant="8" id="ezS-oe-Saf"/>
                 <constraint firstItem="afR-k6-CJi" firstAttribute="top" secondItem="xQQ-Nw-vFC" secondAttribute="bottom" constant="8" id="fY8-w4-0WM"/>
                 <constraint firstAttribute="trailing" secondItem="wvn-ev-ORP" secondAttribute="trailing" constant="16" id="w1Y-ot-BEz"/>
             </constraints>

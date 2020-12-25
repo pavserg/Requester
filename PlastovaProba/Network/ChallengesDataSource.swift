@@ -44,7 +44,7 @@ class ChallengesDataSource {
     // MARK: - Get active challenge by id
     
     func activeChallengeBy(id: String, onCompletion: @escaping (([String: Bool]?, Error?) -> Void)) {
-       let url = "http://localhost:8080/application/activeChallengeById/\(id)"
+       let url = "\(serverUrl)/application/activeChallengeById/\(id)"
      
         Request(owner: ObjectIdentifier(self), url: url, requestType: .get, parameters: nil, headers: RequestHeader.shared) { response in
             if let result = response?.parsedObject as? [String: Bool] {
@@ -59,7 +59,7 @@ class ChallengesDataSource {
     // MARK: - Update challenge point
     
     func update(userIdentifier: String, pointIdentifier: String, rang: String, onCompletion: @escaping ((Error?) -> Void)) {
-        let url = "http://localhost:8080/application/updateSympathizer"
+        let url = "\(serverUrl)/application/updateSympathizer"
         
         let params = ["id": userIdentifier, "rang": rang, "pointId": pointIdentifier]
         

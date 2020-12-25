@@ -21,14 +21,21 @@ class GategoryCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
     }
     
-    func fillWithInfo(section: Section) {
+    func fillWithInfo(section: Section, completedProgress: [String: Bool]) {
         if let color = section.color {
             backgroundColor = hexStringToUIColor(hex: color)
         }
-      
+        
+        var completeCount = 0
+        section.topics?.forEach({ (topic) in
+            if completedProgress[topic.id?.lowercased() ?? ""] == true {
+                completeCount += 1
+            }
+        })
+        
         titleLabel.text = section.name
         titleLabel.textColor = UIColor.white
-        progressLabel.text = "Здано 21 з 53"
+        progressLabel.text = "Здано \(completeCount) з \(section.topics?.count ?? 0)"
         progressLabel.textColor = UIColor.white
     }
     

@@ -101,15 +101,11 @@ class LoginViewController: UIViewController {
                     }
                     unwrappedResult.user.getIDToken { (token, error) in
                         if error == nil {
-                            print(token)
                             Token.accessToken = token ?? ""
-                            
                             UserDataSourceModel().getProfile { (userProfile, error) in
                                 if error == nil {
                                     Scout.currentUser = userProfile
-                                    DispatchQueue.main.async {
-                                        self.loadHomeController(user: nil)
-                                    }
+                                    self.analyzeProfile()
                                 }
                             }
                         }
@@ -123,10 +119,29 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func analyzeProfile() {
+        if Scout.currentUser?.firstName == nil && Scout.currentUser?.lastName == nil && Scout.currentUser?.age == nil && Scout.currentUser?.sex == nil {
+            DispatchQueue.main.async {
+                self.loadUserDescriptionController()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.loadHomeController(user: nil)
+            }
+        }
+    }
+    
     private func loadHomeController(user: Scout?) {
         let storyboard = UIStoryboard(name: "MainFlow", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "HomeNavigationController")
         UIApplication.shared.delegate?.window??.rootViewController = controller
+    }
+    
+    private func loadUserDescriptionController() {
+        let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "UserDescriptionController")
+        let navigationController = UINavigationController(rootViewController: controller)
+        UIApplication.shared.delegate?.window??.rootViewController = navigationController
     }
     
     // MARK: - Forgot password

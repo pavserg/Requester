@@ -8,10 +8,12 @@
 
 import UIKit
 import SwipeCellKit
+import SVProgressHUD
 
 class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
   
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var disclaimerLabel: UILabel!
     
     private var registrationDataSourceModel = RegistrationDataSourceModel()
     
@@ -34,6 +36,14 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
         prepareData()
     }
     
+    func showDisclaimer() {
+        if dataSource?.scouts?.count == 0 {
+            disclaimerLabel.isHidden = false
+        } else {
+            disclaimerLabel.isHidden = true
+        }
+    }
+    
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,18 +53,38 @@ class ScoutListController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func prepareData() {
         registrationDataSourceModel.getScouts { [weak self] (scouts, error) in
-            if let unwrappedScouts = scouts {
-                self?.dataSource = unwrappedScouts
+            if error == nil {
+                if let unwrappedScouts = scouts {
+                    self?.dataSource = unwrappedScouts
+                }
+                DispatchQueue.main.async {
+                    self?.showDisclaimer()
+                    self?.tableView.reloadData()
+                }
+            } else {
+                self?.loadCreateBandController(user: Scout.currentUser)
             }
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        }
+    }
+    
+    private func loadCreateBandController(user: Scout?) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "UserDescription", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "AddBandViewController") as? AddBandViewController {
+                controller.scout = user
+                let navigationController = UINavigationController(rootViewController: controller)
+                UIApplication.shared.delegate?.window??.rootViewController = navigationController
             }
         }
     }
     
     func deleteScout(at index: Int) {
         let email = dataSource?.scouts?[index].email ?? ""
+        SVProgressHUD.show()
         registrationDataSourceModel.deleteScout(email: email) { (success) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
             if success {
                 self.prepareData()
             } else {

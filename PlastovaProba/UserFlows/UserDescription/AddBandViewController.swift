@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AddBandViewController: UIViewController {
     
@@ -30,6 +31,13 @@ class AddBandViewController: UIViewController {
         setupUI()
     }
     
+    override func back() {
+        super.back()
+        if navigationController?.viewControllers.count == 1 {
+            CommonAlert.showError(title: "Перш ніж продовжити ти маєш створити гурток.")
+        }
+    }
+    
     private func setupLocalization() {
         titleLabel.text = "add_band_tell_about_your_band".localized
         subtitleLabel.text = "add_band_additional_bands_info".localized
@@ -47,12 +55,14 @@ class AddBandViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
+        SVProgressHUD.show()
         registrationDataSourceModel.createBand(bandName: bandTitleTextField.getText() ?? "Pinterest") { (success) in
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 if success {
                     self.loadHomeController(user: self.scout)
                 } else {
-                    
+                    CommonAlert.showError(title: "Щось пішло не так.")
                 }
             }
         }

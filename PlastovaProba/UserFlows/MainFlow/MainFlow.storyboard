@@ -327,9 +327,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="У тебе ще нікого нема у гуртку. Додай когось:)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRB-pJ-nN9">
+                                <rect key="frame" x="16" y="439.5" width="382" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lKw-Hy-Eld">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="kin-Zz-3Nh" id="CsB-5Q-9Ke"/>
                                 </connections>
@@ -338,19 +345,24 @@
                         <viewLayoutGuide key="safeArea" id="9wV-4I-EQJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="oRB-pJ-nN9" firstAttribute="leading" secondItem="9wV-4I-EQJ" secondAttribute="leading" constant="16" id="6in-Ao-KgU"/>
                             <constraint firstAttribute="bottom" secondItem="lKw-Hy-Eld" secondAttribute="bottom" id="DfR-Bc-RO5"/>
                             <constraint firstItem="lKw-Hy-Eld" firstAttribute="leading" secondItem="ZoP-Mh-ttW" secondAttribute="leading" id="FiA-Tw-8z2"/>
+                            <constraint firstItem="oRB-pJ-nN9" firstAttribute="centerX" secondItem="ZoP-Mh-ttW" secondAttribute="centerX" id="KDK-Ah-Qh1"/>
+                            <constraint firstItem="oRB-pJ-nN9" firstAttribute="centerY" secondItem="ZoP-Mh-ttW" secondAttribute="centerY" id="MlG-a5-CFW"/>
                             <constraint firstItem="lKw-Hy-Eld" firstAttribute="top" secondItem="ZoP-Mh-ttW" secondAttribute="top" id="a2E-8P-uXI"/>
+                            <constraint firstItem="9wV-4I-EQJ" firstAttribute="trailing" secondItem="oRB-pJ-nN9" secondAttribute="trailing" constant="16" id="oKT-8C-LjQ"/>
                             <constraint firstAttribute="trailing" secondItem="lKw-Hy-Eld" secondAttribute="trailing" id="xgd-mf-rYy"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="disclaimerLabel" destination="oRB-pJ-nN9" id="c6r-gy-iAg"/>
                         <outlet property="tableView" destination="lKw-Hy-Eld" id="uSK-2q-kej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ihZ-pj-fRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3080" y="664"/>
+            <point key="canvasLocation" x="-3081.1594202898555" y="663.61607142857144"/>
         </scene>
         <!--Add New Scout Controller-->
         <scene sceneID="TNb-dx-ifd">
