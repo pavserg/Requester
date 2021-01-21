@@ -37,6 +37,10 @@ class GategoryCollectionViewCell: UICollectionViewCell {
         titleLabel.textColor = UIColor.white
         progressLabel.text = "Здано \(completeCount) з \(section.topics?.count ?? 0)"
         progressLabel.textColor = UIColor.white
+        
+        if let all = section.topics?.count {
+            progressView.progress = Float(Float(completeCount)/Float(all))
+        }
     }
     
     func hexStringToUIColor (hex:String) -> UIColor {

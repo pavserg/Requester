@@ -826,16 +826,18 @@
 			baseConfigurationReference = E6C46C56A69851C45D57D5B1 /* Pods-PlastovaProba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QE5W5FBF3K;
+				DEVELOPMENT_TEAM = B94FQ4SJQ9;
 				INFOPLIST_FILE = PlastovaProba/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.plast.ua.PlastovaProba;
+				PRODUCT_BUNDLE_IDENTIFIER = com.plast.ua.plastovaproba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -846,16 +848,18 @@
 			baseConfigurationReference = ACD7DE352DAD1B9AC659D5FA /* Pods-PlastovaProba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QE5W5FBF3K;
+				DEVELOPMENT_TEAM = B94FQ4SJQ9;
 				INFOPLIST_FILE = PlastovaProba/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.plast.ua.PlastovaProba;
+				PRODUCT_BUNDLE_IDENTIFIER = com.plast.ua.plastovaproba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
