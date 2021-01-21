@@ -60,5 +60,11 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Ми повинні отримати доступ, щоб мати змогу рекомендувати програму для друзів</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Ми повинні мати змогу зробити фото для вашого аватару.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Ми повинні отримувати іноді вашу локацію.</string>
 </dict>
 </plist>
