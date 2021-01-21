@@ -163,6 +163,7 @@
 		B1C36400252107F000F21352 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B1CCEB142542CD12003ED327 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		B1CCEB162542D873003ED327 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		B1E7E57C25B9F95B004AE13D /* PlastovaProba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlastovaProba.entitlements; sourceTree = "<group>"; };
 		B1E92209257A9DE300DD05B3 /* Scout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scout.swift; sourceTree = "<group>"; };
 		B1EAE42A257E718B0011D5E6 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		B1EAE42E257E72B30011D5E6 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
@@ -264,6 +265,7 @@
 		B17A762E24ABBEA3004FD21E /* PlastovaProba */ = {
 			isa = PBXGroup;
 			children = (
+				B1E7E57C25B9F95B004AE13D /* PlastovaProba.entitlements */,
 				B17A762F24ABBEA3004FD21E /* AppDelegate.swift */,
 				B1BCF6492522081400C1FBF5 /* GoogleService-Info.plist */,
 				B17A76AC24B49F2D004FD21E /* Views */,
@@ -826,8 +828,10 @@
 			baseConfigurationReference = E6C46C56A69851C45D57D5B1 /* Pods-PlastovaProba.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlastovaProba/PlastovaProba.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = B94FQ4SJQ9;
 				INFOPLIST_FILE = PlastovaProba/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -849,8 +853,10 @@
 			baseConfigurationReference = ACD7DE352DAD1B9AC659D5FA /* Pods-PlastovaProba.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlastovaProba/PlastovaProba.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = B94FQ4SJQ9;
 				INFOPLIST_FILE = PlastovaProba/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
