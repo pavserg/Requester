@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import RLBAlertsPickers
 import SVProgressHUD
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     

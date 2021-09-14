@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import Requesto
+import FirebaseAuth
 
 class UserDataSourceModel {
     

@@ -9,6 +9,7 @@
 import UIKit
 import RLBAlertsPickers
 import Firebase
+import FirebaseAuth
 import SVProgressHUD
 
 class RegistrationViewController: UIViewController {
